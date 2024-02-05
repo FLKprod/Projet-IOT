@@ -22,19 +22,5 @@ Le projet vise à créer une plateforme web qui pourra se mettre à jour automat
 ## Autres Sources d'Information
 Pour plus d'informations sur les vulnérabilités, consultez [cette compilation](https://www.yeahhub.com/listvulnerability-databases-resources-2018/).
 
-## Pour Commencer
-Pour mettre en place la Plateforme de Surveillance des Vulnérabilités de Sécurité des Objets Connectés, suivez ces étapes :
-
-1. Clonez le dépôt.
-2. Installez les dépendances requises.
-3. Configurez les paramètres de la plateforme.
-4. Lancez l'application.
-
-## Contributions
-Les contributions au projet sont les bienvenues. N'hésitez pas à ouvrir des problèmes, à soumettre des demandes d'extraction ou à fournir des commentaires.
-
 ## Licence
 Ce projet est sous licence [MIT License](LICENSE).
-
-## Remerciements
-Un merci spécial à l'Université de Bourgogne et à l'Université du Québec pour leur soutien dans cette initiative de recherche.
