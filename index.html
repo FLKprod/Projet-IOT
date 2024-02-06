@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Plateforme de Surveillance des Vulnérabilités</title>
+    <title>SafeConnect</title>
 </head>
 <body>
-    <div class="centre">
-        <h1>Plateforme de Surveillance des Vulnérabilités</h1>
+    <div class="up">
+        <h1>SafeConnect: Une Plateforme de Surveillance des Vulnérabilités</h1>
     </div>
+    <div class="center">
+        <table id="vulnerabilityTable">
+            <!-- Tableau de data.json avec les vulnerabilites -->
+        </table>
+        <button id="refreshButton" onclick="loadTableData()">Refresh</button>
+    </div>
+    <div class="dowz">
+        <p>&copy; 2024 SafeConnect. Tous droits réservés.</p>
+    </div>
+    <script src="recupData.js"></script>
 </body>
 </html>

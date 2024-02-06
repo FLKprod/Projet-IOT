@@ -3,13 +3,17 @@ body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
 }
 
-.centre {
+.up,.center {
+    margin-bottom: auto; 
+}
+.up, .center, .down {
     text-align: center;
 }
 
@@ -17,4 +21,41 @@ h1 {
     font-size: 2.5em;
     color: #333;
     margin-bottom: 20px;
+}
+
+p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/*---------------------------------------------------*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1em;
+}
+
+table, td {
+    border: 1px solid #333;
+}
+
+td {
+    padding: 1em;
+}
+
+tr:first-child {
+    background-color: #4CAF50; 
+    color: white; 
 }

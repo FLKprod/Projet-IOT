@@ -1,4 +1,4 @@
-# Plateforme de Surveillance des Vulnérabilités de Sécurité des Objets Connectés
+# SafeConnect : Une Plateforme de Surveillance des Vulnérabilités de Sécurité des Objets Connectés
 
 ## Introduction
 Avec la popularité croissante de l'Internet des Objets (IoT), les utilisateurs peuvent manquer de connaissances pour sécuriser correctement les objets connectés, le laissant et potentiellement le réseau auquel il est attaché vulnérable aux attaques. Le but de ce projet est d'explorer les vulnérabilités du système liées aux objets connectés et les implémentations conçues pour résister à ces vulnérabilités et/ou réduire le potentiel qu'un exploit résulte d'une telle vulnérabilité.
