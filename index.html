@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/png">
     <title>SafeConnect</title>
 </head>
 <body>
@@ -11,10 +12,16 @@
         <h1>SafeConnect: Une Plateforme de Surveillance des Vulnérabilités</h1>
     </div>
     <div class="center">
+        <label for="sortDropdown">Trier par difficulté :</label>
+        <select id="sortDropdown" onchange="sortTable()">
+            <option value="choose" disabled selected>Chosir</option>
+            <option value="asc">Croissante</option>
+            <option value="desc">Décroissante</option>
+        </select>
         <table id="vulnerabilityTable">
             <!-- Tableau de data.json avec les vulnerabilites -->
         </table>
-        <button id="refreshButton" onclick="loadTableData()">Refresh</button>
+        <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
     </div>
     <div class="dowz">
         <p>&copy; 2024 SafeConnect. Tous droits réservés.</p>

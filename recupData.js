@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function loadTableData() {
     var table = document.getElementById('vulnerabilityTable');
 
-    
-
     // Ajouter un timestamp pour forcer le rafraîchissement du fichier JSON
     var timestamp = new Date().getTime();
     var url = 'data.json?timestamp=' + timestamp;
@@ -49,13 +47,13 @@ function loadTableData() {
                         }
                     });
                 });
+                sortTable();
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
         })
-        .catch(error => console.error('Erreur de chargement des données JSON:', error));
+        .catch(error => console.error('Erreur de chargement des données JSON:', error)); 
 }
-
 function evaluateRisk(value) {
     // Ajouter des conditions pour déterminer la classe en fonction de la valeur
     if (value === 'Faible') {
@@ -70,3 +68,46 @@ function evaluateRisk(value) {
 }
 
 
+function sortTable() {
+    var table = document.getElementById('vulnerabilityTable');
+    var sortDropdown = document.getElementById('sortDropdown');
+    var sortOrder = sortDropdown.value;
+
+    if (sortOrder === 'choose') {
+        return;
+    }
+
+    var rows = Array.from(table.rows).slice(1); // Exclure la première ligne (en-têtes)
+
+    rows.sort(function(rowA, rowB) {
+        var cellA = rowA.cells[rowA.cells.length - 1].innerText; // Dernière cellule de chaque ligne
+        var cellB = rowB.cells[rowB.cells.length - 1].innerText;
+
+        // Trier par niveau de difficulté
+        var comparison = compareDifficulty(cellA, cellB);
+
+        // Inverser l'ordre si décroissant
+        return sortOrder === 'asc' ? comparison : -comparison;
+    });
+
+    // Remplacer les lignes dans le tableau trié
+    rows.forEach(function(row, index) {
+        table.appendChild(row);
+    });
+}
+
+function compareDifficulty(diffA, diffB) {
+    // Fonction pour comparer les niveaux de difficulté (personnalisez selon vos besoins)
+    var levels = ['faible', 'moyen', 'élevé'];
+
+    var indexA = levels.indexOf(diffA.toLowerCase());
+    var indexB = levels.indexOf(diffB.toLowerCase());
+
+    if (indexA === -1 || indexB === -1) {
+        // Gestion des erreurs si le niveau de difficulté n'est pas reconnu
+        console.error('Niveau de difficulté non reconnu:', diffA, diffB);
+        return 0;
+    }
+
+    return indexA - indexB;
+}
