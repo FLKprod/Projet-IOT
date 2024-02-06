@@ -35,7 +35,7 @@ function loadTableData() {
                 headerRow.classList.add('header-row');
 
                 // Ajouter des lignes de data.json (à partir de la deuxième ligne)
-                data.forEach(rowData => {
+                data.forEach((rowData,rowIndex) => {
                     var row = table.insertRow();
                     Object.entries(rowData).forEach(([key, value]) => {
                         var cell = row.insertCell();
@@ -52,7 +52,9 @@ function loadTableData() {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
         })
-        .catch(error => console.error('Erreur de chargement des données JSON:', error)); 
+        .catch(error => console.error('Erreur de chargement des données JSON:', error));
+        
+        
 }
 function evaluateRisk(value) {
     // Ajouter des conditions pour déterminer la classe en fonction de la valeur

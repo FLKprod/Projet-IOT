@@ -6,6 +6,24 @@
       "Niveau de Risque ⚠️": "Élevé"
     },
     {
+        "Objet IoT": "Caméra de surveillance",
+        "Vulnérabilité": "Dépassement de tampon",
+        "Description": "Une entrée utilisateur non vérifiée peut provoquer un dépassement de tampon, permettant une exécution de code non autorisée.",
+        "Niveau de Risque ⚠️": "Élevé"
+      },
+      {
+        "Objet IoT": "Caméra de surveillance",
+        "Vulnérabilité": "Accès non autorisé au flux vidéo",
+        "Description": "Un attaquant peut exploiter une faiblesse dans l'authentification pour accéder au flux vidéo en direct sans autorisation.",
+        "Niveau de Risque ⚠️": "Moyen"
+      },
+      {
+        "Objet IoT": "Caméra de surveillance",
+        "Vulnérabilité": "Fuite d'informations sensibles",
+        "Description": "La caméra peut involontairement divulguer des informations sensibles, telles que des enregistrements vidéo, à des parties non autorisées.",
+        "Niveau de Risque ⚠️": "Élevé"
+      },
+    {
       "Objet IoT": "Thermostat intelligent",
       "Vulnérabilité": "Déni de service (DoS)",
       "Description": "Peut être submergé par des requêtes malveillantes, entraînant une interruption de service.",
