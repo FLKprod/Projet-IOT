@@ -81,17 +81,41 @@ function sortTable() {
 
     var rows = Array.from(table.rows).slice(1); // Exclure la première ligne (en-têtes)
 
-    rows.sort(function(rowA, rowB) {
-        var cellA = rowA.cells[rowA.cells.length - 1].innerText; // Dernière cellule de chaque ligne
-        var cellB = rowB.cells[rowB.cells.length - 1].innerText;
+    if (sortOrder === 'alphabetic' || sortOrder === 'reverseAlphabetic') {
+        rows.sort(function (rowA, rowB) {
+            var cellA = rowA.cells[0].innerText.trim().toUpperCase();
+            var cellB = rowB.cells[0].innerText.trim().toUpperCase();
 
-        // Trier par niveau de difficulté
-        var comparison = compareDifficulty(cellA, cellB);
+            // Trier par nom d'objet IoT
+            if (cellA < cellB) {
+                return -1;
+            } else if (cellA > cellB) {
+                return 1;
+            }
+            return 0;
+        });
 
-        // Inverser l'ordre si décroissant
-        return sortOrder === 'asc' ? comparison : -comparison;
-    });
+        if (sortDropdown.dataset.prevSortOrder === 'alphabetic') {
+            // Inverser l'ordre si sélection alphabétique à nouveau
+            rows.reverse();
+            sortDropdown.dataset.prevSortOrder = 'reverseAlphabetic';
+        } else {
+            sortDropdown.dataset.prevSortOrder = 'alphabetic';
+        }
+    }
 
+    if (sortOrder === 'asc' || sortOrder === 'desc') {
+        rows.sort(function(rowA, rowB) {
+            var cellA = rowA.cells[rowA.cells.length - 1].innerText; // Dernière cellule de chaque ligne
+            var cellB = rowB.cells[rowB.cells.length - 1].innerText;
+
+            // Trier par niveau de difficulté
+            var comparison = compareDifficulty(cellA, cellB);
+
+            // Inverser l'ordre si décroissant
+            return sortOrder === 'asc' ? comparison : -comparison;
+        });
+    }
     // Remplacer les lignes dans le tableau trié
     rows.forEach(function(row, index) {
         table.appendChild(row);
