@@ -22,5 +22,10 @@ Le projet vise à créer une plateforme web qui pourra se mettre à jour automat
 ## Autres Sources d'Information
 Pour plus d'informations sur les vulnérabilités, consultez [cette compilation](https://www.yeahhub.com/listvulnerability-databases-resources-2018/).
 
+## Appel de l'API Nist avec PostMan
+
+![image](https://github.com/FLKprod/Projet-IOT/assets/38373463/c13a0978-bfdd-4deb-98c6-ec032e25503b)
+
+
 ## Licence
 Ce projet est sous licence [MIT License](LICENSE).
