@@ -19,8 +19,8 @@ body {
 }
 .up, .center, .down {
     text-align: center;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 h1 {
@@ -70,10 +70,11 @@ table {
 }
 
 table, td {
+    width: auto;
     border: 1px solid #333;
     border-radius: 3px;
     padding: 25px 30px;
-    height: 3em;
+    height: 1em;
     border-collapse: collapse;
 }
 
