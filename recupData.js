@@ -44,7 +44,6 @@ function loadTableData() {
                         var cell = row.insertCell();
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
                         
-                        console.log(key)
                         if (key == "descriptions"){
                             cell.appendChild(document.createTextNode(value[0].value));
                         }
@@ -66,7 +65,7 @@ function loadTableData() {
                             cell.appendChild(document.createTextNode(value));
                         }
                         // Ajouter une classe en fonction de la dernière colonne
-                        if (key === Object.keys(rowData).pop()) {
+                        if (key == "vulnStatus") {
                             cell.className = evaluateRisk(value);
                         }
                     });
@@ -81,17 +80,14 @@ function loadTableData() {
 
 function evaluateRisk(value) {
     // Ajouter des conditions pour déterminer la classe en fonction de la valeur
-    if (value === 'Faible') {
+    if (value === 'Analyzed') {
         return 'low-risk';
-    } else if (value === 'Moyen') {
-        return 'medium-risk';
-    } else if (value === 'Élevé') {
+    } else if (value === 'Modified') {
         return 'high-risk';
     } else {
         return ''; // Classe par défaut si la valeur n'est pas reconnue
     }
 }
-
 
 function sortTable() {
     var table = document.getElementById('vulnerabilityTable');
