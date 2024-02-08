@@ -10,6 +10,7 @@ body {
     background-image: linear-gradient(black, green);
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    
 }
 
 html{
@@ -37,6 +38,11 @@ html{
     margin-right: 1em;
 }
 
+.language{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 h1 {
     font-size: 2.5em;
     letter-spacing: 0.08em;
@@ -47,6 +53,10 @@ h1 {
 p {
     font-size: 0.8em;
     color: white;
+}
+
+label{
+    color:white;
 }
 
 .menu{
@@ -118,5 +128,28 @@ button:hover {
 
 button:active {
     background-color: #4CAF50;
+    color: white;
+}
+
+
+#sortDropdown {
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#sortDropdown option {
+    background-color: #fff;
+    color: #333;
+}
+
+#sortDropdown option:hover {
+    background-color: #f0f0f0;
+}
+
+#sortDropdown:active {
+    background-color: lightblue;
     color: white;
 }

@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(black, green);
     letter-spacing: 0.03em;
@@ -21,6 +21,11 @@ body {
     text-align: center;
     margin-left: 1em;
     margin-right: 1em;
+}
+
+.language{
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 h1 {
@@ -63,11 +68,15 @@ button:active {
 
 /*---------------------------------------------------*/
 
-table {
-    border-collapse: collapse;
-    width: 100em;
+.tableContainer{
+    overflow-x: auto;
+    width: 70em;
     margin-top: 3em;
     margin-bottom: 1em;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
 table, td {

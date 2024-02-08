@@ -23,18 +23,29 @@
             <option value="asc">Croissante</option>
             <option value="desc">Décroissante</option>
         </select>
-        <table id="vulnerabilityTable">
-            <!-- Tableau de data.json avec les vulnerabilites -->
-        </table>
+        <div class="tableContainer">
+            <table id="vulnerabilityTable">
+            <!-- Tableau avec les vulnerabilites -->
+            </table>
+        </div>
         <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
         <button onclick="location.href='index.html'">Back</button>
     </div>
     <div class="down">
+        <div class="language">
+            <label for="selectLanguage">Langue :</label>
+            <select id="selectLanguage" onchange="selectLanguage()">
+                <option value="choose" disabled selected>Choisir</option>
+                <option value="English">English</option>
+                <option value="Espagnol">Espanol</option>
+            </select>
+        </div>
         <a href="https://github.com/FLKprod/Projet-IOT" target="_blank">
             <i class="fa fa-github" style="font-size:2em;color:white"></i>
         </a>
         <p><strong>&copy; 2024 SafeConnect. Tous droits réservés.</p>
     </div>
     <script src="recupData.js"></script>
+    <script src="language.js"></script>
 </body>
 </html>

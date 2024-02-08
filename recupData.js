@@ -45,7 +45,13 @@ function loadTableData() {
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
                         
                         if (key == "descriptions"){
+                            if (localStorage.getItem('Language') == "English"){
                             cell.appendChild(document.createTextNode(value[0].value));
+                            }
+                            else{
+                                cell.appendChild(document.createTextNode(value[1].value));
+                            }
+                            cell.style.width = "200px";
                         }
                         else if (key == "metrics"){
                             cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
