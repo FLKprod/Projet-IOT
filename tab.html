@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="tab.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="logo.png" type="image/png">
     <title>CyberSafe</title>
@@ -12,13 +12,22 @@
     <div class="up">
         <h1>CyberSafe : Une Plateforme de Surveillance des Vulnérabilités</h1>
         <img src="logo.png" alt="Logo">
-        <div class="menu">
-            <p onclick="location.href='tab.html'">Tableau des vulnerabilites</p>
-            <p>Comment s'en proteger ?</p>
-            <p>Divers</p>
-        </div>
+
     </div>
     <div class="center">
+        <label for="sortDropdown">Trier par difficulté :</label>
+        <select id="sortDropdown" onchange="sortTable()">
+            <option value="choose" disabled selected>Choisir</option>
+            <option value="alphabetic">Alphabétique (A à Z)</option>
+            <option value="reverseAlphabetic">Alphabétique (Z à A)</option>
+            <option value="asc">Croissante</option>
+            <option value="desc">Décroissante</option>
+        </select>
+        <table id="vulnerabilityTable">
+            <!-- Tableau de data.json avec les vulnerabilites -->
+        </table>
+        <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
+        <button onclick="location.href='index.html'">Back</button>
     </div>
     <div class="down">
         <a href="https://github.com/FLKprod/Projet-IOT" target="_blank">
@@ -26,5 +35,6 @@
         </a>
         <p><strong>&copy; 2024 SafeConnect. Tous droits réservés.</p>
     </div>
+    <script src="recupData.js"></script>
 </body>
 </html>
