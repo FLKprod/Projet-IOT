@@ -1,5 +1,6 @@
 console.log("script.js loaded");
 
+document.getElementById("selectLanguage").value = localStorage.getItem("Language");
 loadTableData();
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -43,15 +44,15 @@ function loadTableData() {
                     Object.entries(rowData.cve).forEach(([key, value]) => {
                         var cell = row.insertCell();
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
-                        
                         if (key == "descriptions"){
                             if (localStorage.getItem('Language') == "English"){
-                            cell.appendChild(document.createTextNode(value[0].value));
+                                cell.appendChild(document.createTextNode(value[0].value));
+                                cell.firstChild.style.width = '200px';
                             }
                             else{
                                 cell.appendChild(document.createTextNode(value[1].value));
                             }
-                            cell.style.width = "200px";
+                            
                         }
                         else if (key == "metrics"){
                             cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
@@ -161,4 +162,12 @@ function compareDifficulty(diffA, diffB) {
     }
 
     return indexA - indexB;
+}
+
+
+
+function selectLanguage() {
+    localStorage.setItem('Language',document.getElementById('selectLanguage').value);
+    console.log(localStorage.getItem('Language'))
+    loadTableData();
 }

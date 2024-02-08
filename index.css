@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-image: linear-gradient(black, green);
     letter-spacing: 0.03em;
     text-transform: uppercase;
@@ -152,4 +152,38 @@ button:active {
 #sortDropdown:active {
     background-color: lightblue;
     color: white;
+}
+
+
+hr{
+    width: 5em;
+}
+
+.team-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: row; /* Changer de colonne à ligne */
+    align-items: center;
+    width: 70%; /* Ajustez la largeur selon vos besoins */
+}
+
+.team-info img {
+    height: 5em;
+    width: auto;
+    margin-right: 10px; /* Marge à droite de l'image */
+}
+
+.team-info a {
+    margin-left: 1em;
+}
+
+.team-info p {
+    margin: 0; /* Supprimer la marge par défaut des paragraphes */
 }
