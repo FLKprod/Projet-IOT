@@ -1,4 +1,5 @@
 console.log("script.js loaded");
+
 loadTableData();
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -9,17 +10,19 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+Datas = []
 function loadTableData() {
     var table = document.getElementById('vulnerabilityTable');
+    const keywordSearch = "Microsoft";
+    const pubStartDate = "2021-08-04T00:00:00.000";
+    const pubEndDate = "2021-08-22T00:00:00.000";
 
-    // Ajouter un timestamp pour forcer le rafraîchissement du fichier JSON
-    var timestamp = new Date().getTime();
-    var url = 'data.json?timestamp=' + timestamp;
-
-    fetch(url)
+    fetch(`https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=${keywordSearch}&pubStartDate=${pubStartDate}&pubEndDate=${pubEndDate}`) 
         .then(response => response.json())
         .then(data => {
-
+            console.log("Réponse de l'API", data.vulnerabilities);
+            // Utilisez "data" comme nécessaire
+            data = data.vulnerabilities;
             // Clear existing table
             while (table.firstChild) {
                 table.removeChild(table.firstChild);
@@ -28,7 +31,7 @@ function loadTableData() {
             if (Array.isArray(data) && data.length > 0) {
                 // 1ere ligne = en-têtes
                 var headerRow = table.createTHead().insertRow(0);
-                Object.keys(data[0]).forEach(header => {
+                Object.keys(data[0].cve).forEach(header => {
                     var cell = headerRow.insertCell();
                     cell.appendChild(document.createTextNode(header));
                 });
@@ -37,10 +40,31 @@ function loadTableData() {
                 // Ajouter des lignes de data.json (à partir de la deuxième ligne)
                 data.forEach((rowData,rowIndex) => {
                     var row = table.insertRow();
-                    Object.entries(rowData).forEach(([key, value]) => {
+                    Object.entries(rowData.cve).forEach(([key, value]) => {
                         var cell = row.insertCell();
-                        cell.appendChild(document.createTextNode(value));
-
+                        // Si la valeur n'est pas un tableau, ajoutez-la normalement
+                        
+                        console.log(key)
+                        if (key == "descriptions"){
+                            cell.appendChild(document.createTextNode(value[0].value));
+                        }
+                        else if (key == "metrics"){
+                            cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
+                        }
+                        else if (key == "configurations"){
+                            cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
+                        }
+                        else if (key == "references"){
+                            textcase="";
+                            for (let i = 0; i < value.length; i++) {
+                                textcase += value[i].url;
+                                textcase += "\n"
+                            }
+                            cell.appendChild(document.createTextNode(textcase));
+                        }
+                        else{
+                            cell.appendChild(document.createTextNode(value));
+                        }
                         // Ajouter une classe en fonction de la dernière colonne
                         if (key === Object.keys(rowData).pop()) {
                             cell.className = evaluateRisk(value);
@@ -51,11 +75,10 @@ function loadTableData() {
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
-        })
-        .catch(error => console.error('Erreur de chargement des données JSON:', error));
-        
-        
+    })
+    .catch(error => console.error('Erreur de chargement des données JSON:', error));  
 }
+
 function evaluateRisk(value) {
     // Ajouter des conditions pour déterminer la classe en fonction de la valeur
     if (value === 'Faible') {
