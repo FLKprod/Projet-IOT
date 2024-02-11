@@ -5,10 +5,10 @@ function selectLanguage() {
 }
 
 function toggleTeamInfo() {
-    var teamInfo = document.getElementById("teamInfo");
-    if (teamInfo.style.display === "none") {
-        teamInfo.style.display = "block";
-    } else {
-        teamInfo.style.display = "none";
-    }
-}
+            var teamInfo = document.getElementById("teamInfo");
+            if (teamInfo.style.display === "none") {
+                teamInfo.style.display = "block";
+            } else {
+                teamInfo.style.display = "none";
+            }
+        }

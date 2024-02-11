@@ -19,13 +19,13 @@
             <input type="text" id="keywordInput" placeholder="Search here" style="padding: 10px; border: 2px solid #ccc; border-radius: 5px; width: 300px;">
             <button onclick="keywordSearch()">Search</button>
         </div>
-        <label for="sortDropdown">Trier par difficulté :</label>
+        <label for="sortDropdown">Chercher une source :</label>
         <select id="sortDropdown" onchange="sortTable()">
             <option value="choose" disabled selected>Choisir</option>
-            <option value="alphabetic">Alphabétique (A à Z)</option>
-            <option value="reverseAlphabetic">Alphabétique (Z à A)</option>
-            <option value="asc">Croissante</option>
-            <option value="desc">Décroissante</option>
+            <option value="all">All</option>
+            <optgroup id="listes" value="src" label="Source">
+            </optgroup>
+            
         </select>
         <div class="tableContainer">
             <table id="vulnerabilityTable">
@@ -47,9 +47,8 @@
         <a href="https://github.com/FLKprod/Projet-IOT" target="_blank">
             <i class="fa fa-github" style="font-size:2em;color:white"></i>
         </a>
-        <p><strong>&copy; 2024 SafeConnect. Tous droits réservés.</p>
+        <p><strong>&copy; 2024 CyberSafe. Tous droits réservés.</p>
     </div>
     <script src="recupData.js"></script>
-    <script src="language.js"></script>
 </body>
 </html>

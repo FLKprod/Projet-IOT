@@ -104,15 +104,11 @@ tr:first-child {
     font-size: 14px;
 }
 
-.low-risk {
+.analyzed {
     background-color: lightgreen;
 }
 
-.medium-risk {
-    background-color: lightyellow;
-}
-
-.high-risk {
+.modified {
     background-color: lightcoral;
 }
 

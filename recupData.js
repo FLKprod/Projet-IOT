@@ -1,97 +1,34 @@
 console.log("script.js loaded");
 
+function handleEnterKey(event) {
+    if (event.key === 'Enter') {
+        keywordSearch()
+    }
+}
+
+// Ajouter un gestionnaire d'événements à la zone de texte
+var textarea = document.getElementById('keywordInput');
+textarea.addEventListener('keyup', handleEnterKey);
+
 document.getElementById("selectLanguage").value = localStorage.getItem("Language");
-loadTableData();
+keywordSearch();
 
 document.addEventListener("DOMContentLoaded", function() {
     
 
     document.getElementById('refreshButton').addEventListener('click', function() {
-        loadTableData();
+        keywordSearch();
     });
 });
 
 Datas = []
-function loadTableData() {
-    var table = document.getElementById('vulnerabilityTable');
-    const keywordSearch = "Microsoft";
-    const pubStartDate = "2021-08-04T00:00:00.000";
-    const pubEndDate = "2021-08-22T00:00:00.000";
-
-    fetch(`https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=${keywordSearch}&pubStartDate=${pubStartDate}&pubEndDate=${pubEndDate}`) 
-        .then(response => response.json())
-        .then(data => {
-            console.log("Réponse de l'API", data.vulnerabilities);
-            // Utilisez "data" comme nécessaire
-            data = data.vulnerabilities;
-            // Clear existing table
-            while (table.firstChild) {
-                table.removeChild(table.firstChild);
-            }
-            // Vérifier si data est un tableau et s'il contient au moins une ligne
-            if (Array.isArray(data) && data.length > 0) {
-                // 1ere ligne = en-têtes
-                var headerRow = table.createTHead().insertRow(0);
-                Object.keys(data[0].cve).forEach(header => {
-                    var cell = headerRow.insertCell();
-                    cell.appendChild(document.createTextNode(header));
-                });
-                headerRow.classList.add('header-row');
-
-                // Ajouter des lignes de data.json (à partir de la deuxième ligne)
-                data.forEach((rowData,rowIndex) => {
-                    var row = table.insertRow();
-                    Object.entries(rowData.cve).forEach(([key, value]) => {
-                        var cell = row.insertCell();
-                        // Si la valeur n'est pas un tableau, ajoutez-la normalement
-                        if (key == "descriptions"){
-                            if (localStorage.getItem('Language') == "English"){
-                                cell.appendChild(document.createTextNode(value[0].value));
-                                cell.firstChild.style.width = '200px';
-                            }
-                            else{
-                                cell.appendChild(document.createTextNode(value[1].value));
-                            }
-                            
-                        }
-                        else if (key == "metrics"){
-                            cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
-                        }
-                        else if (key == "configurations"){
-                            cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
-                        }
-                        else if (key == "references"){
-                            textcase="";
-                            for (let i = 0; i < value.length; i++) {
-                                textcase += value[i].url;
-                                textcase += "\n"
-                            }
-                            cell.appendChild(document.createTextNode(textcase));
-                        }
-                        else{
-                            cell.appendChild(document.createTextNode(value));
-                        }
-                        // Ajouter une classe en fonction de la dernière colonne
-                        if (key == "vulnStatus") {
-                            cell.className = evaluateRisk(value);
-                        }
-                    });
-                });
-                sortTable();
-            } else {
-                console.error('Le fichier JSON est vide ou mal formaté.');
-            }
-    })
-    .catch(error => console.error('Erreur de chargement des données JSON:', error));  
-}
-
 
 function keywordSearch() {
     var table = document.getElementById('vulnerabilityTable');
     var keywordInput = document.getElementById('keywordInput')
     var keywordSearch = keywordInput.value
-    const pubStartDate = "2021-08-04T00:00:00.000";
-    const pubEndDate = "2021-08-22T00:00:00.000";
+    const pubStartDate = "2021-08-04T19:15:08.000";
+    const pubEndDate = "2021-08-05T00:00:00.000";
 
     fetch(`https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=${keywordSearch}&pubStartDate=${pubStartDate}&pubEndDate=${pubEndDate}`) 
         .then(response => response.json())
@@ -114,15 +51,18 @@ function keywordSearch() {
                 headerRow.classList.add('header-row');
 
                 // Ajouter des lignes de data.json (à partir de la deuxième ligne)
-                data.forEach((rowData,rowIndex) => {
+                data.forEach((rowData) => {
                     var row = table.insertRow();
                     Object.entries(rowData.cve).forEach(([key, value]) => {
                         var cell = row.insertCell();
+                        if (key == "sourceIdentifier"){
+                            var statusGroup = document.getElementById("listes");
+                            addOptionsToGroup(value, statusGroup);
+                        }
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
                         if (key == "descriptions"){
                             if (localStorage.getItem('Language') == "English"){
                                 cell.appendChild(document.createTextNode(value[0].value));
-                                cell.firstChild.style.width = '200px';
                             }
                             else{
                                 cell.appendChild(document.createTextNode(value[1].value));
@@ -171,78 +111,45 @@ function evaluateRisk(value) {
     }
 }
 
+function addOptionsToGroup(optionText, group) {
+    if (!group.querySelector('option[value="' + optionText + '"]')) {
+        var option = document.createElement("option");
+        option.value = optionText;
+        option.text = optionText;
+        option.id = optionText.toLowerCase();
+        group.appendChild(option);
+    }
+}
+
 function sortTable() {
-    var table = document.getElementById('vulnerabilityTable');
-    var sortDropdown = document.getElementById('sortDropdown');
-    var sortOrder = sortDropdown.value;
+    var sortOrderDropdown = document.getElementById('sortDropdown');
+    var sortOrder = sortOrderDropdown.value;
 
     if (sortOrder === 'choose') {
         return;
     }
 
-    var rows = Array.from(table.rows).slice(1); // Exclure la première ligne (en-têtes)
+    var table = document.getElementById('vulnerabilityTable');
+    var rows = Array.from(table.rows).slice(1); // Exclure la 1ere ligne
 
-    if (sortOrder === 'alphabetic' || sortOrder === 'reverseAlphabetic') {
-        rows.sort(function (rowA, rowB) {
-            var cellA = rowA.cells[0].innerText.trim().toUpperCase();
-            var cellB = rowB.cells[0].innerText.trim().toUpperCase();
+    var sourceDropdown = document.getElementById('sortDropdown');
+    var selectedSource = sourceDropdown.value.toLowerCase().trim();
 
-            // Trier par nom d'objet IoT
-            if (cellA < cellB) {
-                return -1;
-            } else if (cellA > cellB) {
-                return 1;
-            }
-            return 0;
-        });
-
-        if (sortDropdown.dataset.prevSortOrder === 'alphabetic') {
-            // Inverser l'ordre si sélection alphabétique à nouveau
-            rows.reverse();
-            sortDropdown.dataset.prevSortOrder = 'reverseAlphabetic';
+    for (var i = 0; i < rows.length; i++) {
+        var cell = rows[i].getElementsByTagName("td")[1]; // Deuxième cellule pour la source
+        if (selectedSource === "all" || cell.textContent.toLowerCase().trim() == selectedSource) {
+            console.log("identic")
+            rows[i].style.display = ""; // Affiche la ligne
         } else {
-            sortDropdown.dataset.prevSortOrder = 'alphabetic';
+            rows[i].style.display = "none"; // Masque la ligne
         }
     }
-
-    if (sortOrder === 'asc' || sortOrder === 'desc') {
-        rows.sort(function(rowA, rowB) {
-            var cellA = rowA.cells[rowA.cells.length - 1].innerText; // Dernière cellule de chaque ligne
-            var cellB = rowB.cells[rowB.cells.length - 1].innerText;
-
-            // Trier par niveau de difficulté
-            var comparison = compareDifficulty(cellA, cellB);
-
-            // Inverser l'ordre si décroissant
-            return sortOrder === 'asc' ? comparison : -comparison;
-        });
-    }
-    // Remplacer les lignes dans le tableau trié
-    rows.forEach(function(row, index) {
-        table.appendChild(row);
-    });
 }
-
-function compareDifficulty(diffA, diffB) {
-    // Fonction pour comparer les niveaux de difficulté (personnalisez selon vos besoins)
-    var levels = ['faible', 'moyen', 'élevé'];
-
-    var indexA = levels.indexOf(diffA.toLowerCase());
-    var indexB = levels.indexOf(diffB.toLowerCase());
-
-    if (indexA === -1 || indexB === -1) {
-        // Gestion des erreurs si le niveau de difficulté n'est pas reconnu
-        console.error('Niveau de difficulté non reconnu:', diffA, diffB);
-        return 0;
-    }
-
-    return indexA - indexB;
-}
-
-
 
 function selectLanguage() {
     localStorage.setItem('Language',document.getElementById('selectLanguage').value);
     console.log(localStorage.getItem('Language'))
-    loadTableData();
+    keywordSearch();
 }
+
+
