@@ -111,13 +111,13 @@ function toggleTeamInfo(id) {
 
         // Création des éléments img
         var img1Element = document.createElement('img');
-        img1Element.src = "cvelogo.png";
+        img1Element.src = "Photos/cvelogo.png";
 
         var img2Element = document.createElement('img');
-        img2Element.src = "cwelogo.png";
+        img2Element.src = "Photos/cwelogo.png";
 
         var img3Element = document.createElement('img');
-        img3Element.src = "nist-logo.png";
+        img3Element.src = "Photos/nist-logo.png";
 
         // Ajout des éléments à la page
         teamContainer.appendChild(h2Element);
