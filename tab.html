@@ -12,28 +12,34 @@
     <div class="up">
         <h1>CyberSafe : Une Plateforme de Surveillance des Vulnérabilités</h1>
         <img src="logo.png" alt="Logo">
-
+        <div class="menu">
+            <p onclick="location.href='tab.html'">Tableau des vulnerabilites</p>
+            <p>Comment s'en proteger ?</p>
+            <p onclick="toggleTeamInfo()">Notre Equipe</p>
+            <p>Divers</p>
+        </div>
     </div>
     <div class="center">
-        <div>
-            <input type="text" id="keywordInput" placeholder="Search here" style="padding: 10px; border: 2px solid #ccc; border-radius: 5px; width: 300px;">
-            <button onclick="keywordSearch()">Search</button>
+        <div id="tableau" class="tableau-container">
+            <div>
+                <input type="text" id="keywordInput" placeholder="Search here" style="padding: 10px; border: 2px solid #ccc; border-radius: 5px; width: 300px;">
+                <button onclick="keywordSearch()">Search</button>
+            </div>
+            <label for="sortDropdown">Chercher une source :</label>
+            <select id="sortDropdown" onchange="sortTable()">
+                <option value="choose" disabled selected>Choisir</option>
+                <option value="all">All</option>
+                <optgroup id="listes" value="src" label="Source">
+                </optgroup>
+            </select>
+            <div class="tableContainer">
+                <table id="vulnerabilityTable">
+                <!-- Tableau avec les vulnerabilites -->
+                </table>
+            </div>
+            <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
+            <button onclick="location.href='index.html'">Back</button>
         </div>
-        <label for="sortDropdown">Chercher une source :</label>
-        <select id="sortDropdown" onchange="sortTable()">
-            <option value="choose" disabled selected>Choisir</option>
-            <option value="all">All</option>
-            <optgroup id="listes" value="src" label="Source">
-            </optgroup>
-            
-        </select>
-        <div class="tableContainer">
-            <table id="vulnerabilityTable">
-            <!-- Tableau avec les vulnerabilites -->
-            </table>
-        </div>
-        <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
-        <button onclick="location.href='index.html'">Back</button>
     </div>
     <div class="down">
         <div class="language">
