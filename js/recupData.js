@@ -1,25 +1,7 @@
-console.log("script.js loaded");
+console.log("recupData.js loaded");
 
-function handleEnterKey(event) {
-    if (event.key === 'Enter') {
-        keywordSearch()
-    }
-}
 
-// Ajouter un gestionnaire d'événements à la zone de texte
-var textarea = document.getElementById('keywordInput');
-textarea.addEventListener('keyup', handleEnterKey);
 
-document.getElementById("selectLanguage").value = localStorage.getItem("Language");
-keywordSearch();
-
-document.addEventListener("DOMContentLoaded", function() {
-    
-
-    document.getElementById('refreshButton').addEventListener('click', function() {
-        keywordSearch();
-    });
-});
 
 Datas = []
 
@@ -185,5 +167,3 @@ function selectLanguage() {
     console.log(localStorage.getItem('Language'));
     keywordSearch();
 }
-
-
