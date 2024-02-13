@@ -64,6 +64,17 @@ function keywordSearch() {
                             if (localStorage.getItem('Language') == "English"){
                                 cell.appendChild(document.createTextNode(value[0].value));
                             }
+                            else if (localStorage.getItem('Language') == "French") {
+                            // Appeler la fonction de l'API DeepL sur value[0].value
+                                CallAPITranslate("FR", value[0].value)
+                                  .then(response => {
+                                    console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
                             else{
                                 cell.appendChild(document.createTextNode(value[1].value));
                             }
@@ -96,9 +107,32 @@ function keywordSearch() {
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
-    })
+    })  
     .catch(error => console.error('Erreur de chargement des données JSON:', error));  
 }
+
+
+function CallAPITranslate(langage, textInput) {
+    const AIP_KYE = "4f6307f0-3624-6a55-2328-b7ad5b02ff94:fx";
+    const targetLanguage = langage.toString();
+    const textToTranslate = textInput.toString();
+    const apiUrl = `https://api-free.deepl.com/v2/translate?auth_key=${AIP_KYE}&text=${encodeURIComponent(textToTranslate)}&target_lang=${targetLanguage}`;
+
+    return new Promise((resolve, reject) => {
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Réponse de l'API DEEPL", data.translations[0].text);
+                const translation = data.translations[0].text;
+                resolve(translation);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la requête :', error);
+                reject(error);
+            });
+    });
+}
+
 
 function evaluateRisk(value) {
     // Ajouter des conditions pour déterminer la classe en fonction de la valeur
@@ -148,7 +182,7 @@ function sortTable() {
 
 function selectLanguage() {
     localStorage.setItem('Language',document.getElementById('selectLanguage').value);
-    console.log(localStorage.getItem('Language'))
+    console.log(localStorage.getItem('Language'));
     keywordSearch();
 }
 
