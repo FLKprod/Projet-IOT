@@ -51,7 +51,6 @@ h1 {
 
 .presentation-container {
     animation: fadeIn 1s ease-in-out forwards;
-    margin-bottom: 3em;
 }
 .presentation-container > h2 {
     font-size: 2.5em;
