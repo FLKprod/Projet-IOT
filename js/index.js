@@ -11,11 +11,16 @@ toggleTeamInfo('presentation');
 function toggleTeamInfo(id) {
     var presentationContainer = document.querySelector('.presentation-container');
     var equipeContainer = document.querySelector('.team-info-container');
-    const tableauContainer = document.querySelector('.tableau-container');
+    var tableauContainer = document.querySelector('.tableau-container');
+    var contactContainer = document.querySelector('.contact-container');
     presentationContainer.innerHTML = '';
     equipeContainer.innerHTML = '';
     tableauContainer.innerHTML = '';
+    contactContainer.innerHTML = '';
     if(id=== 'teamInfo'){
+        var myDiv = document.querySelector('.center');
+        myDiv.classList.add('fade-out');
+        // Tableau des membres de l'equipe avec leurs informations
         const teamData = [
             {
                 name: "Maxime Falkowski",
@@ -38,22 +43,17 @@ function toggleTeamInfo(id) {
                 github: "https://github.com/FLKprod",
                 imageSrc: "Photos/_MG_9841.JPG"
             },
-            // Ajoutez d'autres membres de l'équipe ici
         ];
 
-        const teamContainer = equipeContainer;
-
-        // Générer les divs d'information d'équipe
+        // Ajout d'un participant dans l'equipe et de toutes ses informations
         teamData.forEach(member => {
             const teamInfoDiv = document.createElement("div");
             teamInfoDiv.classList.add("team-info");
 
-            // Ajouter l'image
             const image = document.createElement("img");
             image.src = member.imageSrc;
             teamInfoDiv.appendChild(image);
 
-            // Ajouter les paragraphes d'information
             const teamInfoDivtext = document.createElement("div");
             teamInfoDivtext.classList.add("team-info-text");
             const nameParagraph = document.createElement("p");
@@ -65,20 +65,16 @@ function toggleTeamInfo(id) {
             teamInfoDivtext.appendChild(rolesParagraph);
 
             teamInfoDiv.appendChild(teamInfoDivtext);
-            // Ajouter les liens sociaux
+
             const linkedinLink = createSocialLink("https://www.linkedin.com/feed/", "fa-linkedin");
             const githubLink = createSocialLink("https://github.com/FLKprod", "fa-github");
 
             teamInfoDiv.appendChild(linkedinLink);
             teamInfoDiv.appendChild(githubLink);
 
-            // Ajouter la div d'information d'équipe au conteneur
-            teamContainer.appendChild(teamInfoDiv);
-
-            // Ajouter une ligne de séparation
+            equipeContainer.appendChild(teamInfoDiv);
             const hr = document.createElement("hr");
-            teamContainer.appendChild(hr);
-            teamContainer.classList.add('fadeIn');
+            equipeContainer.appendChild(hr);
         });
 
         // Fonction pour créer un lien social avec une icône Font Awesome
@@ -97,6 +93,9 @@ function toggleTeamInfo(id) {
         }
     }
     else if(id=== 'presentation'){
+        var myDiv = document.querySelector('.center');
+        myDiv.classList.add('fade-out');
+
         const teamContainer = presentationContainer;
         var h2Element = document.createElement('h2');
         h2Element.textContent = "CyberSafe : C'est quoi ?";
@@ -119,6 +118,9 @@ function toggleTeamInfo(id) {
         var img3Element = document.createElement('img');
         img3Element.src = "Photos/nist-logo.png";
 
+        var img4Element = document.createElement('img');
+        img4Element.src = "Photos/cornell-logo.png";
+
         // Ajout des éléments à la page
         teamContainer.appendChild(h2Element);
         teamContainer.appendChild(pElement);
@@ -126,8 +128,89 @@ function toggleTeamInfo(id) {
         teamContainer.appendChild(img1Element);
         teamContainer.appendChild(img2Element);
         teamContainer.appendChild(img3Element);
+        teamContainer.appendChild(img4Element);
+    }
+    else if(id === 'contact'){
+        var myDiv = document.querySelector('.center');
+        myDiv.classList.add('fade-out');
+
+        const teamContainer = contactContainer;
+
+        var infoDiv = document.createElement("div");
+        infoDiv.className = "info";
+
+        var envelopeIcon = document.createElement("i");
+        envelopeIcon.className = "fa fa-envelope";
+        envelopeIcon.style.fontSize = "2em";
+        envelopeIcon.style.color = "white";
+
+        var paragraph = document.createElement("p");
+        paragraph.textContent = "Nous sommes joignables par mail !";
+
+        var button = document.createElement("button");
+        button.textContent = "Contactez-nous";
+        button.onclick = function () {
+            window.location.href = "mailto:destinataire@example.com";
+        };
+
+        infoDiv.appendChild(envelopeIcon);
+        infoDiv.appendChild(paragraph);
+        infoDiv.appendChild(button);
+        contactContainer.appendChild(infoDiv);
+
+        var githubLinkDiv = document.createElement("div");
+        githubLinkDiv.className = "info";
+
+        var paragraph = document.createElement("p");
+        paragraph.textContent = "Consultez le code de notre site en cliquant ici : ";
+
+        var githubIcon = document.createElement("i");
+        githubIcon.className = "fa fa-github";
+        githubIcon.style.fontSize = "2em";
+        githubIcon.style.color = "white";
+        githubIcon.style.cursor = "pointer";
+        githubIcon.onclick = function () {
+            window.location.href = "https://github.com/FLKprod/Projet-IOT";
+        };
+        
+        githubLinkDiv.appendChild(paragraph);
+        githubLinkDiv.appendChild(githubIcon);
+        contactContainer.appendChild(githubLinkDiv);
+
+        var githubLinkDiv = document.createElement("div");
+        githubLinkDiv.className = "info";
+
+        var paragraph = document.createElement("p");
+        
+        paragraph.textContent = "Suivez nous sur les reseaux sociaux : ";
+
+        var githubIcon = document.createElement("i");
+        githubIcon.className = "fa fa-instagram";
+        githubIcon.style.fontSize = "2em";
+        githubIcon.style.color = "white";
+        githubIcon.style.cursor = "pointer";
+        githubIcon.onclick = function () {
+            window.location.href = "https://www.instagram.com/flkprod_/";
+        };
+
+        githubLinkDiv.appendChild(paragraph);
+        githubLinkDiv.appendChild(githubIcon);
+
+        var githubIcon = document.createElement("i");
+        githubIcon.className = "fa fa-facebook";
+        githubIcon.style.fontSize = "2em";
+        githubIcon.style.color = "white";
+        githubIcon.style.cursor = "pointer";
+        githubIcon.onclick = function () {
+            window.location.href = "https://www.facebook.com/profile.php?id=100070487814685";
+        };
+        githubLinkDiv.appendChild(githubIcon);
+        contactContainer.appendChild(githubLinkDiv);
     }
     else if(id === 'tableau'){
+        var myDiv = document.querySelector('.center');
+        myDiv.classList.add('fade-out');
+
         var presentationContainer = document.querySelector('.presentation-container');
         var equipeContainer = document.querySelector('.team-info-container');
         presentationContainer.innerHTML = '';
@@ -178,17 +261,11 @@ function toggleTeamInfo(id) {
         refreshButton.onclick = keywordSearch;
         refreshButton.textContent = 'Refresh 🔄';
         const backButton = document.createElement('button');
-        backButton.onclick = function () {
-            location.href = 'index.html';
-        };
-        backButton.textContent = 'Back';
-
         tableauContainer.appendChild(searchDiv);
         tableauContainer.appendChild(label);
         tableauContainer.appendChild(sortDropdown);
         tableauContainer.appendChild(tableContainer);
         tableauContainer.appendChild(refreshButton);
-        tableauContainer.appendChild(backButton);
         // Ajouter un gestionnaire d'événements à la zone de texte
         var textarea = document.getElementById('keywordInput');
         textarea.addEventListener('keyup', handleEnterKey);
@@ -197,6 +274,7 @@ function toggleTeamInfo(id) {
             keywordSearch();
         });
     }
+    myDiv.classList.add('fade-in');
 }
 
 function handleEnterKey(event) {

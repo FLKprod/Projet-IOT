@@ -16,7 +16,7 @@
             <p onclick="toggleTeamInfo('presentation')">Presentation</p>
             <p onclick="toggleTeamInfo('tableau')">Tableau des vulnerabilites</p>
             <p onclick="toggleTeamInfo('teamInfo')">Notre Equipe</p>
-            <p>Divers</p>
+            <p onclick="toggleTeamInfo('contact')">Nous contacter</p>
         </div>
     </div>
     <div class="center">
@@ -25,9 +25,12 @@
         </div>
         <div id="tableau" class="tableau-container">
             <!-- Affichage de notre tableau -->
-            <script src="recupData.js"></script>
+            <script src="js/recupData.js"></script>
         </div>
         <div id="teamInfo" class="team-info-container">
+            <!-- Affichage de notre equipe -->
+        </div>
+        <div id="contact" class="contact-container">
             <!-- Affichage de notre equipe -->
         </div>
     </div>
@@ -40,12 +43,9 @@
                 <option value="Espagnol">Espanol</option>
             </select>
         </div>
-        <a href="https://github.com/FLKprod/Projet-IOT" target="_blank">
-            <i class="fa fa-github" style="font-size:2em;color:white"></i>
-        </a>
         <p><strong>&copy; 2024 SafeConnect. Tous droits réservés.</p>
     </div>
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
     
 </body>
 </html>
