@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tab.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <title>CyberSafe</title>
+</head>
+<body>
+    <div class="up">
+        <h1>CyberSafe : Une Plateforme de Surveillance des Vulnérabilités</h1>
+        <img src="logo.png" alt="Logo">
+
+    </div>
+    <div class="center">
+        <div>
+            <input type="text" id="keywordInput" placeholder="Search here" style="padding: 10px; border: 2px solid #ccc; border-radius: 5px; width: 300px;">
+            <button onclick="keywordSearch()">Search</button>
+        </div>
+        <label for="sortDropdown">Chercher une source :</label>
+        <select id="sortDropdown" onchange="sortTable()">
+            <option value="choose" disabled selected>Choisir</option>
+            <option value="all">All</option>
+            <optgroup id="listes" value="src" label="Source">
+            </optgroup>
+            
+        </select>
+        <div class="tableContainer">
+            <table id="vulnerabilityTable">
+            <!-- Tableau avec les vulnerabilites -->
+            </table>
+        </div>
+        <button id="refreshButton" onclick="loadTableData()">Refresh 🔄</button>
+        <button onclick="location.href='index.html'">Back</button>
+    </div>
+    <div class="down">
+        <div class="language">
+            <label for="selectLanguage">Langue :</label>
+            <select id="selectLanguage" onchange="selectLanguage()">
+                <option value="choose" disabled selected>Choisir</option>
+                <option value="French">French</option>
+                <option value="English">English</option>
+                <option value="Espagnol">Espanol</option>
+            </select>
+        </div>
+        <a href="https://github.com/FLKprod/Projet-IOT" target="_blank">
+            <i class="fa fa-github" style="font-size:2em;color:white"></i>
+        </a>
+        <p><strong>&copy; 2024 CyberSafe. Tous droits réservés.</p>
+    </div>
+    <script src="recupData.js"></script>
+</body>
+</html>
