@@ -21,32 +21,52 @@ function toggleTeamInfo(id) {
     
     if(id=== 'teamInfo'){
         myDiv.classList.add('fade-out');
-        // Tableau des membres de l'equipe avec leurs informations
         const teamData = [
             {
                 name: "Maxime Falkowski",
-                roles: "Développeurs, Experts en cybersécurité",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
                 linkedin: "https://www.linkedin.com/feed/",
                 github: "https://github.com/FLKprod",
                 imageSrc: "Photos/_MG_9841.JPG"
             },
             {
-                name: "Maxime Falkowski",
-                roles: "Développeurs, Experts en cybersécurité",
+                name: "A MODIFIER",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
                 linkedin: "https://www.linkedin.com/feed/",
                 github: "https://github.com/FLKprod",
                 imageSrc: "Photos/_MG_9841.JPG"
             },
             {
-                name: "Maxime Falkowski",
-                roles: "Développeurs, Experts en cybersécurité",
+                name: "A MODIFIER",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
                 linkedin: "https://www.linkedin.com/feed/",
                 github: "https://github.com/FLKprod",
                 imageSrc: "Photos/_MG_9841.JPG"
             },
+            {
+                name: "A MODIFIER",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/feed/",
+                github: "https://github.com/FLKprod",
+                imageSrc: "Photos/_MG_9841.JPG"
+            },
+            {
+                name: "A MODIFIER",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/feed/",
+                github: "https://github.com/FLKprod",
+                imageSrc: "Photos/_MG_9841.JPG"
+            },
+            {
+                name: "A MODIFIER",
+                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/feed/",
+                github: "https://github.com/FLKprod",
+                imageSrc: "Photos/_MG_9841.JPG"
+            }
         ];
 
-        // Ajout d'un participant dans l'equipe et de toutes ses informations
+        equipeContainer.appendChild(createElementWithClass("hr", ""));
         teamData.forEach(member => {
             const teamInfoDiv = document.createElement("div");
             teamInfoDiv.classList.add("team-info");
@@ -68,34 +88,45 @@ function toggleTeamInfo(id) {
         });
         }
         else if(id=== 'presentation'){
-            // Création de l'élément h2
-            const h2Element = createText('h2', "CyberSafe : C'est quoi ?");
-            // Création de l'élément p
-            const pElement = createText('p',"Avec la popularité croissante de l’Internet des Objets, les utilisateurs peuvent manquer de connaissances pour sécuriser correctement les objets connectés, le laissant et potentiellement le réseau auquel il est attaché vulnérable aux attaques. Le but de ce projet est d'explorer les vulnérabilités du système liées aux objets connectés et les implémentations conçues pour résister à ces vulnérabilités et/ou réduire le potentiel qu'un exploit résulte d'une telle vulnérabilité.  Un objet connecté peut être utilisé de plusieurs manières : (a) domotique, (b) un système indépendant conçu pour effectuer un nombre limité de tâches, ou (c) comme un appareil connecté à un réseau local typique fournissant des services réseau (c'est-à-dire DNS, serveur Web, serveur de messagerie, etc.).  Ainsi, CyberSafe est une plateforme web qui pourra se mettre à jour automatiquement pour informer les utilisateurs sur les vulnérabilités de sécurité des objets connectés.");
-
-            // Création de l'élément h3
-            const h3Element = createText('h3', 'Nos Sources');
-
-            // Tableau des chemins d'accès des images
-            const imageSources = ["Photos/cvelogo.png", "Photos/cwelogo.png", "Photos/nist-logo.png", "Photos/cornell-logo.png"];
-
-            // Ajout des éléments à la page
-            presentationContainer.appendChild(h2Element);
+            var hElement = createText('h2', "CyberSafe : C'est quoi ?");
+            var pElement = createText('p',"Avec la popularité croissante de l’Internet des Objets, les utilisateurs peuvent manquer de connaissances pour sécuriser correctement les objets connectés, le laissant et potentiellement le réseau auquel il est attaché vulnérable aux attaques. Le but de ce projet est d'explorer les vulnérabilités du système liées aux objets connectés et les implémentations conçues pour résister à ces vulnérabilités et/ou réduire le potentiel qu'un exploit résulte d'une telle vulnérabilité.  Un objet connecté peut être utilisé de plusieurs manières : (a) domotique, (b) un système indépendant conçu pour effectuer un nombre limité de tâches, ou (c) comme un appareil connecté à un réseau local typique fournissant des services réseau (c'est-à-dire DNS, serveur Web, serveur de messagerie, etc.).  Ainsi, CyberSafe est une plateforme web qui pourra se mettre à jour automatiquement pour informer les utilisateurs sur les vulnérabilités de sécurité des objets connectés.");
+            presentationContainer.appendChild(hElement);
             presentationContainer.appendChild(pElement);
-            presentationContainer.appendChild(h3Element);
 
-            // Ajout des images à partir du tableau
+            hElement = createText('h3', 'Comment Identifions des Vulnérabilités ? ');
+            pElement = createText('p',"Le principal objectif de CyberSafe est d'effectuer une analyse approfondie pour identifier les vulnérabilités potentielles présentes dans les objets connectés. Cette étape cruciale permettra de comprendre les points faibles qui pourraient être exploités par des attaquants.");
+            
+            presentationContainer.appendChild(hElement);
+            presentationContainer.appendChild(pElement);
+
+            hElement = createText('h3', "Les Types d'Objets Connectés Couverts par CyberSafe");
+            presentationContainer.appendChild(hElement);
+            pElement = createText('p',"CyberSafe prend en charge la sécurité des objets connectés utilisés dans le domaine de la domotique. Cela englobe une variété d'appareils intelligents présents dans les maisons, tels que des thermostats, des caméras de sécurité, et des serrures intelligentes.");
+            presentationContainer.appendChild(pElement);
+            pElement = createText('p',"Le projet s'adresse également aux systèmes indépendants conçus pour effectuer des tâches spécifiques. Ces dispositifs, bien que spécialisés, nécessitent une protection contre les menaces potentielles.");
+            presentationContainer.appendChild(pElement);
+            pElement = createText('p',"CyberSafe étend sa couverture aux objets connectés intégrés à un réseau local, fournissant des services réseau tels que DNS, serveur web, serveur de messagerie, etc. Cette inclusivité garantit une approche complète de la sécurité des objets connectés.");
+            presentationContainer.appendChild(pElement);
+
+            hElement = createText('h3', 'Notre but : Sensibiliser les utilisateurs ');
+            pElement = createText('p',"Un aspect essentiel du projet est de sensibiliser les utilisateurs aux enjeux de sécurité liés aux objets connectés. CyberSafe s'engage à fournir des informations éducatives pour aider les utilisateurs à sécuriser correctement leurs appareils et à adopter des pratiques de sécurité adéquates.");
+            presentationContainer.appendChild(hElement);
+            presentationContainer.appendChild(pElement);
+
+            hElement = createText('h3', 'Nos Sources');
+            const imageSources = ["Photos/cvelogo.png", "Photos/cwelogo.png", "Photos/nist-logo.png", "Photos/cornell-logo.png"];
+            presentationContainer.appendChild(hElement);
             imageSources.forEach(src => {
                 const imgElement = createImage(src);
                 presentationContainer.appendChild(imgElement);
             });
+
+            
         }
         else if(id === 'contact'){
             const infoSection1Data = [
+                { type: 'icon', iconClass: "fa fa-envelope", fontSize: "2em", color: "white", cursor: "pointer"},
                 { type: 'paragraph', text: "Nous sommes joignables par mail !" },
-                { type: 'icon', iconClass: "fa fa-envelope", fontSize: "2em", color: "white", cursor: "pointer", clickHandler: function () {
-                    window.location.href = "mailto:contact.flkprod@gmail.com";
-                }},
                 { type: 'button', text: "Contactez-nous", clickHandler: function () {
                     window.location.href = "mailto:contact.flkprod@gmail.com";
                 }}
@@ -107,7 +138,7 @@ function toggleTeamInfo(id) {
             const infoSection2Data = [
                 { type: 'paragraph', text: "Consultez le code de notre site en cliquant ici :" },
                 { type: 'icon', iconClass: "fa fa-github", fontSize: "2em", color: "white", cursor: "pointer", clickHandler: function () {
-                    window.location.href = "https://github.com/FLKprod/Projet-IOT";
+                    window.open("https://github.com/FLKprod/Projet-IOT", "_blank");
                 }}
             ];
             const infoSection2 = createInfoSection(infoSection2Data);
@@ -117,10 +148,10 @@ function toggleTeamInfo(id) {
             const infoSection3Data = [
                 { type: 'paragraph', text: "Suivez nous sur les réseaux sociaux :" },
                 { type: 'icon', iconClass: "fa fa-instagram", fontSize: "2em", color: "white", cursor: "pointer", clickHandler: function () {
-                    window.location.href = "https://www.instagram.com/flkprod_/";
+                    window.open("https://www.instagram.com/flkprod_/", "_blank");
                 }},
                 { type: 'icon', iconClass: "fa fa-facebook", fontSize: "2em", color: "white", cursor: "pointer", clickHandler: function () {
-                    window.location.href = "https://www.facebook.com/profile.php?id=100070487814685";
+                    window.open("https://www.facebook.com/profile.php?id=100070487814685", "_blank");
                 }}
             ];
             const infoSection3 = createInfoSection(infoSection3Data);

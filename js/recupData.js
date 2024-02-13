@@ -1,8 +1,5 @@
 console.log("recupData.js loaded");
 
-
-
-
 Datas = []
 
 function keywordSearch() {

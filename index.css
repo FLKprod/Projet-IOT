@@ -8,7 +8,7 @@ body {
     align-items: center;
     min-height: 100vh;
     height: 100%;
-    background-image: linear-gradient(black, darkgreen);
+    background-image: linear-gradient(black, darkgreen,black);
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
@@ -43,6 +43,7 @@ html{
 }
 
 h1 {
+    margin-top: 2em;
     font-size: 2.5em;
     letter-spacing: 0.08em;
     font-weight: 100;
@@ -66,13 +67,14 @@ h1 {
     letter-spacing: 0.08em;
     font-weight: 100;
     margin-left: 1em;
+    margin-top: 2em;
     color: whitesmoke;
     text-align: left; 
 }
 
 .presentation-container > img {
-    width: 150px;
-    height: auto;
+    height: 3em;
+    width: auto;
     margin-right: 1em;
 }
 
@@ -93,7 +95,7 @@ label{
 }
 
 .menu{
-    background: #3498db;
+    background: hsl(204, 70%, 53%);
     display: flex;
     align-items:center;
     justify-content: space-between;
@@ -101,6 +103,25 @@ label{
     margin:0;
     padding-left: 2em;
     padding-right: 2em;
+}
+
+@media screen and (max-width: 800px) {
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        width: 50%;
+    }
+
+    .up{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2em;
+    }
 }
 
 .menu > p {
@@ -244,7 +265,6 @@ table {
 
 table, td {
     width: auto;
-    border: 1px solid #333;
     border-radius: 3px;
     padding: 25px 30px;
     height: 1em;
@@ -262,9 +282,13 @@ tr{
     font-size: 10px;
 }
 
+tr:nth-child(even){background-color: #f2f2f2}
+
+tr:hover {background-color: coral;}
+
 tr:first-child {
-    background-color: #95A5A6;
-    font-size: 14px;
+    background-color: #2980b9;
+    color: white;
 }
 
 .analyzed {
