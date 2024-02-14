@@ -40,96 +40,23 @@ function keywordSearch() {
                         }
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
                         if (key == "descriptions"){
-                            if (localStorage.getItem('Language') == "English"){
+                            if (localStorage.getItem('Language') == "EN"){
                                 cell.appendChild(document.createTextNode(value[0].value));
-                            }
-                            else if (localStorage.getItem('Language') == "French") {
-                                CallAPITranslate("FR", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
                             }
                             else if (localStorage.getItem('Language') == "Spanish"){
                                 cell.appendChild(document.createTextNode(value[1].value));
                             }
-                            else if (localStorage.getItem('Language') == "German") {
-                                CallAPITranslate("DE", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Bulgarian") {
-                                CallAPITranslate("BG", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Russian") {
-                                CallAPITranslate("RU", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Swedish") {
-                                CallAPITranslate("SV", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Korean") {
-                                CallAPITranslate("KO", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Chinese") {
-                                CallAPITranslate("ZH", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-                            else if (localStorage.getItem('Language') == "Ukrainian") {
-                                CallAPITranslate("UK", value[0].value)
-                                  .then(response => {
-                                    //console.log(response);
-                                    cell.appendChild(document.createTextNode(response));
-                                    })
-                                  .catch(error => {
-                                    console.error('Erreur lors de la traduction:', error);
-                                    });
-                            }
-
                             else {
-                                cell.appendChild(document.createTextNode(value[0].value));
-                            }                            
+                                langue = localStorage.getItem('Language');
+                                console.log(langue);
+                                CallAPITranslate(langue, value[0].value)
+                                  .then(response => {
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }                           
                         }
                         else if (key == "metrics"){
                             cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
