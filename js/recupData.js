@@ -44,20 +44,92 @@ function keywordSearch() {
                                 cell.appendChild(document.createTextNode(value[0].value));
                             }
                             else if (localStorage.getItem('Language') == "French") {
-                            // Appeler la fonction de l'API DeepL sur value[0].value
                                 CallAPITranslate("FR", value[0].value)
                                   .then(response => {
-                                    console.log(response);
+                                    //console.log(response);
                                     cell.appendChild(document.createTextNode(response));
                                     })
                                   .catch(error => {
                                     console.error('Erreur lors de la traduction:', error);
                                     });
                             }
-                            else{
+                            else if (localStorage.getItem('Language') == "Spanish"){
                                 cell.appendChild(document.createTextNode(value[1].value));
                             }
-                            
+                            else if (localStorage.getItem('Language') == "German") {
+                                CallAPITranslate("DE", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Bulgarian") {
+                                CallAPITranslate("BG", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Russian") {
+                                CallAPITranslate("RU", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Swedish") {
+                                CallAPITranslate("SV", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Korean") {
+                                CallAPITranslate("KO", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Chinese") {
+                                CallAPITranslate("ZH", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+                            else if (localStorage.getItem('Language') == "Ukrainian") {
+                                CallAPITranslate("UK", value[0].value)
+                                  .then(response => {
+                                    //console.log(response);
+                                    cell.appendChild(document.createTextNode(response));
+                                    })
+                                  .catch(error => {
+                                    console.error('Erreur lors de la traduction:', error);
+                                    });
+                            }
+
+                            else {
+                                cell.appendChild(document.createTextNode(value[0].value));
+                            }                            
                         }
                         else if (key == "metrics"){
                             cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
@@ -101,7 +173,7 @@ function CallAPITranslate(langage, textInput) {
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                console.log("Réponse de l'API DEEPL", data.translations[0].text);
+                //console.log("Réponse de l'API DEEPL", data.translations[0].text);
                 const translation = data.translations[0].text;
                 resolve(translation);
             })

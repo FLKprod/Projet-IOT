@@ -1,6 +1,0 @@
-else if (localStorage.getItem('Language') == "French"){
-                                //Appeler la fonction de l'api DeepL sur document.createTextNode(value[0].value))
-                                responde = CallAPITranslate("FR", document.createTextNode(value[0].value))
-                                cell.appendChild(responde.toString())
-                            }
-                            
