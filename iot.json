@@ -1,0 +1,138 @@
+[
+    {
+      "category": "Wearable Devices",
+      "brands": [
+        {"Apple (Apple Watch)": []},
+        {"Fitbit": []},
+        {"Garmin": []},
+        {"Samsung (Samsung Galaxy Watch)": []}
+      ]
+    },
+    {
+      "category": "Smart Home Devices",
+      "brands": [
+        {"Google Nest": []},
+        {"Amazon (Amazon Echo, Ring)": []},
+        {"Philips Hue": []},
+        {"Ecobee": []}
+      ]
+    },
+    {
+      "category": "Industrial IoT (IIoT) Devices",
+      "brands": [
+        {"Siemens": []},
+        {"GE Digital": []},
+        {"Schneider Electric": []},
+        {"Rockwell Automation": []}
+      ]
+    },
+    {
+      "category": "Connected Cars",
+      "brands": [
+        {"Tesla": []},
+        {"BMW ConnectedDrive": []},
+        {"General Motors (OnStar)": []},
+        {"FordPass": []}
+      ]
+    },
+    {
+      "category": "Smart City Infrastructure",
+      "brands": [
+        {"Cisco": []},
+        {"IBM (Smarter Cities)": []},
+        {"Siemens Smart Infrastructure": []},
+        {"Bosch": []}
+      ]
+    },
+    {
+      "category": "Healthcare IoT Devices",
+      "brands": [
+        {"Medtronic": []},
+        {"Philips Healthcare": []},
+        {"Abbott Laboratories": []},
+        {"GE Healthcare": []}
+      ]
+    },
+    {
+      "category": "Agricultural IoT (AgriTech)",
+      "brands": [
+        {"John Deere": []},
+        {"Trimble Agriculture": []},
+        {"AGCO Corporation": []},
+        {"Climate Corporation (owned by Bayer)": []}
+      ]
+    },
+    {
+      "category": "Retail IoT Devices",
+      "brands": [
+        {"Intel (Retail Solutions)": []},
+        {"Zebra Technologies": []},
+        {"Cisco Meraki": []},
+        {"Toshiba Global Commerce Solutions": []}
+      ]
+    },
+    {
+      "category": "Energy Management Systems",
+      "brands": [
+        {"Schneider Electric": []},
+        {"Siemens Energy Management": []},
+        {"Honeywell": []},
+        {"ABB": []}
+      ]
+    },
+    {
+      "category": "Environmental Monitoring Devices",
+      "brands": [
+        {"Aeroqual": []},
+        {"Libelium": []},
+        {"Environics": []},
+        {"Atmotube": []}
+      ]
+    },
+    {
+      "category": "Asset Tracking Devices",
+      "brands": [
+        {"Trimble": []},
+        {"Fleet Complete": []},
+        {"Samsara": []},
+        {"Mojix": []}
+      ]
+    },
+    {
+      "category": "Smart Grid Infrastructure",
+      "brands": [
+        {"General Electric (GE Grid Solutions)": []},
+        {"ABB Power Grids": []},
+        {"Siemens Smart Grid": []},
+        {"Schneider Electric Grid Automation": []}
+      ]
+    },
+    {
+      "category": "Smart Building Systems",
+      "brands": [
+        {"Johnson Controls": []},
+        {"Honeywell Building Technologies": []},
+        {"Siemens Building Technologies": []},
+        {"Schneider Electric Smart Buildings": []}
+      ]
+    },
+    {
+      "category": "Consumer Electronics",
+      "brands": [
+        {"Sony": []},
+        {"LG Electronics": []},
+        {"TCL": []},
+        {"Vizio": []}
+      ]
+    },
+    {
+      "category": "IoT in Education",
+      "brands": [
+        {"Google for Education": []},
+        {"Microsoft Education": []},
+        {"SMART Technologies": []},
+        {"Promethean": []}
+      ]
+    }
+  ]
+  
