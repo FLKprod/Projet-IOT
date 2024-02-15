@@ -372,6 +372,7 @@ td {
 }
 
 tr{
+    color:black;
     box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
     background-color: #ffffff;
     flex-basis: 10%;
@@ -386,6 +387,10 @@ tr:first-child {
     background-color: rgb(0, 5, 50);
     font-size: 1em;
     color: white;
+}
+
+input{
+    padding: 1em; border: 2px solid #ccc; border-radius: 5px; width: 15em; height: 0.4em;
 }
 
 .info {

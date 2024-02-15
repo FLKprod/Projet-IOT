@@ -3,9 +3,9 @@ console.log("recupData.js loaded");
 Datas = []
 
 function keywordSearch() {
-    var table = document.getElementById('vulnerabilityTable');
-    var keywordInput = document.getElementById('keywordInput')
-    var keywordSearch = keywordInput.value
+    var table = document.getElementById("vulnerabilityTable");
+    var keywordInput = document.getElementById('keywordInput');
+    var keywordSearch = keywordInput.value;
     const pubStartDate = "2021-08-04T19:15:08.000";
     const pubEndDate = "2021-08-05T00:00:00.000";
 
@@ -13,15 +13,11 @@ function keywordSearch() {
         .then(response => response.json())
         .then(data => {
             console.log("Réponse de l'API", data.vulnerabilities);
-            // Utilisez "data" comme nécessaire
             data = data.vulnerabilities;
-            // Clear existing table
             while (table.firstChild) {
                 table.removeChild(table.firstChild);
             }
-            // Vérifier si data est un tableau et s'il contient au moins une ligne
             if (Array.isArray(data) && data.length > 0) {
-                // 1ere ligne = en-têtes
                 var headerRow = table.createTHead().insertRow(0);
                 Object.keys(data[0].cve).forEach(header => {
                     var cell = headerRow.insertCell();

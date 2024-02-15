@@ -159,12 +159,10 @@ function toggleTeamInfo(id) {
         }
         else if(id === 'tableau'){
             tableauContainer.classList.add('fade-in');
-            tableauContainer.innerHTML = '';
-
             tableauContainer.appendChild(createSearchDiv());
             tableauContainer.appendChild(createLabel('Chercher une source : ', 'sortDropdown'));
             tableauContainer.appendChild(createSortDropdown());
-            
+            tableauContainer.appendChild(createTableContainer());
             var refreshButton = createButton('Refresh 🔄', keywordSearch);
             tableauContainer.appendChild(refreshButton);
 
@@ -175,6 +173,7 @@ function toggleTeamInfo(id) {
             refreshButton.addEventListener('click', function() {
                 keywordSearch();
             });
+            
         }
         myDiv.classList.add('fade-in');
 }
@@ -276,7 +275,7 @@ function createElementWithClass(tag, className) {
 
 function createSearchDiv() {
     const searchDiv = document.createElement('div');
-    const keywordInput = createInput('text', 'keywordInput', 'Search here', 'padding: 10px; border: 2px solid #ccc; border-radius: 5px; width: 300px;');
+    const keywordInput = createInput('text', 'keywordInput', 'Search here');
     const searchButton = createButton('Search', keywordSearch);
     searchDiv.appendChild(keywordInput);
     searchDiv.appendChild(searchButton);
