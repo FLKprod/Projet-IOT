@@ -35,6 +35,16 @@ html{
     width: 100%;
 }
 
+.down{
+    background-color: whitesmoke;
+    
+}
+
+.down > p {
+    font-size: 0.8em;
+    color: black;
+}
+
 .language{
     margin-top: 1em;
     margin-bottom: 1em;
@@ -59,7 +69,12 @@ html{
 .presentation-container {
     animation: fadeIn 1s ease-in-out forwards;
 }
-.presentation-container > h2 {
+
+.presentation-container > h2,h3 {
+    background-color: #4f0341;
+    border-radius: 1.5em;
+    padding: 0.5em;
+    margin-right: 1em;
     font-size: 2.5em;
     letter-spacing: 0.08em;
     font-weight: 100;
@@ -70,10 +85,16 @@ html{
 
 .presentation-container > h3 {
     font-size: 2em;
+}
+
+.presentation-container > h4 {
+    border-radius: 1.5em;
+    padding: 0.5em;
+    margin-right: 1em;
+    font-size: 2em;
     letter-spacing: 0.08em;
     font-weight: 100;
     margin-left: 1em;
-    margin-top: 2em;
     color: whitesmoke;
     text-align: left; 
 }
@@ -85,8 +106,8 @@ html{
 }
 
 .presentation-container > p {
-    margin-left: 2.5em;
-    margin-right: 2.5em;
+    margin-left: 5em;
+    margin-right: 5em;
     text-align: justify; 
     line-height: 3;
 }
@@ -96,17 +117,13 @@ p {
     color: white;
 }
 
-label{
-    color:white;
-}
-
 .menu{
     background: whitesmoke;
     display: flex;
     align-items:center;
     justify-content: space-between;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 4em;
 }
 
 .menu >img {
@@ -120,8 +137,9 @@ label{
         align-items: center;
         padding-left: 0;
         padding-right: 0;
+        padding-bottom: 1em;
         text-align: center;
-        width: 50%;
+        width: 100%;
     }
 
     .up{
@@ -134,19 +152,24 @@ label{
 
 .menu > p {
     opacity: 1;
+    margin-bottom:auto;
+    margin-top: auto;
     color : black;
     text-decoration: none;
     position: relative;
     display: inline-block;
     cursor: pointer;
+    font-size: 1em;
 }
 
 .menu > p:hover {
     animation: fadeInText 0.5s ease-in-out forwards;
+    
 }
 
 .menu > p::after {
     content: "";
+    background-color: #4f0341;
     position: absolute;
     width: 100%;
     height: 1px; 
@@ -162,9 +185,13 @@ label{
 
 @keyframes fadeInText {
     from {
+        background-color: #ffffff;
+        color:black;
         text-decoration: none;
     }
     to {
+        background-color: #4f0341;
+        color: whitesmoke;
         text-decoration: underline; 
     }
 }
@@ -176,7 +203,7 @@ button {
     padding: 0.6em 0.6em;
     font-size: 1em;
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #4f0341;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -187,7 +214,6 @@ button {
 }
 
 button:hover {
-    
     background-color: #2980b9;
 }
 
@@ -224,41 +250,79 @@ hr{
     width: 5em;
 }
 
-.team-info-container {
+.membres-team-info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .team-info-container {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: space-between;
+    margin-left: 2em;
+    margin-right: 2em;
     width: 100%;
-    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .team-info-container > h2 {
+    font-size: 2.5em;
+    letter-spacing: 0.08em;
+    font-weight: 100;
+    color: whitesmoke;
+    text-align: left; 
 }
 
-.team-info {
+  .team-info {
     display: flex;
-    flex-direction: row;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 3em;
+    flex-direction: column;
     align-items: center;
-}
-.team-info-text {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    width: auto;
-    gap:1em;
-}
+    text-align: center;
+    position: relative;
+    background-color: #4f0341;
+    padding : 1em;
+    border-radius: 1em;
+    width: 29%;
+  }
 
-.team-info img {
-    height: 5em;
-    width: auto;
-    margin-right: 10px;
-}
+  .team-info:nth-child(even) {
+    background-color: rgb(0, 5, 50); /* Couleur de fond pour les éléments pairs */
+  }
 
-.team-info a {
-    margin-left: 1em;
-}
+  .team-info > h4 {
+    font-size: 2em;
+    font-style: italic;
+  }
 
-.team-info p {
-    margin: 0;
-}
+  .team-info > a {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .team-info img {
+    width: 6em;
+    height: 6em; 
+    border-radius: 50%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    box-shadow: 0 0 0 0.5em #4f0341, 0 0 0 0.6em whitesmoke;
+  }
+  .team-info:nth-child(even) img {
+    box-shadow: 0 0 0 0.5em rgb(0, 5, 50), 0 0 0 0.6em whitesmoke;
+  }
+
+  .team-info-text {
+    margin: 0 1em 1em 1em;
+    color: white;
+    width: 100%;
+  }
+
+  .fa {
+    margin: 0 5px;
+  }
 
 
 .tableContainer{
@@ -290,15 +354,16 @@ tr{
     box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
     background-color: #ffffff;
     flex-basis: 10%;
-    font-size: 10px;
+    font-size: 0.7em;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
 
-tr:hover {background-color: coral;}
+tr:hover {background-color: #4f0341;color: whitesmoke;}
 
 tr:first-child {
-    background-color: #2980b9;
+    background-color: rgb(0, 5, 50);
+    font-size: 1em;
     color: white;
 }
 
@@ -354,6 +419,19 @@ tr:first-child {
     flex-direction: column;
     align-items: center;
     margin-bottom: 5em;
+}
+
+.contact-container > h2 {
+    background-color: #4f0341;
+    border-radius: 1.5em;
+    padding: 1em;
+    margin-right: 1em;
+    font-size: 1em;
+    letter-spacing: 0.08em;
+    font-weight: 100;
+    margin-left: 1em;
+    color: whitesmoke;
+    text-align: left; 
 }
 
 

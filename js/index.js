@@ -20,7 +20,10 @@ function toggleTeamInfo(id) {
     var myDiv = document.querySelector('.center');
     
     if(id=== 'teamInfo'){
-        myDiv.classList.add('fade-out');
+        equipeContainer.appendChild(createText('h2',"Notre Equipe"));
+        equipeContainer.classList.add('fade-in');
+        const membresteamInfoDiv = document.createElement("div");
+        membresteamInfoDiv.classList.add("membres-team-info");
         const teamData = [
             {
                 name: "Maxime Falkowski",
@@ -66,26 +69,25 @@ function toggleTeamInfo(id) {
             }
         ];
 
-        equipeContainer.appendChild(createElementWithClass("hr", ""));
-        teamData.forEach(member => {
-            const teamInfoDiv = document.createElement("div");
-            teamInfoDiv.classList.add("team-info");
-        
-            teamInfoDiv.appendChild(createImage(member.imageSrc));
-        
-            const teamInfoDivtext = document.createElement("div");
-            teamInfoDivtext.classList.add("team-info-text");
-            teamInfoDivtext.appendChild(createText('p',member.name));
-            teamInfoDivtext.appendChild(createText('p',member.roles));
-            teamInfoDiv.appendChild(teamInfoDivtext);
-        
-
-            teamInfoDiv.appendChild(createSocialLink(member.linkedin, "fa-linkedin"));
-            teamInfoDiv.appendChild(createSocialLink(member.github, "fa-github"));
-        
-            equipeContainer.appendChild(teamInfoDiv);
-            equipeContainer.appendChild(createElementWithClass("hr", ""));
-        });
+            teamData.forEach(member => {
+                const teamInfoDiv = document.createElement("div");
+                teamInfoDiv.classList.add("team-info");
+            
+                teamInfoDiv.appendChild(createImage(member.imageSrc));
+            
+                const teamInfoDivtext = document.createElement("div");
+                teamInfoDivtext.classList.add("team-info-text");
+                teamInfoDivtext.appendChild(createText('h4',member.name));
+                teamInfoDivtext.appendChild(createText('p',member.roles));
+                teamInfoDiv.appendChild(teamInfoDivtext);
+            
+                const teamInfoDivNetworks = document.createElement("div");
+                teamInfoDivNetworks.appendChild(createSocialLink(member.linkedin, "fa-linkedin"));
+                teamInfoDivNetworks.appendChild(createSocialLink(member.github, "fa-github"));
+                teamInfoDiv.appendChild(teamInfoDivNetworks);
+                membresteamInfoDiv.appendChild(teamInfoDiv);
+            });
+            equipeContainer.appendChild(membresteamInfoDiv);
         }
         else if(id=== 'presentation'){
             var hElement = createText('h2', "CyberSafe : C'est quoi ?");
@@ -94,7 +96,7 @@ function toggleTeamInfo(id) {
             presentationContainer.appendChild(hElement);
             presentationContainer.appendChild(pElement);
 
-            hElement = createText('h3', 'Comment Identifions des Vulnérabilités ? ');
+            hElement = createText('h3', ' Comment Identifions des Vulnérabilités ? ');
             pElement = createText('p',"Le principal objectif de CyberSafe est d'effectuer une analyse approfondie pour identifier les vulnérabilités potentielles présentes dans les objets connectés. Cette étape cruciale permettra de comprendre les points faibles qui pourraient être exploités par des attaquants.");
             
             presentationContainer.appendChild(hElement);
@@ -102,19 +104,19 @@ function toggleTeamInfo(id) {
 
             hElement = createText('h3', "Les Types d'Objets Connectés Couverts par CyberSafe");
             presentationContainer.appendChild(hElement);
-            pElement = createText('p',"CyberSafe prend en charge la sécurité des objets connectés utilisés dans le domaine de la domotique. Cela englobe une variété d'appareils intelligents présents dans les maisons, tels que des thermostats, des caméras de sécurité, et des serrures intelligentes.");
+            pElement = createText('p'," CyberSafe prend en charge la sécurité des objets connectés utilisés dans le domaine de la domotique. Cela englobe une variété d'appareils intelligents présents dans les maisons, tels que des thermostats, des caméras de sécurité, et des serrures intelligentes.");
             presentationContainer.appendChild(pElement);
-            pElement = createText('p',"Le projet s'adresse également aux systèmes indépendants conçus pour effectuer des tâches spécifiques. Ces dispositifs, bien que spécialisés, nécessitent une protection contre les menaces potentielles.");
+            pElement = createText('p'," Le projet s'adresse également aux systèmes indépendants conçus pour effectuer des tâches spécifiques. Ces dispositifs, bien que spécialisés, nécessitent une protection contre les menaces potentielles.");
             presentationContainer.appendChild(pElement);
-            pElement = createText('p',"CyberSafe étend sa couverture aux objets connectés intégrés à un réseau local, fournissant des services réseau tels que DNS, serveur web, serveur de messagerie, etc. Cette inclusivité garantit une approche complète de la sécurité des objets connectés.");
+            pElement = createText('p'," CyberSafe étend sa couverture aux objets connectés intégrés à un réseau local, fournissant des services réseau tels que DNS, serveur web, serveur de messagerie, etc. Cette inclusivité garantit une approche complète de la sécurité des objets connectés.");
             presentationContainer.appendChild(pElement);
 
-            hElement = createText('h3', 'Notre but : Sensibiliser les utilisateurs ');
+            hElement = createText('h3', ' Notre but : Sensibiliser les utilisateurs ');
             pElement = createText('p',"Un aspect essentiel du projet est de sensibiliser les utilisateurs aux enjeux de sécurité liés aux objets connectés. CyberSafe s'engage à fournir des informations éducatives pour aider les utilisateurs à sécuriser correctement leurs appareils et à adopter des pratiques de sécurité adéquates.");
             presentationContainer.appendChild(hElement);
             presentationContainer.appendChild(pElement);
 
-            hElement = createText('h3', 'Nos Sources');
+            hElement = createText('h4', ' Nos Sources');
             const imageSources = ["Photos/cvelogo.png", "Photos/cwelogo.png", "Photos/nist-logo.png", "Photos/cornell-logo.png"];
             presentationContainer.appendChild(hElement);
             imageSources.forEach(src => {
@@ -133,6 +135,7 @@ function toggleTeamInfo(id) {
                 }}
             ];
             const infoSection1 = createInfoSection(infoSection1Data);
+            contactContainer.appendChild(createText('h2', "N'hesitez pas a nous contacter pour toute information ou probleme rencontre sur notre site !"));
             contactContainer.appendChild(infoSection1);
 
             // Création de la deuxième section
