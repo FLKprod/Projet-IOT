@@ -6,7 +6,7 @@ function keywordSearch() {
     var table = document.getElementById('vulnerabilityTable');
     var keywordInput = document.getElementById('keywordInput')
     var keywordSearch = keywordInput.value
-    const pubStartDate = "2021-08-04T19:15:08.000";
+    const pubStartDate = "2021-03-04T19:15:08.000";
     const pubEndDate = "2021-08-05T00:00:00.000";
 
     fetch(`https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=${keywordSearch}&pubStartDate=${pubStartDate}&pubEndDate=${pubEndDate}`) 

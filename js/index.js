@@ -8,6 +8,8 @@ function selectLanguage() {
 
 toggleTeamInfo('presentation');
 
+
+
 function toggleTeamInfo(id) {
     var presentationContainer = document.querySelector('.presentation-container');
     var equipeContainer = document.querySelector('.team-info-container');
@@ -30,11 +32,11 @@ function toggleTeamInfo(id) {
                 imageSrc: "Photos/_MG_9841.JPG"
             },
             {
-                name: "A MODIFIER",
+                name: "Jérémie Schemith",
                 roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
                 linkedin: "https://www.linkedin.com/feed/",
                 github: "https://github.com/FLKprod",
-                imageSrc: "Photos/_MG_9841.JPG"
+                imageSrc: "Photos/jeremie_photo.png"
             },
             {
                 name: "A MODIFIER",
@@ -345,3 +347,4 @@ function createOption(value, text, disabled, selected) {
     option.selected = selected;
     return option;
 }
+
