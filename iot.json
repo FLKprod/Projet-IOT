@@ -1,138 +1,1349 @@
 [
     {
-      "category": "Wearable Devices",
-      "brands": [
-        {"Apple (Apple Watch)": []},
-        {"Fitbit": []},
-        {"Garmin": []},
-        {"Samsung (Samsung Galaxy Watch)": []}
-      ]
+        "category": "Wearable Devices",
+        "brands": [
+            {
+                "Apple Watch": [
+                    {
+                        "cve": {
+                            "id": "CVE-2021-30860",
+                            "sourceIdentifier": "product-security@apple.com",
+                            "published": "2021-08-24T19:15:14.370",
+                            "lastModified": "2024-02-02T03:08:54.213",
+                            "vulnStatus": "Analyzed",
+                            "cisaExploitAdd": "2021-11-03",
+                            "cisaActionDue": "2021-11-17",
+                            "cisaRequiredAction": "Apply updates per vendor instructions.",
+                            "cisaVulnerabilityName": "Apple Multiple Products Integer Overflow Vulnerability",
+                            "descriptions": [
+                                {
+                                    "lang": "en",
+                                    "value": "An integer overflow was addressed with improved input validation. This issue is fixed in Security Update 2021-005 Catalina, iOS 14.8 and iPadOS 14.8, macOS Big Sur 11.6, watchOS 7.6.2. Processing a maliciously crafted PDF may lead to arbitrary code execution. Apple is aware of a report that this issue may have been actively exploited."
+                                },
+                                {
+                                    "lang": "es",
+                                    "value": "Se ha solucionado un desbordamiento de enteros con una validaci\u00f3n de entrada mejorada. Este problema se soluciona en la actualizaci\u00f3n de seguridad 2021-005 Catalina, iOS 14.8 y iPadOS 14.8, macOS Big Sur 11.6, watchOS 7.6.2. El procesamiento de un PDF malintencionado puede conducir a la ejecuci\u00f3n de c\u00f3digo arbitrario. Apple tiene conocimiento de un informe que indica que este problema puede haber sido explotado activamente."
+                                }
+                            ],
+                            "metrics": {
+                                "cvssMetricV31": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "3.1",
+                                            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                                            "attackVector": "LOCAL",
+                                            "attackComplexity": "LOW",
+                                            "privilegesRequired": "NONE",
+                                            "userInteraction": "REQUIRED",
+                                            "scope": "UNCHANGED",
+                                            "confidentialityImpact": "HIGH",
+                                            "integrityImpact": "HIGH",
+                                            "availabilityImpact": "HIGH",
+                                            "baseScore": 7.8,
+                                            "baseSeverity": "HIGH"
+                                        },
+                                        "exploitabilityScore": 1.8,
+                                        "impactScore": 5.9
+                                    }
+                                ],
+                                "cvssMetricV2": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "2.0",
+                                            "vectorString": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+                                            "accessVector": "NETWORK",
+                                            "accessComplexity": "MEDIUM",
+                                            "authentication": "NONE",
+                                            "confidentialityImpact": "PARTIAL",
+                                            "integrityImpact": "PARTIAL",
+                                            "availabilityImpact": "PARTIAL",
+                                            "baseScore": 6.8
+                                        },
+                                        "baseSeverity": "MEDIUM",
+                                        "exploitabilityScore": 8.6,
+                                        "impactScore": 6.4,
+                                        "acInsufInfo": false,
+                                        "obtainAllPrivilege": false,
+                                        "obtainUserPrivilege": false,
+                                        "obtainOtherPrivilege": false,
+                                        "userInteractionRequired": true
+                                    }
+                                ]
+                            },
+                            "weaknesses": [
+                                {
+                                    "source": "nvd@nist.gov",
+                                    "type": "Primary",
+                                    "description": [
+                                        {
+                                            "lang": "en",
+                                            "value": "CWE-190"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "configurations": [
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.8",
+                                                    "matchCriteriaId": "FCD67B72-0B1D-46A8-A149-8149ED749FEC"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "12.5.5",
+                                                    "matchCriteriaId": "5998D71C-A481-4F0C-AA06-B1FF0E6664A0"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "13.0",
+                                                    "versionEndExcluding": "14.8",
+                                                    "matchCriteriaId": "478E12B4-50EB-4CB2-9C50-D8F08127FB12"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "10.15",
+                                                    "versionEndExcluding": "10.15.7",
+                                                    "matchCriteriaId": "DB8A73F8-3074-4B32-B9F6-343B6B1988C5"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:-:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "A654B8A2-FC30-4171-B0BB-366CD7ED4B6A"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "F12CC8B5-C1EB-419E-8496-B9A3864656AD"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020-001:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "F1F4BF7F-90D4-4668-B4E6-B06F4070F448"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-001:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "0F441A43-1669-478D-9EC8-E96882DE4F9F"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-002:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "D425C653-37A2-448C-BF2F-B684ADB08A26"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-003:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "A54D63B7-B92B-47C3-B1C5-9892E5873A98"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-004:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "3456176F-9185-4EE2-A8CE-3D989D674AB7"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "11.6",
+                                                    "matchCriteriaId": "5F52D69C-8621-4E01-ABDE-8473A590BCB6"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "7.6.2",
+                                                    "matchCriteriaId": "3232C3B6-D79F-4FDB-9621-4E314798AD7D"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:a:xpdfreader:xpdf:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "4.04",
+                                                    "matchCriteriaId": "7B98328A-2A47-438F-886B-1A6AF87990DF"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:a:freedesktop:poppler:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "22.09.0",
+                                                    "matchCriteriaId": "10A7D6AF-D14E-4AD5-A9B8-12337347DC09"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "references": [
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/25",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/26",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/27",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/28",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/38",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/39",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/40",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://seclists.org/fulldisclosure/2021/Sep/50",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List",
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "http://www.openwall.com/lists/oss-security/2022/09/02/11",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Mailing List"
+                                    ]
+                                },
+                                {
+                                    "url": "https://security.gentoo.org/glsa/202209-21",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Third Party Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212804",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212805",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212806",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212807",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/kb/HT212824",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cve": {
+                            "id": "CVE-2021-30883",
+                            "sourceIdentifier": "product-security@apple.com",
+                            "published": "2021-08-24T19:15:16.403",
+                            "lastModified": "2023-11-07T03:33:41.033",
+                            "vulnStatus": "Modified",
+                            "cisaExploitAdd": "2022-05-23",
+                            "cisaActionDue": "2022-06-13",
+                            "cisaRequiredAction": "Apply updates per vendor instructions.",
+                            "cisaVulnerabilityName": "Apple Multiple Products Memory Corruption Vulnerability",
+                            "descriptions": [
+                                {
+                                    "lang": "en",
+                                    "value": "A memory corruption issue was addressed with improved memory handling. This issue is fixed in iOS 15.0.2 and iPadOS 15.0.2, macOS Monterey 12.0.1, iOS 14.8.1 and iPadOS 14.8.1, tvOS 15.1, watchOS 8.1, macOS Big Sur 11.6.1. An application may be able to execute arbitrary code with kernel privileges. Apple is aware of a report that this issue may have been actively exploited.."
+                                },
+                                {
+                                    "lang": "es",
+                                    "value": "Se abord\u00f3 un problema de corrupci\u00f3n de memoria con un manejo de memoria mejorada. Este problema se corrigi\u00f3 en iOS versi\u00f3n 15.0.2 y iPadOS versi\u00f3n 15.0.2, macOS Monterey versi\u00f3n 12.0.1, iOS versi\u00f3n 14.8.1 y iPadOS versi\u00f3n 14.8.1, tvOS versi\u00f3n 15.1, watchOS versi\u00f3n 8.1, macOS Big Sur versi\u00f3n 11.6.1. Una aplicaci\u00f3n puede ser capaz de ejecutar c\u00f3digo arbitrario con privilegios del kernel. Apple es consciente de un informe de que este problema puede haber sido explotado activamente"
+                                }
+                            ],
+                            "metrics": {
+                                "cvssMetricV31": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "3.1",
+                                            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                                            "attackVector": "LOCAL",
+                                            "attackComplexity": "LOW",
+                                            "privilegesRequired": "NONE",
+                                            "userInteraction": "REQUIRED",
+                                            "scope": "UNCHANGED",
+                                            "confidentialityImpact": "HIGH",
+                                            "integrityImpact": "HIGH",
+                                            "availabilityImpact": "HIGH",
+                                            "baseScore": 7.8,
+                                            "baseSeverity": "HIGH"
+                                        },
+                                        "exploitabilityScore": 1.8,
+                                        "impactScore": 5.9
+                                    }
+                                ],
+                                "cvssMetricV2": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "2.0",
+                                            "vectorString": "AV:N/AC:M/Au:N/C:C/I:C/A:C",
+                                            "accessVector": "NETWORK",
+                                            "accessComplexity": "MEDIUM",
+                                            "authentication": "NONE",
+                                            "confidentialityImpact": "COMPLETE",
+                                            "integrityImpact": "COMPLETE",
+                                            "availabilityImpact": "COMPLETE",
+                                            "baseScore": 9.3
+                                        },
+                                        "baseSeverity": "HIGH",
+                                        "exploitabilityScore": 8.6,
+                                        "impactScore": 10.0,
+                                        "acInsufInfo": false,
+                                        "obtainAllPrivilege": false,
+                                        "obtainUserPrivilege": false,
+                                        "obtainOtherPrivilege": false,
+                                        "userInteractionRequired": true
+                                    }
+                                ]
+                            },
+                            "weaknesses": [
+                                {
+                                    "source": "nvd@nist.gov",
+                                    "type": "Primary",
+                                    "description": [
+                                        {
+                                            "lang": "en",
+                                            "value": "CWE-787"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "configurations": [
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipad_os:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.8.1",
+                                                    "matchCriteriaId": "A9DB9916-6DA1-4A32-86A2-AD8DC5246709"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:15.0:*:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "6361C54F-4F5D-4624-8A1F-69DBC6AD4A69"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:15.0.1:*:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "45E581A3-DFD3-4999-8B55-006C2D633C6C"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.8.1",
+                                                    "matchCriteriaId": "54888682-EF77-4F2A-B07F-AA86B0C65717"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:15.0:*:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "A332DEC8-FB74-404E-BE6A-46DB0DEDAA59"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:15.0.1:*:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "71D5AE70-0104-442F-927A-8378C22D1941"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "11.0",
+                                                    "versionEndExcluding": "11.6.1",
+                                                    "matchCriteriaId": "3ADD7C81-7CB2-4505-ACA0-9EC193E347D1"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:12.0:*:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "1974DC5F-8F37-4582-B597-E58C94189193"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:tvos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "15.1",
+                                                    "matchCriteriaId": "9A76BB8B-613D-46B7-80F8-83B6EF76F344"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "8.1",
+                                                    "matchCriteriaId": "A82F66E5-A6BF-4D7A-8DCA-DD4C35723936"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "references": [
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212846",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212868",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212869",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212872",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212874",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212876",
+                                    "source": "product-security@apple.com"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cve": {
+                            "id": "CVE-2021-31010",
+                            "sourceIdentifier": "product-security@apple.com",
+                            "published": "2021-08-24T19:15:24.967",
+                            "lastModified": "2023-11-07T03:34:19.760",
+                            "vulnStatus": "Modified",
+                            "cisaExploitAdd": "2022-08-25",
+                            "cisaActionDue": "2022-09-15",
+                            "cisaRequiredAction": "Apply updates per vendor instructions.",
+                            "cisaVulnerabilityName": "Apple iOS, macOS, watchOS Sandbox Bypass Vulnerability",
+                            "descriptions": [
+                                {
+                                    "lang": "en",
+                                    "value": "A deserialization issue was addressed through improved validation. This issue is fixed in Security Update 2021-005 Catalina, iOS 12.5.5, iOS 14.8 and iPadOS 14.8, macOS Big Sur 11.6, watchOS 7.6.2. A sandboxed process may be able to circumvent sandbox restrictions. Apple was aware of a report that this issue may have been actively exploited at the time of release.."
+                                },
+                                {
+                                    "lang": "es",
+                                    "value": "Se ha solucionado un problema de deserializaci\u00f3n mediante una validaci\u00f3n mejorada. Este problema se soluciona en la actualizaci\u00f3n de seguridad 2021-005 Catalina, iOS 12.5.5, iOS 14.8 y iPadOS 14.8, macOS Big Sur 11.6, watchOS 7.6.2. Un proceso de sandbox puede ser capaz de eludir las restricciones de sandbox. Apple era consciente de un informe de que este problema podr\u00eda haber sido explotado activamente en el momento de la publicaci\u00f3n"
+                                }
+                            ],
+                            "metrics": {
+                                "cvssMetricV31": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "3.1",
+                                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                                            "attackVector": "NETWORK",
+                                            "attackComplexity": "LOW",
+                                            "privilegesRequired": "NONE",
+                                            "userInteraction": "NONE",
+                                            "scope": "UNCHANGED",
+                                            "confidentialityImpact": "NONE",
+                                            "integrityImpact": "HIGH",
+                                            "availabilityImpact": "NONE",
+                                            "baseScore": 7.5,
+                                            "baseSeverity": "HIGH"
+                                        },
+                                        "exploitabilityScore": 3.9,
+                                        "impactScore": 3.6
+                                    }
+                                ],
+                                "cvssMetricV2": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "2.0",
+                                            "vectorString": "AV:N/AC:L/Au:N/C:N/I:P/A:N",
+                                            "accessVector": "NETWORK",
+                                            "accessComplexity": "LOW",
+                                            "authentication": "NONE",
+                                            "confidentialityImpact": "NONE",
+                                            "integrityImpact": "PARTIAL",
+                                            "availabilityImpact": "NONE",
+                                            "baseScore": 5.0
+                                        },
+                                        "baseSeverity": "MEDIUM",
+                                        "exploitabilityScore": 10.0,
+                                        "impactScore": 2.9,
+                                        "acInsufInfo": false,
+                                        "obtainAllPrivilege": false,
+                                        "obtainUserPrivilege": false,
+                                        "obtainOtherPrivilege": false,
+                                        "userInteractionRequired": false
+                                    }
+                                ]
+                            },
+                            "weaknesses": [
+                                {
+                                    "source": "nvd@nist.gov",
+                                    "type": "Primary",
+                                    "description": [
+                                        {
+                                            "lang": "en",
+                                            "value": "CWE-502"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "configurations": [
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.8",
+                                                    "matchCriteriaId": "FCD67B72-0B1D-46A8-A149-8149ED749FEC"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "12.0",
+                                                    "versionEndExcluding": "12.5.5",
+                                                    "matchCriteriaId": "5527D436-59EA-4ACB-8828-1D62BDEBCAAD"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "14.0",
+                                                    "versionEndExcluding": "14.8",
+                                                    "matchCriteriaId": "C500EA50-9DE1-42F7-8C6D-D0409C2EE734"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "10.15",
+                                                    "versionEndExcluding": "10.15.7",
+                                                    "matchCriteriaId": "DB8A73F8-3074-4B32-B9F6-343B6B1988C5"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:-:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "A654B8A2-FC30-4171-B0BB-366CD7ED4B6A"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "F12CC8B5-C1EB-419E-8496-B9A3864656AD"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020-001:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "F1F4BF7F-90D4-4668-B4E6-B06F4070F448"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020-005:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "7FD7176C-F4D1-43A7-9E49-BA92CA0D9980"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2020-007:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "2703DE0B-8A9E-4A9D-9AE8-028E22BF47CA"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-001:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "0F441A43-1669-478D-9EC8-E96882DE4F9F"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-002:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "D425C653-37A2-448C-BF2F-B684ADB08A26"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-003:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "A54D63B7-B92B-47C3-B1C5-9892E5873A98"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-006:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "012052B5-9AA7-4FD3-9C80-5F615330039D"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-007:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "50F21A3C-0AC3-48C5-A4F8-5A7B478875B4"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2021-008:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "8E974DC6-F7D9-4389-9AF9-863F6E419CE6"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2022-001:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "156A6382-2BD3-4882-90B2-8E7CF6659E17"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2022-002:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "20A2FDB2-6712-406A-9896-C0B44508B07D"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2022-003:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "49F537A0-DC42-4176-B22F-C80D179DD99D"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:security_update_2022-004:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "1E463183-7E29-464F-B459-F3E1D62501FC"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:mac_os_x:10.15.7:supplemental_update:*:*:*:*:*:*",
+                                                    "matchCriteriaId": "C1C795B9-E58D-467C-83A8-2D45C792292F"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "11.0",
+                                                    "versionEndExcluding": "11.6",
+                                                    "matchCriteriaId": "1C416CDE-C6B5-4F68-8095-A4657F64C370"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "7.6.2",
+                                                    "matchCriteriaId": "3232C3B6-D79F-4FDB-9621-4E314798AD7D"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "references": [
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212804",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212805",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212806",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212807",
+                                    "source": "product-security@apple.com"
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212824",
+                                    "source": "product-security@apple.com"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cve": {
+                            "id": "CVE-2021-30661",
+                            "sourceIdentifier": "product-security@apple.com",
+                            "published": "2021-09-08T15:15:13.320",
+                            "lastModified": "2021-09-20T12:26:22.673",
+                            "vulnStatus": "Analyzed",
+                            "cisaExploitAdd": "2021-11-03",
+                            "cisaActionDue": "2021-11-17",
+                            "cisaRequiredAction": "Apply updates per vendor instructions.",
+                            "cisaVulnerabilityName": "Apple Multiple Products Use-After-Free Vulnerability",
+                            "descriptions": [
+                                {
+                                    "lang": "en",
+                                    "value": "A use after free issue was addressed with improved memory management. This issue is fixed in Safari 14.1, iOS 12.5.3, iOS 14.5 and iPadOS 14.5, watchOS 7.4, tvOS 14.5, macOS Big Sur 11.3. Processing maliciously crafted web content may lead to arbitrary code execution. Apple is aware of a report that this issue may have been actively exploited.."
+                                },
+                                {
+                                    "lang": "es",
+                                    "value": "Se abord\u00f3 un problema de uso de la memoria previamente liberada con una administraci\u00f3n de la memoria mejorada. Este problema es corregido en Safari versi\u00f3n 14.1, iOS versi\u00f3n 12.5.3, iOS versi\u00f3n 14.5 y iPadOS versi\u00f3n 14.5, watchOS versi\u00f3n 7.4, tvOS versi\u00f3n 14.5, macOS Big Sur versi\u00f3n 11.3. El procesamiento de contenido web maliciosamente dise\u00f1ado puede conllevar a una ejecuci\u00f3n de c\u00f3digo arbitrario. Apple est\u00e1 al tanto de un informe de que este problema puede haber sido explotado activamente"
+                                }
+                            ],
+                            "metrics": {
+                                "cvssMetricV31": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "3.1",
+                                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                                            "attackVector": "NETWORK",
+                                            "attackComplexity": "LOW",
+                                            "privilegesRequired": "NONE",
+                                            "userInteraction": "REQUIRED",
+                                            "scope": "UNCHANGED",
+                                            "confidentialityImpact": "HIGH",
+                                            "integrityImpact": "HIGH",
+                                            "availabilityImpact": "HIGH",
+                                            "baseScore": 8.8,
+                                            "baseSeverity": "HIGH"
+                                        },
+                                        "exploitabilityScore": 2.8,
+                                        "impactScore": 5.9
+                                    }
+                                ],
+                                "cvssMetricV2": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "2.0",
+                                            "vectorString": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+                                            "accessVector": "NETWORK",
+                                            "accessComplexity": "MEDIUM",
+                                            "authentication": "NONE",
+                                            "confidentialityImpact": "PARTIAL",
+                                            "integrityImpact": "PARTIAL",
+                                            "availabilityImpact": "PARTIAL",
+                                            "baseScore": 6.8
+                                        },
+                                        "baseSeverity": "MEDIUM",
+                                        "exploitabilityScore": 8.6,
+                                        "impactScore": 6.4,
+                                        "acInsufInfo": false,
+                                        "obtainAllPrivilege": false,
+                                        "obtainUserPrivilege": false,
+                                        "obtainOtherPrivilege": false,
+                                        "userInteractionRequired": true
+                                    }
+                                ]
+                            },
+                            "weaknesses": [
+                                {
+                                    "source": "nvd@nist.gov",
+                                    "type": "Primary",
+                                    "description": [
+                                        {
+                                            "lang": "en",
+                                            "value": "CWE-416"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "configurations": [
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:a:apple:safari:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.1",
+                                                    "matchCriteriaId": "42EAB49D-2EA1-4B1F-BDAC-3165D1CB3759"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.5",
+                                                    "matchCriteriaId": "3EAAE2C1-EF21-4567-99F1-335D1EF955D1"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "12.5.3",
+                                                    "matchCriteriaId": "443BF1FD-EC67-437D-A9CA-EEB3EF25B701"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "14.0",
+                                                    "versionEndExcluding": "14.5",
+                                                    "matchCriteriaId": "1CB84E58-2162-4B65-BD9E-F59C26DD4A60"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "11.0",
+                                                    "versionEndExcluding": "11.3",
+                                                    "matchCriteriaId": "4E699CCC-31F5-458E-A59C-79B3AF143747"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:tvos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.5",
+                                                    "matchCriteriaId": "D5B77841-F161-47AB-8043-3E0346E3AA25"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "7.4",
+                                                    "matchCriteriaId": "CFFFE00C-0AA6-4F60-ABF4-E68877BFD8F8"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "references": [
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212317",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212318",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212323",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212324",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212325",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212341",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Vendor Advisory"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cve": {
+                            "id": "CVE-2021-30665",
+                            "sourceIdentifier": "product-security@apple.com",
+                            "published": "2021-09-08T15:15:13.507",
+                            "lastModified": "2022-05-03T16:04:40.443",
+                            "vulnStatus": "Analyzed",
+                            "cisaExploitAdd": "2021-11-03",
+                            "cisaActionDue": "2021-11-17",
+                            "cisaRequiredAction": "Apply updates per vendor instructions.",
+                            "cisaVulnerabilityName": "Apple Multiple Products Memory Corruption Vulnerability",
+                            "descriptions": [
+                                {
+                                    "lang": "en",
+                                    "value": "A memory corruption issue was addressed with improved state management. This issue is fixed in watchOS 7.4.1, iOS 14.5.1 and iPadOS 14.5.1, tvOS 14.6, iOS 12.5.3, macOS Big Sur 11.3.1. Processing maliciously crafted web content may lead to arbitrary code execution. Apple is aware of a report that this issue may have been actively exploited.."
+                                },
+                                {
+                                    "lang": "es",
+                                    "value": "Se abord\u00f3 un problema de corrupci\u00f3n de la memoria con una administraci\u00f3n de estado mejorada. Este problema es corregido en watchOS versi\u00f3n 7.4.1, iOS versi\u00f3n 14.5.1 y iPadOS versi\u00f3n 14.5.1, tvOS versi\u00f3n 14.6, iOS versi\u00f3n 12.5.3, macOS Big Sur versi\u00f3n 11.3.1. El procesamiento de contenido web maliciosamente dise\u00f1ado puede conllevar a una ejecuci\u00f3n de c\u00f3digo arbitrario. Apple est\u00e1 al tanto de un informe de que este problema puede haber sido explotado activamente"
+                                }
+                            ],
+                            "metrics": {
+                                "cvssMetricV31": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "3.1",
+                                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                                            "attackVector": "NETWORK",
+                                            "attackComplexity": "LOW",
+                                            "privilegesRequired": "NONE",
+                                            "userInteraction": "REQUIRED",
+                                            "scope": "UNCHANGED",
+                                            "confidentialityImpact": "HIGH",
+                                            "integrityImpact": "HIGH",
+                                            "availabilityImpact": "HIGH",
+                                            "baseScore": 8.8,
+                                            "baseSeverity": "HIGH"
+                                        },
+                                        "exploitabilityScore": 2.8,
+                                        "impactScore": 5.9
+                                    }
+                                ],
+                                "cvssMetricV2": [
+                                    {
+                                        "source": "nvd@nist.gov",
+                                        "type": "Primary",
+                                        "cvssData": {
+                                            "version": "2.0",
+                                            "vectorString": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+                                            "accessVector": "NETWORK",
+                                            "accessComplexity": "MEDIUM",
+                                            "authentication": "NONE",
+                                            "confidentialityImpact": "PARTIAL",
+                                            "integrityImpact": "PARTIAL",
+                                            "availabilityImpact": "PARTIAL",
+                                            "baseScore": 6.8
+                                        },
+                                        "baseSeverity": "MEDIUM",
+                                        "exploitabilityScore": 8.6,
+                                        "impactScore": 6.4,
+                                        "acInsufInfo": false,
+                                        "obtainAllPrivilege": false,
+                                        "obtainUserPrivilege": false,
+                                        "obtainOtherPrivilege": false,
+                                        "userInteractionRequired": true
+                                    }
+                                ]
+                            },
+                            "weaknesses": [
+                                {
+                                    "source": "nvd@nist.gov",
+                                    "type": "Primary",
+                                    "description": [
+                                        {
+                                            "lang": "en",
+                                            "value": "CWE-787"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "configurations": [
+                                {
+                                    "nodes": [
+                                        {
+                                            "operator": "OR",
+                                            "negate": false,
+                                            "cpeMatch": [
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:ipados:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.5.1",
+                                                    "matchCriteriaId": "5B359E58-3DFD-430B-8630-EDFE22A986A8"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "12.5.3",
+                                                    "matchCriteriaId": "443BF1FD-EC67-437D-A9CA-EEB3EF25B701"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*",
+                                                    "versionStartIncluding": "13.0",
+                                                    "versionEndExcluding": "14.5.1",
+                                                    "matchCriteriaId": "C34E22EA-B0D1-4830-A946-EAA740419204"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:macos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "11.3.1",
+                                                    "matchCriteriaId": "9C5F498C-9B91-4888-9BA1-905836A40C64"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:tvos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "14.6",
+                                                    "matchCriteriaId": "9076D8C8-70CD-4DE5-8BAE-8CA6A5BEDDB3"
+                                                },
+                                                {
+                                                    "vulnerable": true,
+                                                    "criteria": "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*",
+                                                    "versionEndExcluding": "7.4.1",
+                                                    "matchCriteriaId": "F2A1D20A-1C0B-4642-883F-D8295A897DF9"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "references": [
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212335",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Release Notes",
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212336",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Release Notes",
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212339",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Release Notes",
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212341",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Release Notes",
+                                        "Vendor Advisory"
+                                    ]
+                                },
+                                {
+                                    "url": "https://support.apple.com/en-us/HT212532",
+                                    "source": "product-security@apple.com",
+                                    "tags": [
+                                        "Release Notes",
+                                        "Vendor Advisory"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "Fitbit": []
+            },
+            {
+                "Garmin": []
+            },
+            {
+                "Samsung (Samsung Galaxy Watch)": []
+            }
+        ]
     },
     {
-      "category": "Smart Home Devices",
-      "brands": [
-        {"Google Nest": []},
-        {"Amazon (Amazon Echo, Ring)": []},
-        {"Philips Hue": []},
-        {"Ecobee": []}
-      ]
+        "category": "Smart Home Devices",
+        "brands": [
+            {
+                "Google Nest": []
+            },
+            {
+                "Amazon (Amazon Echo, Ring)": "no data"
+            },
+            {
+                "Philips Hue": "no data"
+            },
+            {
+                "Ecobee": "no data"
+            }
+        ]
     },
     {
-      "category": "Industrial IoT (IIoT) Devices",
-      "brands": [
-        {"Siemens": []},
-        {"GE Digital": []},
-        {"Schneider Electric": []},
-        {"Rockwell Automation": []}
-      ]
+        "category": "Industrial IoT (IIoT) Devices",
+        "brands": [
+            {
+                "Siemens": "no data"
+            },
+            {
+                "GE Digital": "no data"
+            },
+            {
+                "Schneider Electric": "no data"
+            },
+            {
+                "Rockwell Automation": "no data"
+            }
+        ]
     },
     {
-      "category": "Connected Cars",
-      "brands": [
-        {"Tesla": []},
-        {"BMW ConnectedDrive": []},
-        {"General Motors (OnStar)": []},
-        {"FordPass": []}
-      ]
+        "category": "Connected Cars",
+        "brands": [
+            {
+                "Tesla": "no data"
+            },
+            {
+                "BMW ConnectedDrive": "no data"
+            },
+            {
+                "General Motors (OnStar)": "no data"
+            },
+            {
+                "FordPass": "no data"
+            }
+        ]
     },
     {
-      "category": "Smart City Infrastructure",
-      "brands": [
-        {"Cisco": []},
-        {"IBM (Smarter Cities)": []},
-        {"Siemens Smart Infrastructure": []},
-        {"Bosch": []}
-      ]
+        "category": "Smart City Infrastructure",
+        "brands": [
+            {
+                "Cisco": "no data"
+            },
+            {
+                "IBM (Smarter Cities)": "no data"
+            },
+            {
+                "Siemens Smart Infrastructure": "no data"
+            },
+            {
+                "Bosch": "no data"
+            }
+        ]
     },
     {
-      "category": "Healthcare IoT Devices",
-      "brands": [
-        {"Medtronic": []},
-        {"Philips Healthcare": []},
-        {"Abbott Laboratories": []},
-        {"GE Healthcare": []}
-      ]
+        "category": "Healthcare IoT Devices",
+        "brands": [
+            {
+                "Medtronic": "no data"
+            },
+            {
+                "Philips Healthcare": "no data"
+            },
+            {
+                "Abbott Laboratories": "no data"
+            },
+            {
+                "GE Healthcare": "no data"
+            }
+        ]
     },
     {
-      "category": "Agricultural IoT (AgriTech)",
-      "brands": [
-        {"John Deere": []},
-        {"Trimble Agriculture": []},
-        {"AGCO Corporation": []},
-        {"Climate Corporation (owned by Bayer)": []}
-      ]
+        "category": "Agricultural IoT (AgriTech)",
+        "brands": [
+            {
+                "John Deere": "no data"
+            },
+            {
+                "Trimble Agriculture": "no data"
+            },
+            {
+                "AGCO Corporation": "no data"
+            },
+            {
+                "Climate Corporation (owned by Bayer)": "no data"
+            }
+        ]
     },
     {
-      "category": "Retail IoT Devices",
-      "brands": [
-        {"Intel (Retail Solutions)": []},
-        {"Zebra Technologies": []},
-        {"Cisco Meraki": []},
-        {"Toshiba Global Commerce Solutions": []}
-      ]
+        "category": "Retail IoT Devices",
+        "brands": [
+            {
+                "Intel (Retail Solutions)": "no data"
+            },
+            {
+                "Zebra Technologies": "no data"
+            },
+            {
+                "Cisco Meraki": "no data"
+            },
+            {
+                "Toshiba Global Commerce Solutions": "no data"
+            }
+        ]
     },
     {
-      "category": "Energy Management Systems",
-      "brands": [
-        {"Schneider Electric": []},
-        {"Siemens Energy Management": []},
-        {"Honeywell": []},
-        {"ABB": []}
-      ]
+        "category": "Energy Management Systems",
+        "brands": [
+            {
+                "Schneider Electric": "no data"
+            },
+            {
+                "Siemens Energy Management": "no data"
+            },
+            {
+                "Honeywell": "no data"
+            },
+            {
+                "ABB": "no data"
+            }
+        ]
     },
     {
-      "category": "Environmental Monitoring Devices",
-      "brands": [
-        {"Aeroqual": []},
-        {"Libelium": []},
-        {"Environics": []},
-        {"Atmotube": []}
-      ]
+        "category": "Environmental Monitoring Devices",
+        "brands": [
+            {
+                "Aeroqual": "no data"
+            },
+            {
+                "Libelium": "no data"
+            },
+            {
+                "Environics": "no data"
+            },
+            {
+                "Atmotube": "no data"
+            }
+        ]
     },
     {
-      "category": "Asset Tracking Devices",
-      "brands": [
-        {"Trimble": []},
-        {"Fleet Complete": []},
-        {"Samsara": []},
-        {"Mojix": []}
-      ]
+        "category": "Asset Tracking Devices",
+        "brands": [
+            {
+                "Trimble": "no data"
+            },
+            {
+                "Fleet Complete": "no data"
+            },
+            {
+                "Samsara": "no data"
+            },
+            {
+                "Mojix": "no data"
+            }
+        ]
     },
     {
-      "category": "Smart Grid Infrastructure",
-      "brands": [
-        {"General Electric (GE Grid Solutions)": []},
-        {"ABB Power Grids": []},
-        {"Siemens Smart Grid": []},
-        {"Schneider Electric Grid Automation": []}
-      ]
+        "category": "Smart Grid Infrastructure",
+        "brands": [
+            {
+                "General Electric (GE Grid Solutions)": "no data"
+            },
+            {
+                "ABB Power Grids": "no data"
+            },
+            {
+                "Siemens Smart Grid": "no data"
+            },
+            {
+                "Schneider Electric Grid Automation": "no data"
+            }
+        ]
     },
     {
-      "category": "Smart Building Systems",
-      "brands": [
-        {"Johnson Controls": []},
-        {"Honeywell Building Technologies": []},
-        {"Siemens Building Technologies": []},
-        {"Schneider Electric Smart Buildings": []}
-      ]
+        "category": "Smart Building Systems",
+        "brands": [
+            {
+                "Johnson Controls": "no data"
+            },
+            {
+                "Honeywell Building Technologies": "no data"
+            },
+            {
+                "Siemens Building Technologies": "no data"
+            },
+            {
+                "Schneider Electric Smart Buildings": "no data"
+            }
+        ]
     },
     {
-      "category": "Consumer Electronics",
-      "brands": [
-        {"Sony": []},
-        {"LG Electronics": []},
-        {"TCL": []},
-        {"Vizio": []}
-      ]
+        "category": "Consumer Electronics",
+        "brands": [
+            {
+                "Sony": "no data"
+            },
+            {
+                "LG Electronics": "no data"
+            },
+            {
+                "TCL": "no data"
+            },
+            {
+                "Vizio": "no data"
+            }
+        ]
     },
     {
-      "category": "IoT in Education",
-      "brands": [
-        {"Google for Education": []},
-        {"Microsoft Education": []},
-        {"SMART Technologies": []},
-        {"Promethean": []}
-      ]
+        "category": "IoT in Education",
+        "brands": [
+            {
+                "Google for Education": "no data"
+            },
+            {
+                "Microsoft Education": "no data"
+            },
+            {
+                "SMART Technologies": "no data"
+            },
+            {
+                "Promethean": "no data"
+            }
+        ]
     }
-  ]
-  
+]
