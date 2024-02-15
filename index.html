@@ -10,13 +10,15 @@
 </head>
 <body>
     <div class="up">
-        <h1>CyberSafe : Une Plateforme de Surveillance des Vulnérabilités</h1>
-        <img src="Photos/logo.png" alt="Logo">
         <div class="menu">
-            <p onclick="toggleTeamInfo('presentation')">Presentation</p>
-            <p onclick="toggleTeamInfo('tableau')">Tableau des vulnerabilites</p>
-            <p onclick="toggleTeamInfo('teamInfo')">Notre Equipe</p>
-            <p onclick="toggleTeamInfo('contact')">Nous contacter</p>
+            <img src="Photos/logo.png" alt="Logo">
+            <button onclick="toggleTeamInfo('presentation')"><span class="text">Presentation</span><span>Presentation</span></button>
+            <button onclick="toggleTeamInfo('tableau')"><span class="text">Tableau des vulnerabilites</span><span>Tableau des vulnerabilites</span></button>
+            <button onclick="toggleTeamInfo('teamInfo')"><span class="text">Notre Equipe</span><span>Notre Equipe</span></button>
+            <button onclick="toggleTeamInfo('contact')"><span class="text">Nous contacter</span><span>Nous contacter</span></button>
+        </div>
+        <div class="logo">
+            <img src="Photos/head.png" alt="Logo">
         </div>
     </div>
     <div class="center">
@@ -24,6 +26,7 @@
             <!-- Affichage de la page principale presentant le projet -->
         </div>
         <div id="tableau" class="tableau-container">
+            <table id="vulnerabilityTable"></table>
             <!-- Affichage de notre tableau -->
             <script src="js/recupData.js"></script>
         </div>
