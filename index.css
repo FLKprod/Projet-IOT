@@ -342,13 +342,14 @@ hr{
 
 
 .tableContainer{
-    overflow-x: auto;
+     overflow-x: auto; 
+    overflow-y: visible;
     margin : 3em 2em 1em 2em;
     display: flex;
     align-items:center;
     justify-content: space-between;
     border-radius: 10px;
-    color:whitesmoke
+    color:whitesmoke;
 }
 
 .tableau-container > label{
@@ -458,14 +459,15 @@ input{
     height: 87%;
     background-color: #333; 
     padding-top: 20px;  
-    overflow-y: auto;
-    max-height: 600px;
+    /* overflow-y: auto;
+    max-height: 600px; */
 }
 
 .menu3 ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow: visible;
 }
 
 .menu3 ul li {
@@ -483,18 +485,18 @@ input{
     background-color: #555; 
 }
 .submenu3 {
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 100%;
-    width: 100;
-    height: 100;
-    background-color: #fff;
-    padding: 0;
+    background-color: #333; 
+    
+    z-index: 9999;
 }
 
 .submenu3 li {
-    padding: 5px 10px;
+    padding: 20px;
+    color: white;
 }
 
 .menu3 li {
@@ -503,4 +505,8 @@ input{
 
 .menu3 li:hover .submenu3 {
     display: block;
+}
+
+.submenu3 li:hover {
+    background-color: #555; 
 }

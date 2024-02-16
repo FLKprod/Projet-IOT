@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function loadMenuItems() {
-    fetch('http://localhost:8000/iot.json')
+    fetch('http://localhost:8001/iot.json')
         .then(response => response.json())
         .then(data => {
             const menuList = document.getElementById('menu-list');
@@ -320,11 +320,91 @@ function loadMenuItems() {
                 li.appendChild(a);
 
                 const submenu = document.createElement('ul');
+                submenu.id = 'submenu3';
                 submenu.classList.add('submenu3');
                 item.brands.forEach(brand => {
                     const subLi = document.createElement('li');
                     subLi.textContent = brand.brand;
+                    
+                    subLi.addEventListener('click',function(){
+                        var table = document.getElementById('vulnerabilityTable');
+                        console.log("Click on ::: " + brand.brand);
+
+                        data = brand.vulnerabilities;
+                        while (table.firstChild) {
+                            table.removeChild(table.firstChild);
+                        }
+                        if (Array.isArray(data) && data.length > 0) {
+                            var headerRow = table.createTHead().insertRow(0);
+                            Object.keys(data[0].cve).forEach(header => {
+                                var cell = headerRow.insertCell();
+                                cell.appendChild(document.createTextNode(header));
+                            });
+                            headerRow.classList.add('header-row');
+
+                            // Ajouter des lignes de data.json (à partir de la deuxième ligne)
+                            data.forEach((rowData) => {
+                                var row = table.insertRow();
+                                Object.entries(rowData.cve).forEach(([key, value]) => {
+                                    var cell = row.insertCell();
+                                    if (key == "sourceIdentifier"){
+                                        var statusGroup = document.getElementById("listes");
+                                        addOptionsToGroup(value, statusGroup);
+                                    }
+                                    // Si la valeur n'est pas un tableau, ajoutez-la normalement
+                                    if (key == "descriptions"){
+                                        if (localStorage.getItem('Language') == "EN"){
+                                            cell.appendChild(document.createTextNode(value[0].value));
+                                        }
+                                        else if (localStorage.getItem('Language') == "Spanish"){
+                                            cell.appendChild(document.createTextNode(value[1].value));
+                                        }
+                                        else {
+                                            langue = localStorage.getItem('Language');
+                                            console.log(langue);
+                                            // CallAPITranslate(langue, value[0].value)
+                                            // .then(response => {
+                                            //     cell.appendChild(document.createTextNode(response));
+                                            //     })
+                                            // .catch(error => {
+                                            //     console.error('Erreur lors de la traduction:', error);
+                                            //     });
+                                        }                           
+                                    }
+                                    else if (key == "metrics"){
+                                        cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
+                                    }
+                                    else if (key == "configurations"){
+                                        cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
+                                    }
+                                    else if (key == "references"){
+                                        textcase="";
+                                        for (let i = 0; i < value.length; i++) {
+                                            textcase += value[i].url;
+                                            textcase += "\n"
+                                        }
+                                        cell.appendChild(document.createTextNode(textcase));
+                                    }
+                                    else{
+                                        cell.appendChild(document.createTextNode(value));
+                                    }
+                                    // Ajouter une classe en fonction de la dernière colonne
+                                    if (key == "vulnStatus") {
+                                        cell.className = evaluateRisk(value);
+                                    }
+                                });
+                            });
+                            sortTable();
+            } else {
+                console.error('Le fichier JSON est vide ou mal formaté.');
+            }
+
+
+                    })
+
+
                     submenu.appendChild(subLi);
+
                 });
 
            
@@ -333,7 +413,7 @@ function loadMenuItems() {
          
                 li.addEventListener('mouseenter', function() {
                     submenu.style.display = 'block';
-                    console.log("La souris est rentré !")
+                    console.log("La souris est rentréeeeeeeeee !")
                     submenu.querySelectorAll('li').forEach(subLi => {
                         console.log(subLi.textContent);
                     });
