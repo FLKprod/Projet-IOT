@@ -29,8 +29,8 @@ Pour plus d'informations sur les vulnérabilités, consultez [cette compilation]
 ## Lancer le projet avec Python 
 Javascript n'autorise pas de fetch des fichiers sur des serveurs locaux ( restriction CORS ), il faut alors démarrer un serveur http avec Python : 
 
-python -m http.server 8000 
+python -m http.server 8001 
 
-Nous pouvons ensuite accéder au site en entrant l'url : http://localhots:8000/index.html
+Nous pouvons ensuite accéder au site en entrant l'url : http://localhots:8001/index.html
 ## Licence
 Ce projet est sous licence [MIT License](LICENSE).
