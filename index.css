@@ -342,8 +342,7 @@ hr{
 
 
 .tableContainer{
-     overflow-x: auto; 
-    overflow-y: visible;
+     overflow: visible;
     margin : 3em 2em 1em 2em;
     display: flex;
     align-items:center;
@@ -459,6 +458,7 @@ input{
     height: 87%;
     background-color: #333; 
     padding-top: 20px;  
+    border-radius: 50;
     /* overflow-y: auto;
     max-height: 600px; */
 }
