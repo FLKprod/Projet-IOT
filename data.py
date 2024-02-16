@@ -76,7 +76,8 @@ for category in iot_data:
                 print("content of vulnerabilities ",cve_items)
 
                 #print("content of vulnerability",result_json['vulnerabilities'])
-                brand[brand_name] = cve_items  # Add mock data to the brand
+                brand["brand"] = brand_name
+                brand["vulnerabilities"] = cve_items  # Add mock data to the brand
 
                 # Process the JSON data
             except json.JSONDecodeError:
@@ -90,7 +91,7 @@ for category in iot_data:
         time.sleep(15)
 
 
-modified_iot_json_file_path = './iot.json'
+modified_iot_json_file_path = './iot_data.json'
 
 with open(modified_iot_json_file_path, 'w') as file:
     json.dump(iot_data, file, indent=4)
