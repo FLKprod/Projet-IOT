@@ -1,3 +1,4 @@
+
 console.log("index.js loaded");
 
 document.getElementById("selectLanguage").value = localStorage.getItem("Language");
@@ -164,7 +165,10 @@ function toggleTeamInfo(id) {
             tableauContainer.appendChild(createSearchDiv());
             tableauContainer.appendChild(createLabel('Chercher une source : ', 'sortDropdown'));
             tableauContainer.appendChild(createSortDropdown());
-            tableauContainer.appendChild(createTableContainer());
+            tableContainer = createTableContainer();
+  
+            tableauContainer.appendChild(tableContainer);
+          
             var refreshButton = createButton('Refresh 🔄', keywordSearch);
             tableauContainer.appendChild(refreshButton);
 
@@ -284,6 +288,73 @@ function createSearchDiv() {
     return searchDiv;
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    
+
+
+
+
+    createMenu =function () {
+    
+    const menuDiv = document.createElement('div');
+    menuDiv.id = 'menu3';
+    menuDiv.classList.add('menu3');
+    const menuList = document.createElement('ul');
+    menuList.id = 'menu-list';
+    menuDiv.appendChild(menuList);
+    loadMenuItems();
+    return menuDiv;
+}
+
+
+function loadMenuItems() {
+    fetch('http://localhost:8000/iot.json')
+        .then(response => response.json())
+        .then(data => {
+            const menuList = document.getElementById('menu-list');
+            data.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#'; 
+                a.textContent = item.category; 
+                li.appendChild(a);
+
+                const submenu = document.createElement('ul');
+                submenu.classList.add('submenu3');
+                item.brands.forEach(brand => {
+                    const subLi = document.createElement('li');
+                    subLi.textContent = brand.brand;
+                    submenu.appendChild(subLi);
+                });
+
+           
+                li.appendChild(submenu);
+
+         
+                li.addEventListener('mouseenter', function() {
+                    submenu.style.display = 'block';
+                    console.log("La souris est rentré !")
+                    submenu.querySelectorAll('li').forEach(subLi => {
+                        console.log(subLi.textContent);
+                    });
+                });
+
+                li.addEventListener('mouseleave', function() {
+                    submenu.style.display = 'none';
+                });
+
+                menuList.appendChild(li);
+
+            });
+            
+        })
+        .catch(error => {
+            console.error('Une erreur s\'est produite lors du chargement des données du menu :', error);
+        });
+}
+
+});
+
 function createInput(type, id, placeholder, style) {
     const input = document.createElement('input');
     input.type = type;
@@ -318,6 +389,8 @@ function createTableContainer() {
     const tableContainer = createElementWithClass('div', 'tableContainer');
     const vulnerabilityTable = document.createElement('table');
     vulnerabilityTable.id = 'vulnerabilityTable';
+    menu = createMenu();
+    tableContainer.appendChild(menu);
     tableContainer.appendChild(vulnerabilityTable);
     return tableContainer;
 }

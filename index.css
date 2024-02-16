@@ -448,3 +448,59 @@ input{
 .fade-in {
     animation: fadeIn 1s ease-out forwards;
 }
+
+
+.menu3 {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 200px; 
+    height: 87%;
+    background-color: #333; 
+    padding-top: 20px;  
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.menu3 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu3 ul li {
+    margin-bottom: 10px; 
+}
+
+.menu3 ul li a {
+    display: block;
+    color: white; 
+    text-decoration: none;
+    padding: 10px; 
+}
+
+.menu3 ul li a:hover {
+    background-color: #555; 
+}
+.submenu3 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100;
+    height: 100;
+    background-color: #fff;
+    padding: 0;
+}
+
+.submenu3 li {
+    padding: 5px 10px;
+}
+
+.menu3 li {
+    position: relative;
+}
+
+.menu3 li:hover .submenu3 {
+    display: block;
+}
