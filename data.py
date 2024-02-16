@@ -87,7 +87,7 @@ for category in iot_data:
             brand[brand_name] = "no data"  # Add mock data to the brand
 
 
-        time.sleep(2)
+        time.sleep(15)
 
 
 modified_iot_json_file_path = './iot.json'
