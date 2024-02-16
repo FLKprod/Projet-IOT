@@ -26,6 +26,11 @@ Pour plus d'informations sur les vulnérabilités, consultez [cette compilation]
 
 ![image](https://github.com/FLKprod/Projet-IOT/assets/38373463/c13a0978-bfdd-4deb-98c6-ec032e25503b)
 
+## Lancer le projet avec Python 
+Javascript n'autorise pas de fetch des fichiers sur des serveurs locaux ( restriction CORS ), il faut alors démarrer un serveur http avec Python : 
 
+python -m http.server 8000 
+
+Nous pouvons ensuite accéder au site en entrant l'url : http://localhots:8000/index.html
 ## Licence
 Ce projet est sous licence [MIT License](LICENSE).
