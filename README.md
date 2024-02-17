@@ -31,6 +31,6 @@ Javascript n'autorise pas de fetch des fichiers sur des serveurs locaux ( restri
 
 python -m http.server 8001 
 
-Nous pouvons ensuite accéder au site en entrant l'url : http://localhots:8001/index.html
+Nous pouvons ensuite accéder au site en entrant l'url : http://localhost:8001/index.html
 ## Licence
 Ce projet est sous licence [MIT License](LICENSE).
