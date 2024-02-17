@@ -190,110 +190,7 @@ function handleEnterKey(event) {
     }
 }
 
-
-// Fonction pour créer un élément avec du texte
-function createTextElement(tag, textContent) {
-    const element = document.createElement(tag);
-    element.textContent = textContent;
-    return element;
-}
-
-// Fonction pour créer un élément image
-function createImage(src) {
-    const element = document.createElement('img');
-    element.src = src;
-    return element;
-}
-
-// Fonction pour créer un titre avec du texte
-function createText(tag, textContent) {
-    return createTextElement(tag, textContent);
-}
-
-// Fonction pour créer un élément avec une icône Font Awesome
-function createIcon(iconClass, fontSize, color, cursor, clickHandler) {
-    const icon = document.createElement("i");
-    icon.className = `fa ${iconClass}`;
-    icon.style.fontSize = fontSize;
-    icon.style.color = color;
-    icon.style.cursor = cursor;
-    icon.onclick = clickHandler;
-    return icon;
-}
-
-// Fonction pour créer un bouton
-function createButton(text, clickHandler) {
-    const button = document.createElement("button");
-    button.textContent = text;
-    button.onclick = clickHandler;
-    return button;
-}
-
-function createInfoSection(data) {
-    const infoDiv = document.createElement("div");
-    infoDiv.className = "info";
-
-    data.forEach((item, index) => {
-        if (item.type === 'paragraph') {
-            const paragraph = document.createElement("p");
-            paragraph.textContent = item.text;
-            if (index === 1) {
-                paragraph.classList.add('bold-text');
-            }
-            infoDiv.appendChild(paragraph);
-        } else if (item.type === 'icon') {
-            const icon = document.createElement("i");
-            icon.className = item.iconClass;
-            icon.style.fontSize = item.fontSize;
-            icon.style.color = item.color;
-            icon.style.cursor = item.cursor;
-            icon.onclick = item.clickHandler;
-            infoDiv.appendChild(icon);
-        } else if (item.type === 'button') {
-            const button = createButton(item.text, item.clickHandler);
-            infoDiv.appendChild(button);
-        }
-    });
-
-    return infoDiv;
-}
-
-// Fonction pour créer un lien social avec une icône Font Awesome
-function createSocialLink(href, iconClass) {
-    const link = document.createElement("a");
-    link.href = href;
-    link.target = "_blank";
-
-    const icon = document.createElement("i");
-    icon.classList.add("fa", iconClass);
-    icon.style.fontSize = "2em";
-    icon.style.color = "white";
-
-    link.appendChild(icon);
-    return link;
-}
-
-function createElementWithClass(tag, className) {
-    const element = document.createElement(tag);
-    element.className = className;
-    return element;
-}
-
-function createSearchDiv() {
-    const searchDiv = document.createElement('div');
-    const keywordInput = createInput('text', 'keywordInput', 'Search here');
-    const searchButton = createButton('Search', keywordSearch);
-    searchDiv.appendChild(keywordInput);
-    searchDiv.appendChild(searchButton);
-    return searchDiv;
-}
-
 document.addEventListener('DOMContentLoaded', function () {
-    
-
-
-
-
     createMenu =function () {
     
     const menuDiv = document.createElement('div');
@@ -434,6 +331,105 @@ function loadMenuItems() {
 }
 
 });
+
+
+// Fonction pour créer un élément avec du texte
+function createTextElement(tag, textContent) {
+    const element = document.createElement(tag);
+    element.textContent = textContent;
+    return element;
+}
+
+// Fonction pour créer un élément image
+function createImage(src) {
+    const element = document.createElement('img');
+    element.src = src;
+    return element;
+}
+
+// Fonction pour créer un titre avec du texte
+function createText(tag, textContent) {
+    return createTextElement(tag, textContent);
+}
+
+// Fonction pour créer un élément avec une icône Font Awesome
+function createIcon(iconClass, fontSize, color, cursor, clickHandler) {
+    const icon = document.createElement("i");
+    icon.className = `fa ${iconClass}`;
+    icon.style.fontSize = fontSize;
+    icon.style.color = color;
+    icon.style.cursor = cursor;
+    icon.onclick = clickHandler;
+    return icon;
+}
+
+// Fonction pour créer un bouton
+function createButton(text, clickHandler) {
+    const button = document.createElement("button");
+    button.textContent = text;
+    button.onclick = clickHandler;
+    return button;
+}
+
+function createInfoSection(data) {
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "info";
+
+    data.forEach((item, index) => {
+        if (item.type === 'paragraph') {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = item.text;
+            if (index === 1) {
+                paragraph.classList.add('bold-text');
+            }
+            infoDiv.appendChild(paragraph);
+        } else if (item.type === 'icon') {
+            const icon = document.createElement("i");
+            icon.className = item.iconClass;
+            icon.style.fontSize = item.fontSize;
+            icon.style.color = item.color;
+            icon.style.cursor = item.cursor;
+            icon.onclick = item.clickHandler;
+            infoDiv.appendChild(icon);
+        } else if (item.type === 'button') {
+            const button = createButton(item.text, item.clickHandler);
+            infoDiv.appendChild(button);
+        }
+    });
+
+    return infoDiv;
+}
+
+// ----------------------------------------------- CREATION DES ELEMENTS HTML -------------------------------------------------------//
+
+function createSocialLink(href, iconClass) {
+    const link = document.createElement("a");
+    link.href = href;
+    link.target = "_blank";
+
+    const icon = document.createElement("i");
+    icon.classList.add("fa", iconClass);
+    icon.style.fontSize = "2em";
+    icon.style.color = "white";
+
+    link.appendChild(icon);
+    return link;
+}
+
+function createElementWithClass(tag, className) {
+    const element = document.createElement(tag);
+    element.className = className;
+    return element;
+}
+
+function createSearchDiv() {
+    const searchDiv = document.createElement('div');
+    const keywordInput = createInput('text', 'keywordInput', 'Search here');
+    const searchButton = createButton('Search', keywordSearch);
+    searchDiv.appendChild(keywordInput);
+    searchDiv.appendChild(searchButton);
+    return searchDiv;
+}
 
 function createInput(type, id, placeholder, style) {
     const input = document.createElement('input');

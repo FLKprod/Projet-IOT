@@ -107,18 +107,6 @@ function CallAPITranslate(langage, textInput) {
     });
 }
 
-
-function evaluateRisk(value) {
-    // Ajouter des conditions pour déterminer la classe en fonction de la valeur
-    if (value === 'Analyzed') {
-        return 'low-risk';
-    } else if (value === 'Modified') {
-        return 'high-risk';
-    } else {
-        return ''; // Classe par défaut si la valeur n'est pas reconnue
-    }
-}
-
 function addOptionsToGroup(optionText, group) {
     if (!group.querySelector('option[value="' + optionText + '"]')) {
         var option = document.createElement("option");
