@@ -342,7 +342,8 @@ hr{
 
 
 .tableContainer{
-     overflow: visible;
+     overflow-x: auto; 
+    overflow-y: visible;
     margin : 3em 2em 1em 2em;
     display: flex;
     align-items:center;
