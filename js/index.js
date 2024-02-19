@@ -42,11 +42,11 @@ function toggleTeamInfo(id) {
                 imageSrc: "Photos/jeremie_photo.png"
             },
             {
-                name: "A MODIFIER",
-                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
-                linkedin: "https://www.linkedin.com/feed/",
-                github: "https://github.com/FLKprod",
-                imageSrc: "Photos/_MG_9841.JPG"
+                name: "Maxime Molesin",
+                roles: "Étudiant venant de l'École Nationale d'Ingénieur de Brest actuellement en maitrise en informatique à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/in/maximemolesin",
+                github: "https://github.com/LaMoleOG",
+                imageSrc: "Photos/maxime_molesin.jpg"
             },
             {
                 name: "A MODIFIER",
