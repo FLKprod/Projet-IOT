@@ -342,22 +342,32 @@ hr{
 
 
 .tableContainer{
-     overflow-x: auto; 
-    overflow-y: visible;
+    top :0;
     margin : 3em 2em 1em 2em;
     display: flex;
-    align-items:center;
     justify-content: space-between;
     border-radius: 10px;
     color:whitesmoke;
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .tableau-container > label{
     color: whitesmoke;
 }
-table {
-    border-collapse: collapse;
+
+.vulnerabilityTable {
+    padding: 1em;
     width: 100%;
+    height: 100%;
+    overflow-x: auto; 
+    overflow-y: visible;
+}
+
+table {
+    
+    border-collapse: collapse;
+    
+    
 }
 
 table, td {
@@ -365,6 +375,7 @@ table, td {
     border-radius: 3px;
     padding: 25px 30px;
     height: 1em;
+    top:0;
     border-collapse: collapse;
 }
 
@@ -391,7 +402,7 @@ tr:first-child {
 }
 
 input{
-    padding: 1em; border: 2px solid #ccc; border-radius: 5px; width: 15em; height: 0.4em;
+    padding: 1em; border: 2px solid #ccc; border-radius: 1em; width: 15em; height: 0.4em;
 }
 
 .info {
@@ -400,7 +411,6 @@ input{
     align-items: center;
     gap:0.5em;
     margin: 2em 2em 2em 2em;
-    border-radius: 1em;
     background-color: #4f0341;
     padding: 1em;
     border-radius: 1em;
@@ -454,47 +464,66 @@ input{
 .menu3 {
     position: relative;
     bottom: 0;
-    left: 0;
-    width: 200px; 
-    height: 87%;
-    background-color: #333; 
-    padding-top: 20px;  
-    border-radius: 50;
+    width: 15em; 
+    height: auto;
+    background-color: rgb(0, 5, 50);
+    border-radius: 1em;
+    animation: glisse 1s ease-out forwards;
+}
+
+@keyframes glisse {
+    from {
+        left: -15em;
+    }
+    to {
+        left: 0;
+    }
 }
 
 .menu3 ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 1em;
     overflow: visible;
+    width: 12em; 
 }
 
 .menu3 ul li {
-    margin-bottom: 10px; 
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    background-color: #4f0341;
 }
 
 .menu3 ul li a {
     display: block;
     color: white; 
     text-decoration: none;
-    padding: 10px; 
+    padding: 1em;
 }
 
 .menu3 ul li a:hover {
-    background-color: #555; 
+    background-color: #4CAF50;
+    cursor: text;
+    border-radius: 1em;
 }
 .submenu3 {
     display: none;
     position: absolute;
     top: 0;
-    left: 100%;
-    background-color: #333; 
-    
+    left: 12em;
+    background-color: rgb(0, 5, 50);
+    border-radius: 1em;
     z-index: 9999;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
+.submenu3 > .menu3 ul {
+    background-color: red;
+}
+
+
 .submenu3 li {
-    padding: 20px;
+    padding: 1em;
     color: white;
 }
 
@@ -507,5 +536,6 @@ input{
 }
 
 .submenu3 li:hover {
-    background-color: #555; 
+    background-color: #4CAF50; 
+    cursor: pointer;
 }

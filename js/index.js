@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function loadMenuItems() {
-    fetch('http://localhost:8001/iot.json')
+    fetch('http://localhost:5500/iot.json')
         .then(response => response.json())
         .then(data => {
             const menuList = document.getElementById('menu-list');
@@ -285,9 +285,7 @@ function loadMenuItems() {
                                     else{
                                         cell.appendChild(document.createTextNode(value));
                                     }
-                                    // Ajouter une classe en fonction de la dernière colonne
                                     if (key == "vulnStatus") {
-                                        cell.className = evaluateRisk(value);
                                     }
                                 });
                             });
@@ -463,11 +461,13 @@ function createSortDropdown() {
 
 function createTableContainer() {
     const tableContainer = createElementWithClass('div', 'tableContainer');
+    const table = createElementWithClass('div','vulnerabilityTable');
     const vulnerabilityTable = document.createElement('table');
     vulnerabilityTable.id = 'vulnerabilityTable';
     menu = createMenu();
     tableContainer.appendChild(menu);
-    tableContainer.appendChild(vulnerabilityTable);
+    table.appendChild(vulnerabilityTable);
+    tableContainer.appendChild(table)
     return tableContainer;
 }
 

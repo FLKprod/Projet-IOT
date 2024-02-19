@@ -4,6 +4,7 @@ Datas = []
 
 function keywordSearch() {
     var table = document.getElementById('vulnerabilityTable');
+    table.classList.add('fade-in');
     var keywordInput = document.getElementById('keywordInput')
     var keywordSearch = keywordInput.value
     const pubStartDate = "2021-03-04T19:15:08.000";
