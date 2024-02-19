@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function loadMenuItems() {
     
-    fetch('http://localhost:5500/iot.json')
+    fetch('http://localhost:8001/iot.json')
         .then(response => response.json())
         .then(data => {
             const menuList = document.getElementById('menu-list');
