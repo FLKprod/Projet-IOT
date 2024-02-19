@@ -29,7 +29,7 @@ function toggleTeamInfo(id) {
         const teamData = [
             {
                 name: "Maxime Falkowski",
-                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
+                roles: "ÉTUDIANT VENANT DE L'École supérieure d'ingénieurs de recherche en matériaux et en infotronique de Dijon et ACTUELLEMENT en cybersécurité à l'Université du Québec à Chicoutimi",
                 linkedin: "https://www.linkedin.com/feed/",
                 github: "https://github.com/FLKprod",
                 imageSrc: "Photos/_MG_9841.JPG"
