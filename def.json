@@ -1,0 +1,82 @@
+[
+    {
+      "name": "Injection SQL",
+      "definition": "L'injection SQL est une technique d'attaque où un attaquant insère du code SQL malveillant dans une requête SQL. Cela peut permettre à l'attaquant d'accéder, modifier ou supprimer des données dans la base de données.",
+      "solution": "Utiliser des requêtes paramétrées ou des procédures stockées, et appliquer une validation et une désinfection rigoureuses des données utilisateur."
+    },
+    {
+      "name": "Attaque Man-in-the-Middle (MITM)",
+      "definition": "Une attaque MITM se produit lorsque l'attaquant s'interpose dans la communication entre deux parties, interceptant et éventuellement modifiant les données échangées sans que les parties le sachent.",
+      "solution": "Utiliser des connexions sécurisées (SSL/TLS), des certificats HTTPS, et être vigilant envers les certificats invalides."
+    },
+    {
+      "name": "Attaque par Déni de Service Distribué (DDoS)",
+      "definition": "Une attaque DDoS vise à rendre un service indisponible en submergeant ses serveurs avec un trafic réseau excessif, souvent généré à partir de plusieurs sources distribuées.",
+      "solution": "Utiliser des pare-feu, des filtres de trafic, des services de mitigation DDoS, et concevoir l'infrastructure pour résister à des volumes de trafic importants."
+    },
+    {
+      "name": "Cross-Site Scripting (XSS)",
+      "definition": "L'attaque XSS consiste à injecter du code malveillant (souvent JavaScript) dans des pages web consultées par d'autres utilisateurs.",
+      "solution": "Appliquer une validation stricte des entrées utilisateur, utiliser des en-têtes HTTP sécurisés, et échapper correctement les données affichées."
+    },
+    {
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "definition": "L'attaque CSRF exploite la confiance qu'un site a envers l'utilisateur en utilisant ses sessions authentifiées pour effectuer des actions non voulues.",
+      "solution": "Utiliser des jetons anti-CSRF, vérifier les référents, et implémenter une validation côté serveur."
+    },
+    {
+      "name": "Attaque par force brute",
+      "definition": "Une attaque par force brute consiste à essayer de deviner un mot de passe en essayant différentes combinaisons jusqu'à ce que la bonne soit trouvée.",
+      "solution": "Utiliser des politiques de mot de passe robustes, bloquer les tentatives répétées, et encourager l'utilisation d'authentification à deux facteurs."
+    },
+    {
+      "name": "Attaque par détournement de l'identité de l'appareil (Device Identity Spoofing)",
+      "definition": "L'attaquant usurpe l'identité d'un objet connecté pour accéder illégitimement à un réseau ou à des services.",
+      "solution": "Mettre en œuvre des mécanismes d'authentification robustes pour les appareils IoT."
+    },
+    {
+      "name": "Attaque par manipulation des capteurs (Sensor Tampering)",
+      "definition": "L'attaquant modifie délibérément les données capturées par les capteurs pour induire en erreur le système.",
+      "solution": "Utiliser des capteurs sécurisés, surveiller les valeurs aberrantes et chiffrer les données capturées."
+    },
+    {
+      "name": "Attaque par déni de service sur le réseau IoT (IoT Network Denial of Service - IoT DDoS)",
+      "definition": "L'attaquant surcharge le réseau IoT avec un trafic excessif pour rendre les dispositifs indisponibles.",
+      "solution": "Mettre en place des mécanismes de détection et de mitigation des attaques DDoS pour les dispositifs IoT."
+    },
+    {
+      "name": "Attaque par détournement du micrologiciel (Firmware Hijacking)",
+      "definition": "L'attaquant modifie ou remplace le micrologiciel d'un appareil IoT pour exécuter du code malveillant.",
+      "solution": "Chiffrer et signer numériquement le micrologiciel, et utiliser des mécanismes de mise à jour sécurisés."
+    },
+    {
+      "name": "Attaque par déni de service physique (Physical Denial of Service - PDos)",
+      "definition": "L'attaquant endommage physiquement les composants de l'appareil IoT pour le rendre inutilisable.",
+      "solution": "Protéger physiquement les appareils IoT, par exemple, en utilisant des boîtiers robustes."
+    },
+    {
+      "name": "Attaque par spoofing d'adresse MAC (MAC Address Spoofing)",
+      "definition": "L'attaquant falsifie l'adresse MAC d'un appareil pour usurper son identité sur le réseau.",
+      "solution": "Utiliser des mécanismes de détection d'usurpation d'adresse MAC et des protocoles de sécurité réseau."
+    },
+    {
+      "name": "Attaque par injection de commandes côté périphérique (Device-Side Command Injection)",
+      "definition": "L'attaquant injecte des commandes malveillantes dans les communications entre les périphériques IoT.",
+      "solution": "Appliquer une validation stricte des données et des communications sécurisées entre les appareils."
+    },
+    {
+      "name": "Attaque par falsification de données (Data Falsification)",
+      "definition": "L'attaquant manipule les données transmises par les capteurs ou les dispositifs IoT pour induire en erreur les systèmes.",
+      "solution": "Appliquer des mécanismes de vérification d'intégrité des données et utiliser des canaux sécurisés."
+    },
+    {
+      "name": "Attaque par vol d'identifiants (Credential Theft)",
+      "definition": "L'attaquant vole les identifiants ou les clés d'authentification d'un dispositif IoT pour accéder de manière non autorisée.",
+      "solution": "Chiffrer les identifiants, utiliser des protocoles d'authentification sécurisés, et limiter l'accès aux clés d'authentification."
+    },
+    {
+      "name": "Attaque par reconnaissance des modèles de trafic (Traffic Pattern Recognition)",
+      "definition": "L'attaquant analyse les modèles de trafic IoT pour obtenir des informations sensibles sur les activités.",
+      "solution": "Chiffrer le trafic, utiliser des protocoles de communication sécurisés, et surveiller les anomalies de trafic."
+    }
+]  

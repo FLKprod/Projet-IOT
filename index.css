@@ -682,3 +682,42 @@ input{
     background-color: #4CAF50; 
     cursor: pointer;
 }
+
+/*---------------------------------------- Definitions -----------------------------------------------------------*/
+
+
+.definitions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+#definitionsTableContainer {
+    position: relative;
+    width: 100%; /* Ajustez en fonction de vos besoins */
+    max-width: 1400px; /* Ajustez en fonction de vos besoins */
+    margin: 0 auto; /* Centre le tableau horizontalement */
+}
+
+.defTable {
+    width: 100%; /* Set the width to 100% */
+    overflow-x: auto; 
+    overflow-y: visible;
+}
+
+.defTable th, .defTable td {
+    box-sizing: border-box; /* Include padding and border in the width */
+    padding: 8px; /* Adjust padding based on your design */
+    text-align: left; /* Align text as needed */
+}
+
+.defTable th:first-child, .defTable td:first-child {
+    width: 20%; /* Adjust the width for the first column */
+}
+
+.defTable th:not(:first-child), .defTable td:not(:first-child) {
+    width: 40%; /* Adjust the width for the remaining columns */
+}
+

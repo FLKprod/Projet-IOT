@@ -49,11 +49,11 @@ function toggleTeamInfo(id) {
                 imageSrc: "Photos/maxime_molesin.jpg"
             },
             {
-                name: "A MODIFIER",
-                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
-                linkedin: "https://www.linkedin.com/feed/",
-                github: "https://github.com/FLKprod",
-                imageSrc: "Photos/_MG_9841.JPG"
+                name: "Léo Mackowiak",
+                roles: "Étudiant spécialisé en Ingénierie d'affaires et Objets Connectés en maîtrise informatique à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/in/leo-mackowiak",
+                github: "https://github.com/LeoMacko",
+                imageSrc: "Photos/leo_photo.jpg"
             },
             {
                 name: "A MODIFIER",
@@ -167,6 +167,47 @@ function toggleTeamInfo(id) {
             var textarea = document.getElementById('keywordInput');
             textarea.addEventListener('keyup', handleEnterKey);
             keywordSearch();
+        }
+        else if (id === 'definitions') {
+            const definitionsContainer = document.querySelector('.definitions-container');
+            definitionsContainer.classList.add('fade-in');
+        
+            // Load data from the JSON file
+            fetch('http://localhost:8001/def.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const definitionsTableContainer = document.createElement('div');
+                    definitionsTableContainer.id = 'definitionsTableContainer';
+                    definitionsContainer.appendChild(definitionsTableContainer);
+        
+                    // Create and populate the table with data from the JSON file
+                    const definitionsTable = document.createElement('table');
+                    definitionsTable.classList.add('defTable');
+                    
+        
+                    // Add table header
+                    const headerRow = definitionsTable.createTHead().insertRow();
+                    const headers = ['Vulnérabilité', 'Définition', 'Solution'];
+                    headers.forEach(headerText => {
+                        const th = document.createElement('th');
+                        th.textContent = headerText;
+                        headerRow.appendChild(th);
+                    });
+        
+                    // Add table rows with data
+                    data.forEach(vulnerability => {
+                        const row = definitionsTable.insertRow();
+                        const cells = [vulnerability.name, vulnerability.definition, vulnerability.solution];
+                        cells.forEach(cellText => {
+                            const cell = row.insertCell();
+                            cell.textContent = cellText;
+                        });
+                    });
+        
+                    definitionsTableContainer.appendChild(definitionsTable);
+                })
+                .catch(error => console.error('Error loading JSON:', error));
         }
         myDiv.classList.add('fade-in');
 }
