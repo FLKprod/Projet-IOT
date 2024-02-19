@@ -159,23 +159,14 @@ function toggleTeamInfo(id) {
         else if(id === 'tableau'){
             tableauContainer.classList.add('fade-in');
             tableauContainer.appendChild(createSearchDiv());
-            tableauContainer.appendChild(createLabel('Chercher une source : ', 'sortDropdown'));
-            tableauContainer.appendChild(createSortDropdown());
+
             tableContainer = createTableContainer();
   
             tableauContainer.appendChild(tableContainer);
-          
-            var refreshButton = createButton('Refresh 🔄', keywordSearch);
-            tableauContainer.appendChild(refreshButton);
 
             var textarea = document.getElementById('keywordInput');
             textarea.addEventListener('keyup', handleEnterKey);
             keywordSearch();
-
-            refreshButton.addEventListener('click', function() {
-                keywordSearch();
-            });
-            
         }
         myDiv.classList.add('fade-in');
 }
@@ -188,7 +179,6 @@ function handleEnterKey(event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     createMenu =function () {
-    
     const menuDiv = document.createElement('div');
     menuDiv.id = 'menu3';
     menuDiv.classList.add('menu3');
@@ -201,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function loadMenuItems() {
+    
     fetch('http://localhost:5500/iot.json')
         .then(response => response.json())
         .then(data => {
@@ -240,8 +231,7 @@ function loadMenuItems() {
                                 Object.entries(rowData.cve).forEach(([key, value]) => {
                                     var cell = row.insertCell();
                                     if (key == "sourceIdentifier"){
-                                        var statusGroup = document.getElementById("listes");
-                                        addOptionsToGroup(value, statusGroup);
+
                                     }
                                     // Si la valeur n'est pas un tableau, ajoutez-la normalement
                                     if (key == "descriptions"){
@@ -254,13 +244,13 @@ function loadMenuItems() {
                                         else {
                                             langue = localStorage.getItem('Language');
                                             console.log(langue);
-                                            CallAPITranslate(langue, value[0].value)
+                                            /*CallAPITranslate(langue, value[0].value)
                                             .then(response => {
                                                  cell.appendChild(document.createTextNode(response));
                                                  })
                                              .catch(error => {
                                                  console.error('Erreur lors de la traduction:', error);
-                                                 });
+                                                 });*/
                                         }                           
                                     }
                                     else if (key == "metrics"){
@@ -284,7 +274,6 @@ function loadMenuItems() {
                                     }
                                 });
                             });
-                            sortTable();
                             table.classList.remove('fade-in');
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
@@ -326,6 +315,7 @@ function loadMenuItems() {
 
 });
 
+// ----------------------------------------------- CREATION DES ELEMENTS HTML -------------------------------------------------------//
 
 // Fonction pour créer un élément avec du texte
 function createTextElement(tag, textContent) {
@@ -394,8 +384,6 @@ function createInfoSection(data) {
     return infoDiv;
 }
 
-// ----------------------------------------------- CREATION DES ELEMENTS HTML -------------------------------------------------------//
-
 function createSocialLink(href, iconClass) {
     const link = document.createElement("a");
     link.href = href;
@@ -413,7 +401,7 @@ function createElementWithClass(tag, className) {
 }
 
 function createSearchDiv() {
-    const searchDiv = document.createElement('div');
+    const searchDiv = createElementWithClass('div','research');
     const keywordInput = createInput('text', 'keywordInput', 'Search here');
     const searchButton = createButton('Search', keywordSearch);
     searchDiv.appendChild(keywordInput);
@@ -439,14 +427,11 @@ function createLabel(text, forId) {
 
 function createSortDropdown() {
     const sortDropdown = createSelectElement('sortDropdown', sortTable);
-    const chooseOption = createOption('choose', 'Choisir', true, true);
-    const allOption = createOption('all', 'All');
+
     const optgroup = document.createElement('optgroup');
     optgroup.id = 'listes';
     optgroup.value = 'src';
     optgroup.label = 'Source';
-    sortDropdown.appendChild(chooseOption);
-    sortDropdown.appendChild(allOption);
     sortDropdown.appendChild(optgroup);
     return sortDropdown;
 }

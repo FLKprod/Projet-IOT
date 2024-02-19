@@ -3,8 +3,7 @@ console.log("recupData.js loaded");
 Datas = []
 
 function keywordSearch() {
-    var table = document.getElementById('vulnerabilityTable');
-    table.classList.add('fade-in');
+    
     var keywordInput = document.getElementById('keywordInput')
     var keywordSearch = keywordInput.value
     const pubStartDate = "2021-03-04T19:15:08.000";
@@ -18,6 +17,7 @@ function keywordSearch() {
             while (table.firstChild) {
                 table.removeChild(table.firstChild);
             }
+            table.classList.remove('fade-in');
             if (Array.isArray(data) && data.length > 0) {
                 var headerRow = table.createTHead().insertRow(0);
                 Object.keys(data[0].cve).forEach(header => {
@@ -106,39 +106,4 @@ function CallAPITranslate(langage, textInput) {
                 reject(error);
             });
     });
-}
-
-function addOptionsToGroup(optionText, group) {
-    if (!group.querySelector('option[value="' + optionText + '"]')) {
-        var option = document.createElement("option");
-        option.value = optionText;
-        option.text = optionText;
-        option.id = optionText.toLowerCase();
-        group.appendChild(option);
-    }
-}
-
-function sortTable() {
-    var sortOrderDropdown = document.getElementById('sortDropdown');
-    var sortOrder = sortOrderDropdown.value;
-
-    if (sortOrder === 'choose') {
-        return;
-    }
-
-    var table = document.getElementById('vulnerabilityTable');
-    var rows = Array.from(table.rows).slice(1); // Exclure la 1ere ligne
-
-    var sourceDropdown = document.getElementById('sortDropdown');
-    var selectedSource = sourceDropdown.value.toLowerCase().trim();
-
-    for (var i = 0; i < rows.length; i++) {
-        var cell = rows[i].getElementsByTagName("td")[1]; // Deuxième cellule pour la source
-        if (selectedSource === "all" || cell.textContent.toLowerCase().trim() == selectedSource) {
-            console.log("identic")
-            rows[i].style.display = ""; // Affiche la ligne
-        } else {
-            rows[i].style.display = "none"; // Masque la ligne
-        }
-    }
 }
