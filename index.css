@@ -15,11 +15,35 @@ body {
 
 html{
     animation: fadeIn 1.5s ease-in-out forwards;
+    width: 100vw;
 }
 
 .bold-text {
     font-weight: bold;
     margin: 1em !important;
+}
+
+button {
+    padding: 0.6em 0.6em;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4f0341;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 1em;
+}
+
+button:hover {
+    background-color: #4f0341;
+    color: white;
+    border-radius: 0;
+}
+
+button:active {
+    background-color: #4CAF50;
+    color: white;
 }
 
 @keyframes fadeIn {
@@ -29,6 +53,19 @@ html{
     to {
         opacity: 1;
     }
+}
+
+@keyframes glisse {
+    from {
+        left: -15em;
+    }
+    to {
+        left: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .center {
@@ -53,6 +90,22 @@ html{
 .language{
     margin-top: 1em;
     margin-bottom: 1em;
+    color: #4f0341;
+}
+
+.language select{
+    border-radius: 1em;
+    font-family: 0.5em;
+    border-color: white;
+    
+
+}
+
+.language select:hover{
+    border-radius: 1em;
+    font-family: 0.5em;
+    border-color: #4f0341;
+
 }
 
 .logo >img{
@@ -68,8 +121,44 @@ html{
     display: flex;
     align-items:center;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: 1em;
 }
+
+@media screen and (max-width: 900px) {
+
+    body{
+        justify-content: center;
+    }
+
+    .up{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2em;
+    }
+
+    .logo >img{
+        margin: 1em 0 2em 0;
+        background-color: whitesmoke;
+        border-radius: 1rem;
+        width: 100%;
+    }
+
+    .logo{margin: 0}
+
+
+    .down > p {
+        font-size: 0.5em;
+        color: black;
+    }
+
+    .language{
+        font-size: 0.5em;
+    }
+}
+
+
+/*---------------------------------------------- PRESENTATION ----------------------------------------------------------------------*/
 
 .presentation-container > h2,h3 {
     background-color: #4f0341;
@@ -118,6 +207,49 @@ p {
     color: white;
 }
 
+@media screen and (max-width: 900px) {
+    .contact-text{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .presentation-container > h2 {
+        padding: 0.7em;
+        font-size: 1.5em;
+    }
+
+    .presentation-container > h3 {
+        padding: 0.7em;
+        font-size: 1.1em;
+    }
+
+    .presentation-container > h4 {
+        padding: 0.7em;
+        font-size: 0.8em;
+        background-color: #4f0341;
+        border-radius: 1.5em;
+    }
+
+    .presentation-container > img {
+        height: 1.5em;
+        width: auto;
+        margin-right: 1em;
+        margin-bottom: 1em;
+    }
+
+    p {
+        font-size: 0.5em;
+        color: white;
+    }
+
+    .team-info-container > h2 {
+        font-size: 0.5em;
+    }
+
+}
+
+/*------------------------------------------------------------- MENU ------------------------------------------------------------------*/
+
 .menu{
     background: whitesmoke;
     display: flex;
@@ -131,7 +263,69 @@ p {
     height: 5em;
 }
 
-@media screen and (max-width: 800px) {
+.menu > button {
+    position: relative;
+    overflow: hidden;
+    color: #18181a;
+    cursor: pointer;
+    background: whitesmoke;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    height: 5em;
+    border-radius: 0;
+  }
+  
+  .menu > button span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+  }
+  
+  .menu > button span:last-child {
+    color: whitesmoke;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(225%) translateX(-50%);
+  }
+  
+  .menu > button:hover {
+      background-color: whitesmoke;
+      color: black;
+  }
+  .menu > button:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    background-color: #4f0341;
+    color: whitesmoke;
+    transform-origin: bottom center;
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    transform: skewY(9.3deg) scaleY(0);
+    z-index: 50;
+  }
+  
+  .menu > button:hover:after {
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(2);
+  }
+  
+  .menu > button:hover span:last-child {
+    transform: translateX(-50%) translateY(-25%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+@media screen and (max-width: 900px) {
     .menu {
         display: flex;
         flex-direction: column;
@@ -141,100 +335,18 @@ p {
         padding-bottom: 1em;
         text-align: center;
         width: 100%;
+        padding-bottom: 0.5em;
     }
 
-    .up{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 2em;
+    .menu > button {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        margin-left: 0;
     }
 }
 
-.menu > button {
-  position: relative;
-  overflow: hidden;
-  color: #18181a;
-  cursor: pointer;
-  background: whitesmoke;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  height: 5em;
-  border-radius: 0;
-}
-
-.menu > button span:first-child {
-  position: relative;
-  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 10;
-}
-
-.menu > button span:last-child {
-  color: whitesmoke;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 100;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
-  transform: translateY(225%) translateX(-50%);
-}
-
-.menu > button:hover {
-    background-color: whitesmoke;
-    color: black;
-}
-.menu > button:after {
-  content: "";
-  position: absolute;
-  bottom: -50%;
-  left: 0;
-  width: 100%;
-  height: 5em;
-  background-color: #4f0341;
-  color: whitesmoke;
-  transform-origin: bottom center;
-  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  transform: skewY(9.3deg) scaleY(0);
-  z-index: 50;
-}
-
-.menu > button:hover:after {
-  transform-origin: bottom center;
-  transform: skewY(9.3deg) scaleY(2);
-}
-
-.menu > button:hover span:last-child {
-  transform: translateX(-50%) translateY(-25%);
-  opacity: 1;
-  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
-}
-
-button {
-    padding: 0.6em 0.6em;
-    font-size: 1em;
-    cursor: pointer;
-    background-color: #4f0341;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-left: 1em;
-}
-
-button:hover {
-    background-color: #4f0341;
-    color: white;
-    border-radius: 0;
-}
-
-button:active {
-    background-color: #4CAF50;
-    color: white;
-}
+/*-------------------------------------- TABLEAU ---------------------------------------------------*/
 
 
 #sortDropdown {
@@ -263,6 +375,9 @@ button:active {
 hr{
     width: 5em;
 }
+
+
+/*----------------------------------------- NOTRE EQUIPE ------------------------------------------------------*/
 
 .membres-team-info {
     display: flex;
@@ -308,11 +423,6 @@ hr{
     background-color: rgb(0, 5, 50); /* Couleur de fond pour les éléments pairs */
   }
 
-  .team-info > h4 {
-    font-size: 2em;
-    font-style: italic;
-  }
-
   .team-info > a {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -339,6 +449,48 @@ hr{
   .fa {
     margin: 0 5px;
   }
+
+  .networks i {
+    font-size: 2em;
+    color:whitesmoke;
+}
+
+@media screen and (max-width: 900px) {
+    .membres-team-info {
+        margin: 0;
+        align-items: center;
+        width: 100%;
+    }
+
+    .team-info{
+        width: 40%;
+        padding: 0.5em;
+    }
+
+    .team-info-container > h2 {
+        font-size: 1.5em;
+    }
+    .team-info-text > h4 {
+        font-size: 0.7em;
+    }
+
+    .team-info img {
+        width: 3em;
+        height: 3em; 
+        box-shadow: 0 0 0 0.3em #4f0341, 0 0 0 0.4em whitesmoke;
+      }
+    
+    .team-info:nth-child(even) img {
+        box-shadow: 0 0 0 0.3em rgb(0, 5, 50), 0 0 0 0.4em whitesmoke;
+    }
+
+    .networks i {
+        font-size: 1em;
+    }
+
+}
+
+/*-------------------------------------- TABLEAU --------------------------------------------------*/
 
 
 .tableContainer{
@@ -436,17 +588,17 @@ input{
     margin: 0;
 }
 
+
+/*---------------------------------------- NOUS CONTACTER -----------------------------------------------------------*/
+
 .contact-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 2em 4em 2em;
+    width: 100%;
 }
 
 .contact-container > h2 {
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 100%;
     font-size: 2em;
     font-style: italic;
     color: whitesmoke;
@@ -456,8 +608,30 @@ input{
     display: flex;
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-out forwards;
+@media screen and (max-width: 900px) {
+    .contact-container{
+        margin: 0;
+    }
+    .contact-container > h2 {
+        font-size: 1em;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+    .contact-text{
+        display: flex;
+        flex-wrap:wrap;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .info {
+        margin:0.5em 0.5em 0.5em 0.5em;
+        padding: 0.6em;
+        gap: 0.1em;
+    }
+    .info i {
+        font-size: 2em;
+    }
 }
 
 
@@ -471,14 +645,7 @@ input{
     animation: glisse 1s ease-out forwards;
 }
 
-@keyframes glisse {
-    from {
-        left: -15em;
-    }
-    to {
-        left: 0;
-    }
-}
+
 
 .menu3 ul {
     list-style: none;

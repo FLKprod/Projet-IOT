@@ -1,15 +1,11 @@
-
 console.log("index.js loaded");
+toggleTeamInfo('presentation');
 
 document.getElementById("selectLanguage").value = localStorage.getItem("Language");
 function selectLanguage() {
     localStorage.setItem('Language',document.getElementById('selectLanguage').value);
     console.log(localStorage.getItem('Language'))
 }
-
-toggleTeamInfo('presentation');
-
-
 
 function toggleTeamInfo(id) {
     var presentationContainer = document.querySelector('.presentation-container');
@@ -87,7 +83,7 @@ function toggleTeamInfo(id) {
                 teamInfoDivtext.appendChild(createText('p',member.roles));
                 teamInfoDiv.appendChild(teamInfoDivtext);
             
-                const teamInfoDivNetworks = document.createElement("div");
+                const teamInfoDivNetworks = createElementWithClass("div","networks");
                 teamInfoDivNetworks.appendChild(createSocialLink(member.linkedin, "fa-linkedin"));
                 teamInfoDivNetworks.appendChild(createSocialLink(member.github, "fa-github"));
                 teamInfoDiv.appendChild(teamInfoDivNetworks);
@@ -226,7 +222,6 @@ function loadMenuItems() {
                     subLi.addEventListener('click',function(){
                         var table = document.getElementById('vulnerabilityTable');
                         console.log("Click on ::: " + brand.brand);
-
                         data = brand.vulnerabilities;
                         while (table.firstChild) {
                             table.removeChild(table.firstChild);
@@ -259,13 +254,13 @@ function loadMenuItems() {
                                         else {
                                             langue = localStorage.getItem('Language');
                                             console.log(langue);
-                                            // CallAPITranslate(langue, value[0].value)
-                                            // .then(response => {
-                                            //     cell.appendChild(document.createTextNode(response));
-                                            //     })
-                                            // .catch(error => {
-                                            //     console.error('Erreur lors de la traduction:', error);
-                                            //     });
+                                            CallAPITranslate(langue, value[0].value)
+                                            .then(response => {
+                                                 cell.appendChild(document.createTextNode(response));
+                                                 })
+                                             .catch(error => {
+                                                 console.error('Erreur lors de la traduction:', error);
+                                                 });
                                         }                           
                                     }
                                     else if (key == "metrics"){
@@ -290,6 +285,7 @@ function loadMenuItems() {
                                 });
                             });
                             sortTable();
+                            table.classList.remove('fade-in');
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
@@ -404,12 +400,8 @@ function createSocialLink(href, iconClass) {
     const link = document.createElement("a");
     link.href = href;
     link.target = "_blank";
-
     const icon = document.createElement("i");
     icon.classList.add("fa", iconClass);
-    icon.style.fontSize = "2em";
-    icon.style.color = "white";
-
     link.appendChild(icon);
     return link;
 }
