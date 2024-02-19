@@ -158,6 +158,11 @@ function toggleTeamInfo(id) {
         }
         else if(id === 'tableau'){
             tableauContainer.classList.add('fade-in');
+            presentationContainer.appendChild(createText('p',"Notre tableau interactif regroupe les vulnérabilités les plus récentes identifiées par la NIST, offrant une vue détaillée et actualisée de la sécurité informatique. Conçu pour répondre aux besoins spécifiques de chaque utilisateur, notre outil permet de trier ces vulnérabilités en fonction de l'appareil que vous utilisez, que ce soit un téléphone, une montre connectée, ou tout autre objet connecté."));
+            presentationContainer.appendChild(createText('p',"Prenez le contrôle de la sécurité de vos dispositifs électroniques avec Cybersafe."));
+            var slogan = createText('p',"La protection de votre vie numérique commence par la connaissance des vulnérabilités.");
+            slogan.className = "bold-text";
+            presentationContainer.appendChild(slogan);
             tableauContainer.appendChild(createSearchDiv());
 
             tableContainer = createTableContainer();
