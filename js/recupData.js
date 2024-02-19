@@ -13,10 +13,13 @@ function keywordSearch() {
         .then(response => response.json())
         .then(data => {
             console.log("Réponse de l'API", data.vulnerabilities);
+            var table = document.getElementById('vulnerabilityTable');
+            
             data = data.vulnerabilities;
             while (table.firstChild) {
                 table.removeChild(table.firstChild);
             }
+            
             table.classList.remove('fade-in');
             if (Array.isArray(data) && data.length > 0) {
                 var headerRow = table.createTHead().insertRow(0);
@@ -78,7 +81,6 @@ function keywordSearch() {
                         }
                     });
                 });
-                sortTable();
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }

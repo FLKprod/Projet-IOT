@@ -503,7 +503,7 @@ hr{
     display: flex;
     justify-content: space-between;
     border-radius: 1em;
-    animation: fadeIn 1s ease-out forwards;
+    
     width: 100%;
     margin-bottom: 5em;
 }
@@ -513,9 +513,9 @@ hr{
 }
 
 .vulnerabilityTable {
+    max-height: 100%;
     padding: 1em;
     overflow-x:auto; 
-    overflow-y: visible;
 }
 
 table {

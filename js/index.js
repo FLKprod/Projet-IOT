@@ -202,16 +202,16 @@ function loadMenuItems() {
                 a.href = '#'; 
                 a.textContent = item.category; 
                 li.appendChild(a);
-
+                var table = document.getElementById('vulnerabilityTable');
                 const submenu = document.createElement('ul');
                 submenu.id = 'submenu3';
                 submenu.classList.add('submenu3');
                 item.brands.forEach(brand => {
                     const subLi = document.createElement('li');
                     subLi.textContent = brand.brand;
-                    
                     subLi.addEventListener('click',function(){
-                        var table = document.getElementById('vulnerabilityTable');
+                        table.classList.add('fade-in');
+                        console.log("ADDDDDDDDDDDDD");
                         console.log("Click on ::: " + brand.brand);
                         data = brand.vulnerabilities;
                         while (table.firstChild) {
@@ -243,8 +243,8 @@ function loadMenuItems() {
                                         }
                                         else {
                                             langue = localStorage.getItem('Language');
-                                            console.log(langue);
-                                            /*CallAPITranslate(langue, value[0].value)
+                                            /*console.log(langue);
+                                            CallAPITranslate(langue, value[0].value)
                                             .then(response => {
                                                  cell.appendChild(document.createTextNode(response));
                                                  })
@@ -274,7 +274,6 @@ function loadMenuItems() {
                                     }
                                 });
                             });
-                            table.classList.remove('fade-in');
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
@@ -296,6 +295,8 @@ function loadMenuItems() {
                     console.log("La souris est rentréeeeeeeeee !")
                     submenu.querySelectorAll('li').forEach(subLi => {
                         console.log(subLi.textContent);
+                        table.classList.remove('fade-in');
+                        console.log("REEEEEMMMMOOOOOVVVVVEEEEEED");
                     });
                 });
 
@@ -423,17 +424,6 @@ function createLabel(text, forId) {
     label.textContent = text;
     label.htmlFor = forId;
     return label;
-}
-
-function createSortDropdown() {
-    const sortDropdown = createSelectElement('sortDropdown', sortTable);
-
-    const optgroup = document.createElement('optgroup');
-    optgroup.id = 'listes';
-    optgroup.value = 'src';
-    optgroup.label = 'Source';
-    sortDropdown.appendChild(optgroup);
-    return sortDropdown;
 }
 
 function createTableContainer() {
