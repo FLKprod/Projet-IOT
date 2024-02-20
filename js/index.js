@@ -59,18 +59,18 @@ function toggleTeamInfo(id) {
                 imageSrc: "Photos/leo_photo.jpg"
             },
             {
-                name: "A MODIFIER",
-                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
-                linkedin: "https://www.linkedin.com/feed/",
-                github: "https://github.com/FLKprod",
-                imageSrc: "Photos/_MG_9841.JPG"
+                name: "Ayoub Bouasria",
+                roles: "Étudiant légendaire en cybersécurité à l'Université du Québec à Chicoutimi",
+                linkedin: "https://www.linkedin.com/in/ayoub-bouasria-642a7a225/",
+                github: "https://github.com/Projet-0",
+                imageSrc: "Photos/ayoub.JPG"
             },
             {
-                name: "A MODIFIER",
-                roles: "Étudiant en cybersécurité à l'Université du Québec à Chicoutimi",
-                linkedin: "https://www.linkedin.com/feed/",
-                github: "https://github.com/FLKprod",
-                imageSrc: "Photos/_MG_9841.JPG"
+                name: "Cédric Lamotte-Lenoir",
+                roles: "A eu son brevet avec mention (c'est pas rien)",
+                linkedin: "https://www.linkedin.com/in/cedriclln/",
+                github: "https://github.com/Cernurt",
+                imageSrc: "Photos/cedro.JPG"
             }
         ];
 
@@ -194,21 +194,68 @@ function toggleTeamInfo(id) {
         
                     // Add table header
                     const headerRow = definitionsTable.createTHead().insertRow();
-                    const headers = ['Vulnérabilité', 'Définition', 'Solution'];
-                    headers.forEach(headerText => {
-                        const th = document.createElement('th');
-                        th.textContent = headerText;
-                        headerRow.appendChild(th);
-                    });
+
+
+                    if (localStorage.getItem('Language') != null){
+                        
+                        const headers = ['Vulnérabilité', 'Définition', 'Solution'];
+                        headers.forEach(headerText => {
+                            const th = document.createElement('th');
+                            th.textContent = headerText;
+
+                            CallAPITranslate(localStorage.getItem('Language'), headerText)
+                                      .then(data => {
+                                        const tht = document.createElement('th');
+                                        tht.textContent = data;
+                                        console.log(tht);
+                                        headerRow.appendChild(tht);
+
+                                        })
+                                      .catch(error => {
+                                        console.error('Erreur lors de la traduction:', error);
+                                        headerRow.appendChild(th);
+                                        });                            
+                        });
+
+                    } else { // Défaut, premier chargement
+                        const headers = ['Vulnérabilité', 'Définition', 'Solution'];
+                        headers.forEach(headerText => {
+                            const th = document.createElement('th');
+                            th.textContent = headerText;
+                            headerRow.appendChild(th);
+                        });
+                    }
+                    
         
                     // Add table rows with data
                     data.forEach(vulnerability => {
                         const row = definitionsTable.insertRow();
+
+                        if (localStorage.getItem('Language') != null){
+                        
+                            const cells = [vulnerability.name, vulnerability.definition, vulnerability.solution];
+                            cells.forEach(cellText => {
+
+                                const cell = row.insertCell();
+
+                                CallAPITranslate(localStorage.getItem('Language'), cellText)
+                                          .then(data => {
+                                            cell.textContent = data;
+                                            })
+                                          .catch(error => {
+                                            console.error('Erreur lors de la traduction:', error);
+                                            cell.textContent = cellText;
+                                            });                            
+                            });
+
+                    } else { // Défaut, premier chargement
                         const cells = [vulnerability.name, vulnerability.definition, vulnerability.solution];
+                        const row = definitionsTable.insertRow();
                         cells.forEach(cellText => {
                             const cell = row.insertCell();
                             cell.textContent = cellText;
                         });
+                    }
                     });
         
                     definitionsTableContainer.appendChild(definitionsTable);

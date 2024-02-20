@@ -1,3 +1,4 @@
+
 console.log("recupData.js loaded");
 
 Datas = []
@@ -99,7 +100,7 @@ function CallAPITranslate(langage, textInput) {
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                //console.log("Réponse de l'API DEEPL", data.translations[0].text);
+                console.log("Réponse de l'API DEEPL", data.translations[0].text);
                 const translation = data.translations[0].text;
                 resolve(translation);
             })
