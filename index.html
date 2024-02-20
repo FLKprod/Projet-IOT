@@ -14,6 +14,7 @@
             <img src="Photos/logo.png" alt="Logo">
             <button onclick="toggleTeamInfo('presentation')"><span class="text">Présentation</span><span>Presentation</span></button>
             <button onclick="toggleTeamInfo('tableau')"><span class="text">Liste des Vulnérabilites récement détéctées</span><span>Liste des Vulnérabilites récement détéctées</span></button>
+            <button onclick="toggleTeamInfo('definitions')"><span class="text">Définitions & Solutions</span><span>Définitions & Solutions</span></button>
             <button onclick="toggleTeamInfo('teamInfo')"><span class="text">Notre Équipe</span><span>Notre Équipe</span></button>
             <button onclick="toggleTeamInfo('contact')"><span class="text">Nous contacter</span><span>Nous contacter</span></button>
         </div>
@@ -30,6 +31,10 @@
             <!-- Affichage de notre tableau -->
             <script src="js/recupData.js"></script>
         </div>
+        <div id="definitions" class="definitions-container">
+            <table id="defTable"></table>
+            <!-- Affichage de définitions importantes et des solutions -->
+        </div> 
         <div id="teamInfo" class="team-info-container">
             <!-- Affichage de notre equipe -->
         </div>
