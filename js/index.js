@@ -1,7 +1,7 @@
 console.log("index.js loaded");
 toggleTeamInfo('presentation');
 
-document.getElementById("selectLanguage").value = localStorage.getItem("Language");
+
 function selectLanguage() {
     localStorage.setItem('Language',document.getElementById('selectLanguage').value);
     console.log(localStorage.getItem('Language'))
@@ -12,15 +12,18 @@ function toggleTeamInfo(id) {
     var equipeContainer = document.querySelector('.team-info-container');
     var tableauContainer = document.querySelector('.tableau-container');
     var contactContainer = document.querySelector('.contact-container');
+    var defContainer = document.querySelector('.definitions-container');
     presentationContainer.innerHTML = '';
     equipeContainer.innerHTML = '';
     tableauContainer.innerHTML = '';
     contactContainer.innerHTML = '';
+    defContainer.innerHTML = '';
     var myDiv = document.querySelector('.center');
     equipeContainer.classList.remove('fade-in');
     tableauContainer.classList.remove('fade-in');
     contactContainer.classList.remove('fade-in');
     presentationContainer.classList.remove('fade-in');
+    defContainer.classList.remove('fade-in');
     if(id=== 'teamInfo'){
         equipeContainer.classList.add('fade-in');
         equipeContainer.appendChild(createText('h2',"Notre Equipe"));
@@ -169,10 +172,13 @@ function toggleTeamInfo(id) {
             keywordSearch();
         }
         else if (id === 'definitions') {
+            defContainer.classList.add('fade-in');
             const definitionsContainer = document.querySelector('.definitions-container');
             definitionsContainer.classList.add('fade-in');
-        
-            // Load data from the JSON file
+            definitionsContainer.appendChild(createText('h2',"Comprendre et Contrer : Tel est l'enjeux de chacun au quotidien"));
+            definitionsContainer.appendChild(createText('p',"À mesure que la technologie évolue, de nouvelles opportunités émergent, mais malheureusement, elles s'accompagnent également de vulnérabilités potentielles qui peuvent compromettre la sécurité de nos systèmes et données."));
+            definitionsContainer.appendChild(createText('p',"Que vous soyez un professionnel de la cybersécurité, un responsable informatique, ou simplement soucieux de la protection de vos données, cet outil vous fournit des informations cruciales sur les menaces actuelles."));
+
             fetch('http://localhost:8001/def.json')
                 .then(response => response.json())
                 .then(data => {
@@ -244,25 +250,37 @@ function loadMenuItems() {
                 a.textContent = item.category; 
                 li.appendChild(a);
                 var table = document.getElementById('vulnerabilityTable');
+                
                 const submenu = document.createElement('ul');
                 submenu.id = 'submenu3';
                 submenu.classList.add('submenu3');
                 item.brands.forEach(brand => {
                     const subLi = document.createElement('li');
                     subLi.textContent = brand.brand;
+                    
                     subLi.addEventListener('click',function(){
-                        table.classList.add('fade-in');
-                        console.log("ADDDDDDDDDDDDD");
                         console.log("Click on ::: " + brand.brand);
                         data = brand.vulnerabilities;
                         while (table.firstChild) {
                             table.removeChild(table.firstChild);
                         }
+                        //table.classList.remove('fade-in');
+                        table.classList.add('opacity0');
+                        console.log("REEEEEMMMMOOOOOVVVVVEEEEEED");
+                        console.log("AAAAAADDDDDDDDDDDDD");
+                        table.classList.add('fade-in');
+                        
                         if (Array.isArray(data) && data.length > 0) {
                             var headerRow = table.createTHead().insertRow(0);
                             Object.keys(data[0].cve).forEach(header => {
-                                var cell = headerRow.insertCell();
-                                cell.appendChild(document.createTextNode(header));
+                                if (header === "id" || header === "sourceIdentifier" || header === "published" || header === "descriptions" || header === "lastModified" || header === "references" || header === "vulnStatus"){
+                                    var cell = headerRow.insertCell();
+                                    cell.appendChild(document.createTextNode(header));
+                                    if(header === "descriptions"){
+                                        cell.style = "padding: 1em 8em 1em 8em;";
+                                    }
+                                }
+                                    
                             });
                             headerRow.classList.add('header-row');
 
@@ -270,12 +288,15 @@ function loadMenuItems() {
                             data.forEach((rowData) => {
                                 var row = table.insertRow();
                                 Object.entries(rowData.cve).forEach(([key, value]) => {
-                                    var cell = row.insertCell();
-                                    if (key == "sourceIdentifier"){
-
+                                    if (key == "id" || key == "sourceIdentifier" || key == "published"|| key == "lastModified" || key == "vulnStatus"){
+                                        var cell = row.insertCell();
+                                        
+                                        cell.appendChild(document.createTextNode(value));
                                     }
                                     // Si la valeur n'est pas un tableau, ajoutez-la normalement
-                                    if (key == "descriptions"){
+                                    else if (key == "descriptions"){
+                                        var cell = row.insertCell();
+                                        cell.style = "padding: 2em;";
                                         if (localStorage.getItem('Language') == "EN"){
                                             cell.appendChild(document.createTextNode(value[0].value));
                                         }
@@ -294,13 +315,19 @@ function loadMenuItems() {
                                                  });*/
                                         }                           
                                     }
-                                    else if (key == "metrics"){
+                                    /*else if (key == "metrics"){
+                                        var cell = row.insertCell();
                                         cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
                                     }
                                     else if (key == "configurations"){
+                                        var cell = row.insertCell();
                                         cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
                                     }
+                                    
+                                    */
                                     else if (key == "references"){
+                                        var cell = row.insertCell();
+                                        cell.style = "padding: 2em;";
                                         textcase="";
                                         for (let i = 0; i < value.length; i++) {
                                             textcase += value[i].url;
@@ -308,13 +335,11 @@ function loadMenuItems() {
                                         }
                                         cell.appendChild(document.createTextNode(textcase));
                                     }
-                                    else{
-                                        cell.appendChild(document.createTextNode(value));
-                                    }
-                                    if (key == "vulnStatus") {
-                                    }
                                 });
-                            });
+                            }
+                            );
+                            
+                            
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');
             }
@@ -336,8 +361,6 @@ function loadMenuItems() {
                     console.log("La souris est rentréeeeeeeeee !")
                     submenu.querySelectorAll('li').forEach(subLi => {
                         console.log(subLi.textContent);
-                        table.classList.remove('fade-in');
-                        console.log("REEEEEMMMMOOOOOVVVVVEEEEEED");
                     });
                 });
 
