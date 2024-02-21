@@ -4,6 +4,7 @@ toggleTeamInfo('presentation');
 
 function selectLanguage() {
     localStorage.setItem('Language',document.getElementById('selectLanguage').value);
+    toggleTeamInfo('definitions');
     console.log(localStorage.getItem('Language'))
 }
 
