@@ -7,8 +7,19 @@ function keywordSearch() {
     
     var keywordInput = document.getElementById('keywordInput')
     var keywordSearch = keywordInput.value
-    const pubStartDate = "2020-03-04T19:15:08.000";
-    const pubEndDate = "2021-08-05T00:00:00.000";
+    // Obtenez la date d'aujourd'hui
+    const today = new Date();
+
+    // Soustrayez 100 jours de la date d'aujourd'hui
+    const startDate = new Date(today);
+    startDate.setDate(today.getDate() - 100);
+
+    // Formatez les dates au format ISO 8601 requis ("YYYY-MM-DDTHH:MM:SS.000")
+    const pubStartDate = startDate.toISOString();
+    const pubEndDate = today.toISOString();
+
+    console.log("Date de début :", pubStartDate);
+    console.log("Date de fin :", pubEndDate);
 
     fetch(`https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=${keywordSearch}&pubStartDate=${pubStartDate}&pubEndDate=${pubEndDate}`) 
         .then(response => response.json())
@@ -35,9 +46,14 @@ function keywordSearch() {
                     var row = table.insertRow();
                     Object.entries(rowData.cve).forEach(([key, value]) => {
                         var cell = row.insertCell();
+                        if (key =="id"){
+                            console.log(value);
+                            if (value.length > 20){}
+                        }
                         if (key == "sourceIdentifier"){
-                            var statusGroup = document.getElementById("listes");
-                            addOptionsToGroup(value, statusGroup);
+                            //var statusGroup = document.getElementById("vulnerabilityTable");
+                            var textNode = document.createTextNode(value);
+                            //statusGroup.appendChild(textNode);
                         }
                         // Si la valeur n'est pas un tableau, ajoutez-la normalement
                         if (key == "descriptions"){
@@ -59,9 +75,9 @@ function keywordSearch() {
                                     });
                             }                           
                         }
-                        else if (key == "metrics"){
-                            cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
-                        }
+                        //else if (key == "metrics"){
+                        //    cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
+                        //}
                         else if (key == "configurations"){
                             cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
                         }
@@ -78,7 +94,7 @@ function keywordSearch() {
                         }
                         // Ajouter une classe en fonction de la dernière colonne
                         if (key == "vulnStatus") {
-                            cell.className = evaluateRisk(value);
+                            cell.className = value;
                         }
                     });
                 });
@@ -110,3 +126,4 @@ function CallAPITranslate(langage, textInput) {
             });
     });
 }
+

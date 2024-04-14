@@ -14,17 +14,20 @@ function toggleTeamInfo(id) {
     var tableauContainer = document.querySelector('.tableau-container');
     var contactContainer = document.querySelector('.contact-container');
     var defContainer = document.querySelector('.definitions-container');
+    var compContainer = document.querySelector('.comparaison-container');
     presentationContainer.innerHTML = '';
     equipeContainer.innerHTML = '';
     tableauContainer.innerHTML = '';
     contactContainer.innerHTML = '';
     defContainer.innerHTML = '';
+    compContainer.innerHTML = '';
     var myDiv = document.querySelector('.center');
     equipeContainer.classList.remove('fade-in');
     tableauContainer.classList.remove('fade-in');
     contactContainer.classList.remove('fade-in');
     presentationContainer.classList.remove('fade-in');
     defContainer.classList.remove('fade-in');
+    compContainer.classList.remove('fade-in');
     if(id=== 'teamInfo'){
         equipeContainer.classList.add('fade-in');
         equipeContainer.appendChild(createText('h2',"Notre Equipe"));
@@ -164,7 +167,7 @@ function toggleTeamInfo(id) {
             tableauContainer.classList.add('fade-in');
             tableauContainer.appendChild(createSearchDiv());
 
-            tableContainer = createTableContainer();
+            const tableContainer = createTableContainer();
   
             tableauContainer.appendChild(tableContainer);
 
@@ -263,6 +266,160 @@ function toggleTeamInfo(id) {
                 })
                 .catch(error => console.error('Error loading JSON:', error));
         }
+        else if (id === 'comparaison') {
+            compContainer.classList.add('fade-in');
+            const comparaisonContainer = document.querySelector('.comparaison-container');
+            comparaisonContainer.classList.add('fade-in');
+            comparaisonContainer.appendChild(createText('h2',"Comment avoir une idée du degré de sécurité d'un objet?"));
+            comparaisonContainer.appendChild(createText('p',"Etablir avec précision le degré de sécurité d'un objet est une tâche assez complexe, en revanche nous pouvons essayer d'avoir une première idée sur sa fiabilité en observant le nombre d'incidents rapportés concernant la marque."));
+            comparaisonContainer.appendChild(createText('p',"Qui dit plus de rapports d'incidents, dit également plus de failles de sécurité... mais pas toujours"));
+            comparaisonContainer.appendChild(createText('p',"(Le score d'impact représente le niveau de dangerosité d'un incident, plus il est élevé, plus il a d'impact. Ici, on montre la moyenne des scores d'impact des incidents de chaque marque)"));
+
+
+            // Fetch the JSON data
+            fetch('http://localhost:8001/iot.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+                // Create a span element for the text "Filtrer par :"
+                const filterText = document.createElement('span');
+                filterText.textContent = 'Filtrer par : ';
+                filterText.classList.add('filter-text');
+
+                // Create dropdown menu for sorting
+                const dropdown = document.createElement('select');
+                dropdown.innerHTML = `
+                    <option value="incidents">Nombre d'incidents</option>
+                    <option value="brandName">Nom de la marque</option>
+                    <option value="averageImpact">Score d'impact moyen</option>
+                `;
+
+                // Add event listener to the dropdown menu
+                dropdown.addEventListener('change', () => {
+                    const selectedOption = dropdown.value;
+                    console.log(selectedOption);
+                    // Sort table based on selected option
+                    sortTable(selectedOption);
+                });
+
+                // Append the filter text and dropdown menu to the container
+                comparaisonContainer.appendChild(filterText);
+                comparaisonContainer.appendChild(dropdown);
+
+                // Créer l'élément img
+                const image = document.createElement('img');
+                image.src = 'Photos/rating.png'; // Remplacez 'chemin/vers/votre/image.png' par le chemin réel de votre image
+
+                // Ajouter une classe CSS à l'image (si nécessaire)
+                image.classList.add('table-image'); // Remplacez 'table-image' par le nom de classe CSS souhaité
+
+                // Ajouter l'image à votre conteneur HTML
+                comparaisonContainer.appendChild(image); // Remplacez 'comparaisonContainer' par le conteneur où vous souhaitez ajouter l'image
+
+
+                const comparaisonTableContainer = document.createElement('div');
+                comparaisonTableContainer.id = 'comparaisonTableContainer';
+                comparaisonContainer.appendChild(comparaisonTableContainer);
+
+        
+                // Create and populate the table with data from the JSON file
+                const comparaisonTable = document.createElement('table');
+                comparaisonTable.classList.add('compTable');
+        
+                // Add table header
+                const headerRow = comparaisonTable.createTHead().insertRow();
+                const headers = ['Marque', 'Nombre d\'incidents', 'Score d\'impact moyen']; // Définir les en-têtes de colonne
+                headers.forEach(headerText => {
+                    const th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+        
+                // Count incidents for each brand and calculate average impact score
+                const brandData = {};
+                data.forEach(category => {
+                    category.brands.forEach(brand => {
+                        const brandName = brand.brand;
+                        if (brand.vulnerabilities) {
+                            if (!brandData[brandName]) {
+                                brandData[brandName] = { incidents: 0, totalImpact: 0, numCVEs: 0 };
+                            }
+                            brand.vulnerabilities.forEach(vulnerability => {
+                                if (vulnerability.cve.metrics && vulnerability.cve.metrics.cvssMetricV2) {
+                                    const impactScore = vulnerability.cve.metrics.cvssMetricV2[0].impactScore;
+                                    brandData[brandName].incidents++;
+                                    brandData[brandName].totalImpact += impactScore;
+                                    brandData[brandName].numCVEs++;
+                                }
+                            });
+                        }
+                    });
+                });
+        
+                // Calculate average impact score for each brand
+                Object.keys(brandData).forEach(brandName => {
+                    const averageImpact = brandData[brandName].numCVEs > 0 ? brandData[brandName].totalImpact / brandData[brandName].numCVEs : 0;
+                    brandData[brandName].averageImpact = averageImpact.toFixed(2); // Round to two decimal places
+                });
+
+                // Function to sort table based on selected option
+                function sortTable(selectedOption) {
+                    const sortedBrands = Object.keys(brandData).map(brandName => ({
+                        brand: brandName,
+                        incidents: brandData[brandName].incidents,
+                        averageImpact: parseFloat(brandData[brandName].averageImpact) // Convert string to float for proper sorting
+                    }));
+                    
+                    sortedBrands.sort((a, b) => {
+                        if (selectedOption === 'brandName') {
+                            return a.brand.localeCompare(b.brand);
+                        } else if (selectedOption === 'incidents') {
+                            return b.incidents - a.incidents;
+                        } else if (selectedOption === 'averageImpact') {
+                            return b.averageImpact - a.averageImpact;
+                        }
+                    });
+
+                    // Clear table
+                    comparaisonTable.innerHTML = '';
+
+                    // Add table header
+                    const headerRow = comparaisonTable.createTHead().insertRow();
+                    const headers = ['Marque', 'Nombre d\'incidents', 'Score d\'impact moyen']; // Définir les en-têtes de colonne
+                    headers.forEach(headerText => {
+                        const th = document.createElement('th');
+                        th.textContent = headerText;
+                        headerRow.appendChild(th);
+                    });    
+
+                    // Add table rows with data
+                    sortedBrands.forEach(brand => {
+                        const row = comparaisonTable.insertRow();
+                        const cellBrand = row.insertCell();
+                        const cellIncidents = row.insertCell();
+                        const cellImpact = row.insertCell();
+
+                        cellBrand.textContent = brand.brand;
+                        cellIncidents.textContent = brand.incidents;
+                        cellImpact.textContent = brand.averageImpact.toFixed(2); // Round average impact to two decimal places
+                    });
+                }
+
+                // Function to calculate average impact score for a brand
+                function calculateAverageImpact(brand) {
+                return brand.averageImpact.toFixed(2);
+                }
+
+                // Initial sorting based on brand name
+                sortTable('incidents');
+        
+                // Append the table to the container in your HTML
+                comparaisonTableContainer.appendChild(comparaisonTable);
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+        }
+        
         myDiv.classList.add('fade-in');
 }
 
@@ -321,9 +478,13 @@ function loadMenuItems() {
                         if (Array.isArray(data) && data.length > 0) {
                             var headerRow = table.createTHead().insertRow(0);
                             Object.keys(data[0].cve).forEach(header => {
-                                if (header === "id" || header === "sourceIdentifier" || header === "published" || header === "descriptions" || header === "lastModified" || header === "references" || header === "vulnStatus"){
+                                if (header === "id" || header === "sourceIdentifier" || header === "published" || header === "descriptions" || header === "lastModified" || header === "references" || header === "vulnStatus" || header === "metrics"){
                                     var cell = headerRow.insertCell();
+                                    if(header ==="metrics"){
+                                        cell.appendChild(document.createTextNode("baseSeverity"));  
+                                    }else{
                                     cell.appendChild(document.createTextNode(header));
+                                    }
                                     if(header === "descriptions"){
                                         cell.style = "padding: 1em 8em 1em 8em;";
                                     }
@@ -363,11 +524,7 @@ function loadMenuItems() {
                                                  });*/
                                         }                           
                                     }
-                                    /*else if (key == "metrics"){
-                                        var cell = row.insertCell();
-                                        cell.appendChild(document.createTextNode(value.cvssMetricV2[0].source));
-                                    }
-                                    else if (key == "configurations"){
+                                    /*else if (key == "configurations"){
                                         var cell = row.insertCell();
                                         cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
                                     }
@@ -375,7 +532,7 @@ function loadMenuItems() {
                                     */
                                     else if (key == "references"){
                                         var cell = row.insertCell();
-                                        cell.style = "padding: 2em;";
+                                        //cell.style = "padding: 2em;";
                                         textcase="";
                                         for (let i = 0; i < value.length; i++) {
                                             textcase += value[i].url;
@@ -383,10 +540,13 @@ function loadMenuItems() {
                                         }
                                         cell.appendChild(document.createTextNode(textcase));
                                     }
+                                    else if (key == "metrics") {
+                                        var cell = row.insertCell();
+                                        cell.appendChild(document.createTextNode(value.cvssMetricV2[0].baseSeverity));
+                                    }
                                 });
                             }
                             );
-                            
                             
             } else {
                 console.error('Le fichier JSON est vide ou mal formaté.');

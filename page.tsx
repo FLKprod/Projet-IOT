@@ -23,7 +23,15 @@ const Home = () => {
 
       /* MAin */
 
-      const cveInfo = [];
+      const cveInfo: {
+        id: string;
+        description: string;
+        name: string;
+        baseSeverity: string;
+        date: string;
+        CWE_name: string;
+        link: URL;
+      }[] = [];
 
       // Iterate through the CVE objects
       for (const cve of response.vulnerabilities) {
