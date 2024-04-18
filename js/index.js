@@ -431,160 +431,164 @@ function handleEnterKey(event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     createMenu =function () {
-    const menuDiv = document.createElement('div');
-    menuDiv.id = 'menu3';
-    menuDiv.classList.add('menu3');
-    const menuList = document.createElement('ul');
-    menuList.id = 'menu-list';
-    menuDiv.appendChild(menuList);
-    loadMenuItems();
-    return menuDiv;
-}
+        const menuDiv = document.createElement('div');
+        menuDiv.id = 'menu3';
+        menuDiv.classList.add('menu3');
+        const menuList = document.createElement('ul');
+        menuList.id = 'menu-list';
+        menuDiv.appendChild(menuList);
+        loadMenuItems();
+        return menuDiv;
+    }
 
 
-function loadMenuItems() {
-    
-    fetch('http://localhost:8001/iot.json')
-        .then(response => response.json())
-        .then(data => {
-            const menuList = document.getElementById('menu-list');
-            data.forEach(item => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = '#'; 
-                a.textContent = item.category; 
-                li.appendChild(a);
-                var table = document.getElementById('vulnerabilityTable');
-                
-                const submenu = document.createElement('ul');
-                submenu.id = 'submenu3';
-                submenu.classList.add('submenu3');
-                item.brands.forEach(brand => {
-                    const subLi = document.createElement('li');
-                    subLi.textContent = brand.brand;
+    function loadMenuItems() {
+        
+        fetch('http://localhost:8001/iot.json')
+            .then(response => response.json())
+            .then(data => {
+                const menuList = document.getElementById('menu-list');
+                if (!menuList) {
+                    console.error('L\'élément menu-list n\'a pas été trouvé.');
+                    return;
+                }
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#'; 
+                    a.textContent = item.category; 
+                    li.appendChild(a);
+                    var table = document.getElementById('vulnerabilityTable');
                     
-                    subLi.addEventListener('click',function(){
-                        console.log("Click on ::: " + brand.brand);
-                        data = brand.vulnerabilities;
-                        while (table.firstChild) {
-                            table.removeChild(table.firstChild);
-                        }
-                        //table.classList.remove('fade-in');
-                        table.classList.add('opacity0');
-                        console.log("REEEEEMMMMOOOOOVVVVVEEEEEED");
-                        console.log("AAAAAADDDDDDDDDDDDD");
-                        table.classList.add('fade-in');
+                    const submenu = document.createElement('ul');
+                    submenu.id = 'submenu3';
+                    submenu.classList.add('submenu3');
+                    item.brands.forEach(brand => {
+                        const subLi = document.createElement('li');
+                        subLi.textContent = brand.brand;
                         
-                        if (Array.isArray(data) && data.length > 0) {
-                            var headerRow = table.createTHead().insertRow(0);
-                            Object.keys(data[0].cve).forEach(header => {
-                                if (header === "id" || header === "sourceIdentifier" || header === "published" || header === "descriptions" || header === "lastModified" || header === "references" || header === "vulnStatus" || header === "metrics"){
-                                    var cell = headerRow.insertCell();
-                                    if(header ==="metrics"){
-                                        cell.appendChild(document.createTextNode("baseSeverity"));  
-                                    }else{
-                                    cell.appendChild(document.createTextNode(header));
-                                    }
-                                    if(header === "descriptions"){
-                                        cell.style = "padding: 1em 8em 1em 8em;";
-                                    }
-                                }
-                                    
-                            });
-                            headerRow.classList.add('header-row');
-
-                            // Ajouter des lignes de data.json (à partir de la deuxième ligne)
-                            data.forEach((rowData) => {
-                                var row = table.insertRow();
-                                Object.entries(rowData.cve).forEach(([key, value]) => {
-                                    if (key == "id" || key == "sourceIdentifier" || key == "published"|| key == "lastModified" || key == "vulnStatus"){
-                                        var cell = row.insertCell();
-                                        
-                                        cell.appendChild(document.createTextNode(value));
-                                    }
-                                    // Si la valeur n'est pas un tableau, ajoutez-la normalement
-                                    else if (key == "descriptions"){
-                                        var cell = row.insertCell();
-                                        cell.style = "padding: 2em;";
-                                        if (localStorage.getItem('Language') == "EN"){
-                                            cell.appendChild(document.createTextNode(value[0].value));
-                                        }
-                                        else if (localStorage.getItem('Language') == "Spanish"){
-                                            cell.appendChild(document.createTextNode(value[1].value));
-                                        }
-                                        else {
-                                            langue = localStorage.getItem('Language');
-                                            /*console.log(langue);
-                                            CallAPITranslate(langue, value[0].value)
-                                            .then(response => {
-                                                 cell.appendChild(document.createTextNode(response));
-                                                 })
-                                             .catch(error => {
-                                                 console.error('Erreur lors de la traduction:', error);
-                                                 });*/
-                                        }                           
-                                    }
-                                    /*else if (key == "configurations"){
-                                        var cell = row.insertCell();
-                                        cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
-                                    }
-                                    
-                                    */
-                                    else if (key == "references"){
-                                        var cell = row.insertCell();
-                                        //cell.style = "padding: 2em;";
-                                        textcase="";
-                                        for (let i = 0; i < value.length; i++) {
-                                            textcase += value[i].url;
-                                            textcase += "\n"
-                                        }
-                                        cell.appendChild(document.createTextNode(textcase));
-                                    }
-                                    else if (key == "metrics") {
-                                        var cell = row.insertCell();
-                                        cell.appendChild(document.createTextNode(value.cvssMetricV2[0].baseSeverity));
-                                    }
-                                });
+                        subLi.addEventListener('click',function(){
+                            console.log("Click on ::: " + brand.brand);
+                            data = brand.vulnerabilities;
+                            while (table.firstChild) {
+                                table.removeChild(table.firstChild);
                             }
-                            );
+                            //table.classList.remove('fade-in');
+                            table.classList.add('opacity0');
+                            console.log("REEEEEMMMMOOOOOVVVVVEEEEEED");
+                            console.log("AAAAAADDDDDDDDDDDDD");
+                            table.classList.add('fade-in');
                             
-            } else {
-                console.error('Le fichier JSON est vide ou mal formaté.');
-            }
+                            if (Array.isArray(data) && data.length > 0) {
+                                var headerRow = table.createTHead().insertRow(0);
+                                Object.keys(data[0].cve).forEach(header => {
+                                    if (header === "id" || header === "sourceIdentifier" || header === "published" || header === "descriptions" || header === "lastModified" || header === "references" || header === "vulnStatus" || header === "metrics"){
+                                        var cell = headerRow.insertCell();
+                                        if(header ==="metrics"){
+                                            cell.appendChild(document.createTextNode("baseSeverity"));  
+                                        }else{
+                                        cell.appendChild(document.createTextNode(header));
+                                        }
+                                        if(header === "descriptions"){
+                                            cell.style = "padding: 1em 8em 1em 8em;";
+                                        }
+                                    }
+                                        
+                                });
+                                headerRow.classList.add('header-row');
+
+                                // Ajouter des lignes de data.json (à partir de la deuxième ligne)
+                                data.forEach((rowData) => {
+                                    var row = table.insertRow();
+                                    Object.entries(rowData.cve).forEach(([key, value]) => {
+                                        if (key == "id" || key == "sourceIdentifier" || key == "published"|| key == "lastModified" || key == "vulnStatus"){
+                                            var cell = row.insertCell();
+                                            
+                                            cell.appendChild(document.createTextNode(value));
+                                        }
+                                        // Si la valeur n'est pas un tableau, ajoutez-la normalement
+                                        else if (key == "descriptions"){
+                                            var cell = row.insertCell();
+                                            cell.style = "padding: 2em;";
+                                            if (localStorage.getItem('Language') == "EN"){
+                                                cell.appendChild(document.createTextNode(value[0].value));
+                                            }
+                                            else if (localStorage.getItem('Language') == "Spanish"){
+                                                cell.appendChild(document.createTextNode(value[1].value));
+                                            }
+                                            else {
+                                                langue = localStorage.getItem('Language');
+                                                /*console.log(langue);
+                                                CallAPITranslate(langue, value[0].value)
+                                                .then(response => {
+                                                    cell.appendChild(document.createTextNode(response));
+                                                    })
+                                                .catch(error => {
+                                                    console.error('Erreur lors de la traduction:', error);
+                                                    });*/
+                                            }                           
+                                        }
+                                        /*else if (key == "configurations"){
+                                            var cell = row.insertCell();
+                                            cell.appendChild(document.createTextNode(value[0].nodes[0].cpeMatch[0].versionEndExcluding));
+                                        }
+                                        
+                                        */
+                                        else if (key == "references"){
+                                            var cell = row.insertCell();
+                                            //cell.style = "padding: 2em;";
+                                            textcase="";
+                                            for (let i = 0; i < value.length; i++) {
+                                                textcase += value[i].url;
+                                                textcase += "\n"
+                                            }
+                                            cell.appendChild(document.createTextNode(textcase));
+                                        }
+                                        else if (key == "metrics") {
+                                            var cell = row.insertCell();
+                                            cell.appendChild(document.createTextNode(value.cvssMetricV2[0].baseSeverity));
+                                        }
+                                    });
+                                }
+                                );
+                                
+                } else {
+                    console.error('Le fichier JSON est vide ou mal formaté.');
+                }
 
 
-                    })
+                        })
 
 
-                    submenu.appendChild(subLi);
+                        submenu.appendChild(subLi);
 
-                });
-
-           
-                li.appendChild(submenu);
-
-         
-                li.addEventListener('mouseenter', function() {
-                    submenu.style.display = 'block';
-                    console.log("La souris est rentréeeeeeeeee !")
-                    submenu.querySelectorAll('li').forEach(subLi => {
-                        console.log(subLi.textContent);
                     });
-                });
 
-                li.addEventListener('mouseleave', function() {
-                    submenu.style.display = 'none';
-                });
-
-                menuList.appendChild(li);
-
-            });
             
-        })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors du chargement des données du menu :', error);
-        });
-}
+                    li.appendChild(submenu);
+
+            
+                    li.addEventListener('mouseenter', function() {
+                        submenu.style.display = 'block';
+                        console.log("La souris est rentréeeeeeeeee !")
+                        submenu.querySelectorAll('li').forEach(subLi => {
+                            console.log(subLi.textContent);
+                        });
+                    });
+
+                    li.addEventListener('mouseleave', function() {
+                        submenu.style.display = 'none';
+                    });
+
+                    menuList.appendChild(li);
+
+                });
+                
+            })
+            .catch(error => {
+                console.error('Une erreur s\'est produite lors du chargement des données du menu :', error);
+            });
+    }
 
 });
 
@@ -675,8 +679,8 @@ function createElementWithClass(tag, className) {
 
 function createSearchDiv() {
     const searchDiv = createElementWithClass('div','research');
-    const keywordInput = createInput('text', 'keywordInput', 'Search here');
-    const searchButton = createButton('Search', keywordSearch);
+    const keywordInput = createInput(type= 'text', id='keywordInput', placeholder='Search here');
+    const searchButton = createButton('Search', keywordSearch());
     searchDiv.appendChild(keywordInput);
     searchDiv.appendChild(searchButton);
     return searchDiv;
