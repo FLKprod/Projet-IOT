@@ -15,12 +15,14 @@ function toggleTeamInfo(id) {
     var contactContainer = document.querySelector('.contact-container');
     var defContainer = document.querySelector('.definitions-container');
     var compContainer = document.querySelector('.comparaison-container');
+    var discussionContainer = document.querySelector('.discussion-container');
     presentationContainer.innerHTML = '';
     equipeContainer.innerHTML = '';
     tableauContainer.innerHTML = '';
     contactContainer.innerHTML = '';
     defContainer.innerHTML = '';
     compContainer.innerHTML = '';
+    discussionContainer.innerHTML = '';
     var myDiv = document.querySelector('.center');
     equipeContainer.classList.remove('fade-in');
     tableauContainer.classList.remove('fade-in');
@@ -28,6 +30,7 @@ function toggleTeamInfo(id) {
     presentationContainer.classList.remove('fade-in');
     defContainer.classList.remove('fade-in');
     compContainer.classList.remove('fade-in');
+    discussionContainer.classList.remove('fade-in');
     if(id=== 'teamInfo'){
         equipeContainer.classList.add('fade-in');
         equipeContainer.appendChild(createText('h2',"Notre Equipe"));
@@ -419,7 +422,11 @@ function toggleTeamInfo(id) {
             })
             .catch(error => console.error('Error loading JSON:', error));
         }
+        else if (id === 'discussion') { 
+         // fais toi plaisir
+        }
         
+             
         myDiv.classList.add('fade-in');
 }
 
