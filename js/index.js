@@ -422,9 +422,37 @@ function toggleTeamInfo(id) {
             })
             .catch(error => console.error('Error loading JSON:', error));
         }
-        else if (id === 'discussion') { 
-         // fais toi plaisir
+        else if (id === 'discussion') {
+            discussionContainer.classList.add('fade-in');
+            if (discussionContainer.innerHTML === '') { // Seulement reconstruire si nécessaire
+                // Crée des éléments de formulaire pour la discussion
+                const inputCVE = createInput('text', 'cveInput', 'Entrez l\'ID CVE ici...');
+                const textAreaMessage = document.createElement('textarea');
+                textAreaMessage.id = 'messageInput';
+                textAreaMessage.placeholder = 'Écrivez votre question ou remarque ici...';
+
+                const messageTypeSelect = createSelectElement('messageType', null);
+                messageTypeSelect.appendChild(createOption('question', 'Question', false, false));
+                messageTypeSelect.appendChild(createOption('remarque', 'Remarque', false, false));
+
+                const postButton = createButton('Poster', postMessage);
+                const clearButton = createButton('Effacer les messages', clearMessages);
+                postButton.addEventListener('click', postMessage);
+
+                const messagesContainer = document.createElement('div');
+                messagesContainer.id = 'messagesContainer';
+
+                // Ajoute les éléments créés au container de discussion
+                discussionContainer.appendChild(inputCVE);
+                discussionContainer.appendChild(textAreaMessage);
+                discussionContainer.appendChild(messageTypeSelect);
+                discussionContainer.appendChild(postButton);
+                discussionContainer.appendChild(clearButton);
+                discussionContainer.appendChild(messagesContainer);
+            }
         }
+
+
         
              
         myDiv.classList.add('fade-in');
@@ -632,10 +660,10 @@ function createIcon(iconClass, fontSize, color, cursor, clickHandler) {
 }
 
 // Fonction pour créer un bouton
-function createButton(text, clickHandler) {
-    const button = document.createElement("button");
+function createButton(text, onClick) {
+    const button = document.createElement('button');
     button.textContent = text;
-    button.onclick = clickHandler;
+    if (onClick) button.onclick = onClick;
     return button;
 }
 
@@ -724,7 +752,7 @@ function createTableContainer() {
 function createSelectElement(id, onchange) {
     const select = document.createElement('select');
     select.id = id;
-    select.onchange = onchange;
+    if (onchange) select.onchange = onchange;
     return select;
 }
 
@@ -737,3 +765,41 @@ function createOption(value, text, disabled, selected) {
     return option;
 }
 
+function postMessage() {
+    const cveInput = document.getElementById('cveInput').value;
+    const messageInput = document.getElementById('messageInput').value;
+    const messageType = document.getElementById('messageType').value;
+
+    // Créer l'objet message
+    const message = {
+        id: cveInput,
+        content: messageInput,
+        type: messageType,
+        timestamp: new Date().toISOString()
+    };
+
+    // Obtenir les messages existants de localStorage ou initialiser un tableau vide
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    messages.push(message);
+    localStorage.setItem('messages', JSON.stringify(messages));  // Sauvegarder les messages dans localStorage
+
+    displayMessages();  // Afficher les messages
+}
+
+function displayMessages() {
+    const messagesContainer = document.getElementById('messagesContainer');
+    messagesContainer.innerHTML = '';  // Effacer les messages actuels
+
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    messages.forEach(msg => {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.innerHTML = `<strong>${msg.id} - ${msg.type}</strong>: ${msg.content} <br> <small>${msg.timestamp}</small>`;
+        messagesContainer.appendChild(messageDiv);
+    });
+}
+
+function clearMessages() {
+    localStorage.removeItem('messages');
+    displayMessages();  // Mettre à jour l'affichage pour montrer que les messages ont été effacés
+}

@@ -42,8 +42,19 @@
             <!-- Affichage des comparaisons de sécurité des marques -->
         </div>
         <div id="discussion" class="discussion-container">
-            <!-- Affichage de'un channel de discussion de cve -->
+            <input type="text" id="cveInput" placeholder="Entrez l'ID CVE ici..." />
+            <textarea id="messageInput" placeholder="Écrivez votre question ou remarque ici..."></textarea>
+            <select id="messageType">
+                <option value="question">Question</option>
+                <option value="remarque">Remarque</option>
+                <option value="réponse">Réponse</option>
+            </select>
+            <button onclick="postMessage()">Poster</button>
+            <button onclick="clearMessages()">Effacer les messages</button>
+            <div id="messagesContainer"></div>
+            
         </div>
+
         <div id="teamInfo" class="team-info-container">
             <!-- Affichage de notre equipe -->
         </div>

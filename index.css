@@ -793,44 +793,31 @@ input{
 
 /*---------------------------------------- Discussion -----------------------------------------------------------*/
 
-.discussion-container {
+#discussion-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 2em;
+    margin: 10px;
 }
 
-.discussion-container > h2 {
-    font-size: 5em;
-    letter-spacing: 0.08em;
-    font-weight: 100;
-    text-align: center;
-    color: whitesmoke;
+#messagesContainer {
+    margin-top: 20px;
 }
 
-.discussion-table {
-    margin-top: 2em;
-    width: 80%;
-    overflow-x: auto;
+#messageInput {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    height: 150px !important;/* Hauteur fixe plus grande */
+    padding: 10px; /* Ajoute un peu de padding pour le texte */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et la hauteur */
+    border: 1px solid #ccc; /* Style de bordure */
+    border-radius: 4px; /* Bords arrondis */
+    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement */
+    font-size: 16px; /* Taille de police plus lisible */
 }
 
-.discussion-table th,
-.discussion-table td {
-    padding: 1em;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
-.discussion-table th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-
-.discussion-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.discussion-table tr:nth-child(odd) {
-    background-color: #fff;
+.message {
+    color: white;           /* Couleur du texte */
+    background-color: #333; /* Couleur de fond pour améliorer la visibilité */
+    padding: 10px;          /* Espacement intérieur pour rendre le texte plus lisible */
+    margin-bottom: 5px;     /* Espace entre les messages */
+    border-radius: 5px;     /* Bords arrondis pour un look moderne */
 }
