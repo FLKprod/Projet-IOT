@@ -790,3 +790,47 @@ input{
     margin-right: auto;
     margin-top: 5em;
 }
+
+/*---------------------------------------- Discussion -----------------------------------------------------------*/
+
+.discussion-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2em;
+}
+
+.discussion-container > h2 {
+    font-size: 5em;
+    letter-spacing: 0.08em;
+    font-weight: 100;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.discussion-table {
+    margin-top: 2em;
+    width: 80%;
+    overflow-x: auto;
+}
+
+.discussion-table th,
+.discussion-table td {
+    padding: 1em;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.discussion-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.discussion-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.discussion-table tr:nth-child(odd) {
+    background-color: #fff;
+}
